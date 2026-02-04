@@ -27,7 +27,7 @@ export const STRINGS = {
     footerCtaTitle: "Klaar om jouw toekomst vorm te geven?",
     footerCtaBody:
       "Kom langs, ontmoet bedrijven en verenigingen, en breid je netwerk uit.",
-    footerSponsoredBy: "Website gesponsord door Galerie B",
+    footerSponsoredBy: "Website gesponsord door Galerij Brachot",
     footerAboutTitle: "Over",
     footerAboutBody:
       "De Haagse Hogeschool verbindt onderwijs en werkveld en helpt studenten klaar te stomen voor de uitdagingen van morgen.",
@@ -77,7 +77,7 @@ export const STRINGS = {
     footerCtaTitle: "Ready to shape your future?",
     footerCtaBody:
       "Meet companies and associations, ask questions, and grow your network.",
-    footerSponsoredBy: "Website sponsored by Galerie B",
+    footerSponsoredBy: "Website sponsored by Galery Brachot",
     footerAboutTitle: "About",
     footerAboutBody:
       "The Hague University of Applied Sciences prepares students through practical education and strong industry connections.",

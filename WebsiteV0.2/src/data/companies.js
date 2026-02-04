@@ -258,12 +258,13 @@ export const COMPANIES = [
   {
     name: "The Confettimaker",
     logo: "/logos/confetti.png",
+    logoTone: "dark",
     description: "TBD",
     industry: "TBD",
     employees: "N/A",
     location: "TBD",
     opportunities: ["TBD"],
-    website: "#",
+    website: "https://www.theconfettimaker.com/",
   },
   {
     name: "Schulte en Lestraden B.V.",

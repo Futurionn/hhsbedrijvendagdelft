@@ -1,5 +1,4 @@
 import { m } from "framer-motion";
-import { Instagram, Linkedin, Globe, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "../../shared/LanguageContext.jsx";
 import { STRINGS } from "../../shared/strings.js";
 import { Link } from "react-router-dom";
@@ -11,16 +10,28 @@ const reveal = {
   transition: { duration: 0.6 }
 };
 
-function SocialButton({ label, icon: Icon, href }) {
+function HhsIcon({ src, alt = "", className = "" }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={`h-12 w-12 shrink-0 object-contain ${className}`}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
+function IconLink({ label, src, href }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white/80 transition-all duration-500 hover:scale-105 hover:bg-white/15 hover:text-white hover:shadow-lg hover:shadow-[#f07c00]/20"
+      className="inline-flex items-center justify-center transition-all duration-500 hover:scale-105 hover:drop-shadow-[0_10px_12px_rgba(240,124,0,0.18)]"
     >
-      <Icon className="h-5 w-5" />
+      <HhsIcon src={src} alt="" />
     </a>
   );
 }
@@ -71,10 +82,10 @@ export default function Footer() {
             </div>
             <p className="mt-4 max-w-md text-white/70">{t.footerAboutBody}</p>
 
-            <div className="mt-6 flex items-center gap-3">
-              <SocialButton label="Website" icon={Globe} href={hhsWebsite} />
-              <SocialButton label="LinkedIn" icon={Linkedin} href={hhsLinkedIn} />
-              <SocialButton label="Instagram" icon={Instagram} href={hhsInstagram} />
+            <div className="mt-6 flex items-center">
+              <IconLink label="Website" src="/HHS/HHSWeb.png" href={hhsWebsite} />
+              <IconLink label="LinkedIn" src="/HHS/HHSLinkedin.png" href={hhsLinkedIn} />
+              <IconLink label="Instagram" src="/HHS/HHSinta.png" href={hhsInstagram} />
             </div>
           </div>
 
@@ -106,17 +117,17 @@ export default function Footer() {
 
           <div>
             <h4 className="text-lg font-extrabold">{t.footerContactTitle}</h4>
-            <div className="mt-4 space-y-3 text-white/70">
+            <div className="mt-4 text-white/70">
               <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-orange" />
+                <HhsIcon src="/HHS/HHSmail.png" alt="" className="h-10 w-10" />
                 <span>{email}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-orange" />
+                <HhsIcon src="/HHS/HHSphone.png" alt="" className="h-10 w-10" />
                 <span>{phone}</span>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-orange" />
+                <HhsIcon src="/HHS/HHSmap.png" alt="" className="mt-0.5 h-10 w-10" />
                 <span>{address}</span>
               </div>
             </div>
@@ -150,7 +161,7 @@ export default function Footer() {
               <span>{t.footerSponsoredBy}</span>
               <img
                 src="/logos/galerieb.png"
-                alt="Galerie B"
+                alt="Galerie Brachot"
                 className="h-6 w-auto opacity-90"
                 loading="lazy"
                 decoding="async"

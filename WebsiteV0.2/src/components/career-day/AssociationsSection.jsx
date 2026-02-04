@@ -25,7 +25,7 @@ function Starfield() {
       {/* slow drift layer (moves the whole starfield) */}
       <m.div
         className="absolute inset-0"
-        animate={{ x: [-20, 20, -20], y: [10, -10, 10] }}
+        animate={{ x: [-20, 30, -20], y: [15, -20, 10] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         {dots.map((i) => {
