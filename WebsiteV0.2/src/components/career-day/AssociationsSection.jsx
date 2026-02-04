@@ -84,17 +84,24 @@ function AssociationCard({ item }) {
       rel="noreferrer"
       className="group block rounded-3xl border border-white/10 bg-white/5 p-7 shadow-lg shadow-black/20 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:shadow-[#f07c00]/10"
     >
-      <div className="flex items-stretch justify-between gap-6">
+      <div className="relative overflow-hidden">
         <div className="min-w-0">
-          <div className="text-xl font-extrabold text-white">{item.name}</div>
-          <div className="mt-2 text-sm text-white/60">{item.field}</div>
-          <div className="mt-5 text-sm font-semibold text-white/80 opacity-70 transition-all duration-500 group-hover:opacity-100">
-            {item.website}
+          <div className="whitespace-nowrap text-xl font-extrabold text-white">{item.name}</div>
+          <div className="pr-[150px] sm:pr-[140px]">
+            <div className="mt-2 text-sm text-white/60">{item.field}</div>
+            <div className="mt-5 text-sm font-semibold text-white/80 opacity-70 transition-all duration-500 group-hover:opacity-100">
+              <span className="block truncate">{item.website}</span>
+            </div>
           </div>
         </div>
 
         {item.logoSrc ? (
-          <div className="flex w-[150px] flex-none items-center justify-end overflow-hidden sm:w-[140px]">
+          <div
+            className="pointer-events-none absolute right-0 top-1/2 w-[150px] sm:w-[140px]"
+            style={{
+              transform: `translateY(calc(-50% + ${(item.logoOffsetY ?? 0).toString()}px))`
+            }}
+          >
             <img
               src={item.logoSrc}
               alt={`${item.name} logo`}

@@ -6,12 +6,6 @@ export const ASSOCIATIONS = [
     logoSrc: "/logos/angstrom.webp"
   },
   {
-    name: "Equinox",
-    field: "HBO-ICT",
-    website: "svequinox.nl",
-    logoSrc: "/logos/Equinox.png"
-  },
-  {
     name: "Fibonacci",
     field: "Toegepaste Wiskunde",
     website: "svfibonacci.nl",
@@ -35,5 +29,12 @@ export const ASSOCIATIONS = [
     field: "Elektrotechniek",
     website: "www.rheonline.nl",
     logoSrc: "/logos/rheon.png"
-  }
+  },
+  {
+    name: "Bedrijfskundig Genootschap",
+    field: "Technische Bedrijfskunde",
+    website: "bgdelft.nl",
+    logoSrc: "/logos/BG.png",
+    logoOffsetY: 20
+  },
 ];
