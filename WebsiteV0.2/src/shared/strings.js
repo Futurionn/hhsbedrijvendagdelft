@@ -5,9 +5,9 @@ export const STRINGS = {
     heroSubtitle:
       "Ontmoet toonaangevende bedrijven, ontdek kansen en zet de eerste stap naar jouw carrière.",
     dateLabel: "Datum",
-    dateValue: "05/03/2026",
+    dateValue: "5 Maart 2026",
     timeLabel: "Tijd",
-    timeValue: "10:00 - 17:00",
+    timeValue: "13u - 16u",
     locationLabel: "Locatie",
     locationValue: "HHS Delft",
     locationAddress: "Rotterdamseweg 137, 2628 AL Delft",
@@ -55,9 +55,9 @@ export const STRINGS = {
     heroSubtitle:
       "Connect with leading companies, explore opportunities, and take the first step towards your career.",
     dateLabel: "Date",
-    dateValue: "March 5, 2026",
+    dateValue: "5 March 2026",
     timeLabel: "Time",
-    timeValue: "10:00 - 17:00",
+    timeValue: "13:00 - 16:00",
     locationLabel: "Location",
     locationValue: "THUAS Delft",
     locationAddress: "Rotterdamseweg 137, 2628 AL Delft",

@@ -321,7 +321,7 @@ export const COMPANIES = [
     employees: "N/A",
     location: "TBD",
     opportunities: ["TBD"],
-    website: "#",
+    website: "https://stsonstage.com/",
   },
   {
     name: "Smits Zevenhuizen",

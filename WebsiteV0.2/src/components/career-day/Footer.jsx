@@ -40,7 +40,7 @@ export default function Footer() {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
 
-  const email = t.tbd;
+  const email = "bedrijvendagdelft@hhs.nl";
   const phone = t.tbd;
   const siteIssuesEmail = "voorzitter@rheonline.nl";
   const address =

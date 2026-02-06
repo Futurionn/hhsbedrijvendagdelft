@@ -100,7 +100,7 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-10 md:pb-28 md:pt-12">
         <div className="flex items-center justify-between gap-4">
           <img
-            src="/logos/HHS.png"
+            src="/HHS/HHS.png"
             alt={logoAlt}
             className="h-9 w-auto max-w-[220px] opacity-95 sm:h-10 sm:max-w-[320px] md:h-12"
             loading="eager"
