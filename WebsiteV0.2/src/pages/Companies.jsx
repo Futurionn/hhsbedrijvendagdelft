@@ -94,7 +94,7 @@ export default function Companies() {
   const title = lang === "nl" ? "Bedrijven" : "Companies";
   const filterLabel = lang === "nl" ? "Filter" : "Filter";
   const categoryLabel = lang === "nl" ? "Categorie" : "Category";
-  const sortLabel = lang === "nl" ? "Sorteer A–Z" : "Sort A–Z";
+  const sortLabel = lang === "nl" ? "Sorteer A-Z" : "Sort A-Z";
   const enabledLabel = lang === "nl" ? "aan" : "on";
   const disabledLabel = lang === "nl" ? "uit" : "off";
   const intro =

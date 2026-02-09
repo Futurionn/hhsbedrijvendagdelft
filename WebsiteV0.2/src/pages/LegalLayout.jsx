@@ -30,7 +30,7 @@ export default function LegalLayout({ title, children }) {
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-10">
           <div className="flex items-center justify-between gap-4">
             <img
-              src="/logos/HHS.png"
+              src="/HHS/HHS.png"
               alt={logoAlt}
               className="h-7 w-auto max-w-[180px] opacity-95 sm:h-8 sm:max-w-[260px] md:h-9"
             />

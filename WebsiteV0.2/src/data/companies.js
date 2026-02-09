@@ -77,7 +77,7 @@ export const COMPANIES = [
     description:
       "Manufacturer of high-accuracy temperature sensors and equipment for measuring, controlling and recording temperature and humidity.",
     industry: "Instrumentation / sensors",
-    employees: "~ 11–50",
+    employees: "~ 11 - 50",
     location: "Nootdorp, NL",
     opportunities: ["TBD"],
     website: "https://www.tempcontrol.nl/en/",
@@ -137,7 +137,7 @@ export const COMPANIES = [
     description:
       "Engineering service provider active in mechanical, electrical, industrial automation and installation technology.",
     industry: "Engineering services",
-    employees: "~ 501–1000",
+    employees: "~ 501 -1000",
     location: "Arnhem, NL",
     opportunities: ["TBD"],
     website: "https://wepro.nl/",
@@ -149,7 +149,7 @@ export const COMPANIES = [
     description:
       "Engineering company focused on the energy transition, delivering electrical designs for industry and grid-related projects.",
     industry: "Electrical engineering / energy transition",
-    employees: "~ 11–50",
+    employees: "~ 11 - 50",
     location: "Delft, NL",
     opportunities: ["TBD"],
     website: "https://emmettgreen.nl/",
@@ -378,7 +378,7 @@ export const COMPANIES = [
 const COMPANIES_NL_OVERRIDES = {
   "berkel-industrial-b-v": {
     "description": "Partner in seriematige machinebouw; ondersteunt machinebouwers met technische oplossingen en supply chain ondersteuning.",
-    "industry": "Machinebouw / industriÃ«le engineering",
+    "industry": "Machinebouw / industriële engineering",
     "employees": "~ 15",
     "location": "Berkel en Rodenrijs, NL",
     "opportunities": [
@@ -547,7 +547,7 @@ const COMPANIES_NL_OVERRIDES = {
     "website": "https://www.bilfinger.com/en/nl/"
   },
   "abb-b-v": {
-    "description": "Technologiebedrijf in elektrificatie en automatisering voor efficiÃ«ntere en duurzamere industrie.",
+    "description": "Technologiebedrijf in elektrificatie en automatisering voor efficiëntere en duurzamere industrie.",
     "industry": "Elektrificatie / automatisering",
     "employees": "N/A",
     "location": "NL / Benelux",

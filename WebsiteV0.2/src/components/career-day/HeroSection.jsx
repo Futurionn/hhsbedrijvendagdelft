@@ -14,7 +14,7 @@ const reveal = {
 function Wave({ fill = "#762222" }) {
   return (
     <svg
-      className="absolute bottom-0 left-0 w-full"
+      className="pointer-events-none absolute bottom-0 left-0 w-full"
       viewBox="0 0 1440 120"
       preserveAspectRatio="none"
       aria-hidden="true"
