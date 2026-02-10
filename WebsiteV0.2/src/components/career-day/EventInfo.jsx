@@ -12,16 +12,16 @@ const reveal = {
 
 function FeatureCard({ icon: Icon, title, body }) {
   return (
-    <div className="group rounded-3xl bg-gray-50 p-7 transition-all duration-500 hover:bg-navy hover:shadow-lg hover:shadow-[#f07c00]/15 dark:bg-white/5 dark:hover:bg-navy">
+    <div className="group flex h-full flex-col rounded-3xl bg-gray-50 p-7 transition-all duration-500 hover:bg-navy hover:shadow-lg hover:shadow-[#f07c00]/15 dark:bg-white/5 dark:hover:bg-navy">
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange/10 transition-all duration-500 group-hover:bg-white/10">
         <Icon className="h-6 w-6 text-orange transition-all duration-500 group-hover:text-orange" />
       </div>
       <h4 className="mt-5 text-lg font-extrabold text-navy transition-all duration-500 group-hover:text-white dark:text-white">
         {title}
       </h4>
-      <p className="mt-3 text-sm leading-relaxed text-gray-600 transition-all duration-500 group-hover:text-white/80 dark:text-gray-300">
+      <div className="mt-3 space-y-2 text-sm leading-relaxed text-gray-600 transition-all duration-500 group-hover:text-white/80 dark:text-gray-300">
         {body}
-      </p>
+      </div>
     </div>
   );
 }
@@ -36,7 +36,18 @@ export default function EventInfo() {
           {
             icon: Coffee,
             title: "Planning",
-            body: "13:00 - 16:00: \n Netwerken & ontdekken / gesprekken met bedrijven.\n16:00 - 19:00 Netwerkborrel."
+            body: (
+              <>
+                <div>
+                  <strong className="font-semibold text-navy dark:text-white group-hover:text-white">13:00 - 16:00:</strong>{" "}
+                  Netwerken & ontdekken / gesprekken met bedrijven.
+                </div>
+                <div>
+                  <strong className="font-semibold text-navy dark:text-white group-hover:text-white">16:00 - 19:00:</strong>{" "}
+                  Netwerkborrel.
+                </div>
+              </>
+            )
           },
           {
             icon: Users,
@@ -57,6 +68,22 @@ export default function EventInfo() {
         ]
       : [
           {
+            icon: Coffee,
+            title: "Schedule",
+            body: (
+              <>
+                <div>
+                  <strong className="font-semibold text-navy dark:text-white group-hover:text-white">13:00 - 16:00:</strong>{" "}
+                  Networking & exploring / conversations with companies.
+                </div>
+                <div>
+                  <strong className="font-semibold text-navy dark:text-white group-hover:text-white">16:00 - 19:00:</strong>{" "}
+                  Networking drinks.
+                </div>
+              </>
+            )
+          },
+          {
             icon: Users,
             title: "Networking sessions",
             body: "Connect directly with recruiters and professionals from top companies."
@@ -65,11 +92,6 @@ export default function EventInfo() {
             icon: Presentation,
             title: "Company presentations",
             body: "Attend talks and learn about company culture and opportunities."
-          },
-          {
-            icon: Coffee,
-            title: "Schedule",
-            body: "13:00 - 16:00 Networking & exploring / conversations with companies.\n16:00 - 19:00 Networking drinks."
           },
           {
             icon: FileText,

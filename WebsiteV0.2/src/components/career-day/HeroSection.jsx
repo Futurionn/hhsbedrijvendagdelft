@@ -93,7 +93,7 @@ export default function HeroSection() {
   };
 
   const goCompanies = () => goToSection("companies");
-  const goAbout = () => goToSection("about", 80);
+  const goAbout = () => goToSection("about", 20);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a5f] via-[#2a4a6f] to-[#1e3a5f]">
