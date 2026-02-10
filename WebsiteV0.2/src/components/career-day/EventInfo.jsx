@@ -34,6 +34,11 @@ export default function EventInfo() {
     lang === "nl"
       ? [
           {
+            icon: Coffee,
+            title: "Planning",
+            body: "13:00 - 16:00: \n Netwerken & ontdekken / gesprekken met bedrijven.\n16:00 - 19:00 Netwerkborrel."
+          },
+          {
             icon: Users,
             title: "Netwerksessies",
             body: "Kom direct in contact met recruiters en professionals van topbedrijven."
@@ -43,11 +48,7 @@ export default function EventInfo() {
             title: "Bedrijfspresentaties",
             body: "Volg inspirerende talks en leer over bedrijfscultuur en kansen."
           },
-          {
-            icon: Coffee,
-            title: "Informele meetups",
-            body: "Laagdrempelige gesprekken tijdens koffie en korte meet & greets."
-          },
+
           {
             icon: FileText,
             title: "CV-check",
@@ -67,8 +68,8 @@ export default function EventInfo() {
           },
           {
             icon: Coffee,
-            title: "Informal meetups",
-            body: "Casual conversations over coffee and quick meet & greets."
+            title: "Schedule",
+            body: "13:00 - 16:00 Networking & exploring / conversations with companies.\n16:00 - 19:00 Networking drinks."
           },
           {
             icon: FileText,

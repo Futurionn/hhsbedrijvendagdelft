@@ -574,7 +574,7 @@ const COMPANIES_NL_OVERRIDES = {
     "opportunities": [
       "TBD"
     ],
-    "website": "#"
+    "website": "https://www.theconfettimaker.com/"
   },
   "schulte-en-lestraden-b-v": {
     "description": "Installatiebedrijf met services in E/W, meet- en regeltechniek, ontwerp, realisatie en onderhoud.",

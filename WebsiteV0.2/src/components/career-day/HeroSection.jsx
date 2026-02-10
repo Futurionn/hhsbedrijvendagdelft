@@ -75,23 +75,25 @@ export default function HeroSection() {
     "https://www.google.com/maps/search/?api=1&query=Rotterdamseweg%20137%2C%202628%20AL%20Delft";
   const logoAlt = lang === "nl" ? "De Haagse Hogeschool" : "The Hague University of Applied Sciences";
 
-  const goCompanies = () => {
+  const goToSection = (id, offset = 0) => {
     if (typeof window === "undefined") return;
 
-    const id = "companies";
     const el = document.getElementById(id);
     if (!el) return;
 
     window.history?.replaceState?.(null, "", `#${id}`);
 
     const rectTop = el.getBoundingClientRect().top;
-    const target = Math.max(0, rectTop + window.scrollY);
+    const target = Math.max(0, rectTop + window.scrollY + offset);
 
     if (Math.abs(window.scrollY - target) < 2) {
       window.scrollTo({ top: target + 2, behavior: "auto" });
     }
     window.scrollTo({ top: target, behavior: "smooth" });
   };
+
+  const goCompanies = () => goToSection("companies");
+  const goAbout = () => goToSection("about", 80);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a5f] via-[#2a4a6f] to-[#1e3a5f]">
@@ -150,7 +152,18 @@ export default function HeroSection() {
               <Calendar className="h-5 w-5 text-orange" />
               <span className="font-semibold">{t.dateValue}</span>
             </div>
-            <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={goAbout}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goAbout();
+                }
+              }}
+              className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:cursor-pointer"
+            >
               <Clock className="h-5 w-5 text-orange" />
               <span className="font-semibold">{t.timeValue}</span>
             </div>
