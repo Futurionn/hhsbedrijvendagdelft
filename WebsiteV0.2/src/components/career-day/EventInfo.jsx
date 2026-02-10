@@ -40,11 +40,11 @@ export default function EventInfo() {
               <>
                 <div>
                   <strong className="font-semibold text-navy dark:text-white group-hover:text-white">13:00 - 16:00:</strong>{" "}
-                  Netwerken & ontdekken / gesprekken met bedrijven.
+                  Rondlopen & ontdekken 
                 </div>
                 <div>
                   <strong className="font-semibold text-navy dark:text-white group-hover:text-white">16:00 - 19:00:</strong>{" "}
-                  Netwerkborrel.
+                  Netwerkborrel
                 </div>
               </>
             )

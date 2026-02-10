@@ -74,6 +74,34 @@ export default function HeroSection() {
   const mapsHref =
     "https://www.google.com/maps/search/?api=1&query=Rotterdamseweg%20137%2C%202628%20AL%20Delft";
   const logoAlt = lang === "nl" ? "De Haagse Hogeschool" : "The Hague University of Applied Sciences";
+  const calendarGoogleHref =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    `&text=${encodeURIComponent("T.I.S. Career Day 2026")}` +
+    "&dates=20260305T120000Z/20260305T180000Z" +
+    `&details=${encodeURIComponent(t.heroSubtitle)}` +
+    `&location=${encodeURIComponent(t.locationAddress)}` +
+    "&ctz=Europe/Amsterdam";
+
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//TIS//Career Day 2026//EN",
+    "BEGIN:VEVENT",
+    "UID:tis-career-day-2026@hhs",
+    "DTSTAMP:20260210T000000Z",
+    "DTSTART:20260305T120000Z",
+    "DTEND:20260305T180000Z",
+    `SUMMARY:T.I.S. Career Day 2026`,
+    `DESCRIPTION:${t.heroSubtitle}`,
+    `LOCATION:${t.locationAddress}`,
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\\r\\n");
+
+  const calendarAppleHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+  const isApple =
+    typeof navigator !== "undefined" && /Macintosh|Mac OS X|iPhone|iPad|iPod/.test(navigator.userAgent || "");
+  const calendarHref = isApple ? calendarAppleHref : calendarGoogleHref;
 
   const goToSection = (id, offset = 0) => {
     if (typeof window === "undefined") return;
@@ -148,11 +176,18 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row">
-            <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm">
+            <button
+              type="button"
+              onClick={() => window.open(calendarHref, "_blank", "noopener")}
+              className="group relative inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm transition-all duration-500 hover:bg-white/15 hover:shadow-lg hover:shadow-[#f07c00]/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
               <Calendar className="h-5 w-5 text-orange" />
               <span className="font-semibold">{t.dateValue}</span>
-            </div>
-            <div
+              <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 w-max -translate-x-1/2 rounded-xl bg-black/60 px-4 py-2 text-sm text-white/90 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                {t.dateHint}
+              </span>
+            </button>
+            <button
               role="button"
               tabIndex={0}
               onClick={goAbout}
@@ -162,11 +197,14 @@ export default function HeroSection() {
                   goAbout();
                 }
               }}
-              className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:cursor-pointer"
+              className="group relative inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:cursor-pointer hover:shadow-lg hover:shadow-[#f07c00]/20 focus:outline-none focus:ring-2 focus:ring-white/50"
             >
               <Clock className="h-5 w-5 text-orange" />
               <span className="font-semibold">{t.timeValue}</span>
-            </div>
+              <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 w-max -translate-x-1/2 rounded-xl bg-black/60 px-4 py-2 text-sm text-white/90 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                {t.timeHint}
+              </span>
+            </button>
             <a
               href={mapsHref}
               target="_blank"
