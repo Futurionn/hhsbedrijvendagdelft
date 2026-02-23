@@ -3,25 +3,21 @@ import { ExternalLink, Globe2, Users2, Briefcase } from "lucide-react";
 import { useMemo } from "react";
 import { useLanguage } from "../../shared/LanguageContext.jsx";
 import { STRINGS } from "../../shared/strings.js";
-import { useTheme } from "../../shared/ThemeContext.jsx";
 
-function LogoOrInitials({ company, theme }) {
-  const needsShadow =
-    (theme === "dark" && company.logoTone === "dark") ||
-    (theme !== "dark" && company.logoTone === "light");
-
-  const shadowClass = needsShadow
-    ? theme === "dark"
-      ? "drop-shadow-[0_4px_10px_rgba(255,255,255,0.35)]"
-      : "drop-shadow-[0_4px_10px_rgba(0,0,0,1)]"
-    : "";
+function LogoOrInitials({ company }) {
+  const initialsClass =
+    company.logoTone === "light"
+      ? "text-white"
+      : company.logoTone === "dark"
+        ? "text-navy"
+        : "text-navy dark:text-white";
 
   if (company.logo) {
     return (
       <img
         src={company.logo}
         alt={`${company.name} logo`}
-        className={`h-14 w-auto max-w-[220px] object-contain ${shadowClass}`}
+        className="h-14 w-auto max-w-[220px] object-contain"
         loading="lazy"
       />
     );
@@ -35,16 +31,50 @@ function LogoOrInitials({ company, theme }) {
     .join("");
 
   return (
-    <div className="text-3xl font-extrabold tracking-tight text-navy dark:text-white">
+    <div className={`text-3xl font-extrabold tracking-tight ${initialsClass}`}>
       {initials || company.name.slice(0, 2).toUpperCase()}
     </div>
   );
 }
 
-export default function CompanyCard({ company, isOpen, onOpen, onClose }) {
+export default function CompanyCard({
+  company,
+  isOpen,
+  isMuted = false,
+  showHoverHint = false,
+  onOpen,
+  onClose
+}) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
-  const { theme } = useTheme();
+  const isDarkSurface = company.logoTone === "light";
+  const isWhiteSurface = company.logoTone === "dark";
+  const cardSurfaceClass =
+    company.logoTone === "light"
+      ? "border-slate-800 bg-slate-900 shadow-black/35"
+      : company.logoTone === "dark"
+        ? "border-gray-100 bg-white shadow-black/5"
+        : "border-gray-100 bg-white shadow-black/5 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/40";
+  const primaryTextClass = isDarkSurface
+    ? "text-white"
+    : isWhiteSurface
+      ? "text-slate-900"
+      : "text-navy dark:text-white";
+  const secondaryTextClass = isDarkSurface
+    ? "text-gray-200"
+    : isWhiteSurface
+      ? "text-slate-700"
+      : "text-gray-600 dark:text-gray-300";
+  const metaTextClass = isDarkSurface
+    ? "text-gray-100"
+    : isWhiteSurface
+      ? "text-slate-800"
+      : "text-gray-700 dark:text-gray-200";
+  const valueTextClass = isDarkSurface
+    ? "text-gray-200"
+    : isWhiteSurface
+      ? "text-slate-700"
+      : "text-gray-600 dark:text-gray-300";
 
   const enableClickToggle =
     typeof window !== "undefined" &&
@@ -56,18 +86,35 @@ export default function CompanyCard({ company, isOpen, onOpen, onClose }) {
     else onOpen?.();
   };
 
-  const opportunityColors = useMemo(
-    () => [
+  const opportunityColors = useMemo(() => {
+    if (isDarkSurface) {
+      return [
+        "bg-orange/20 text-orange-100",
+        "bg-white/10 text-white",
+        "bg-white/15 text-gray-100"
+      ];
+    }
+
+    if (isWhiteSurface) {
+      return [
+        "bg-orange/10 text-orange-700",
+        "bg-navy/10 text-slate-900",
+        "bg-gray-100 text-slate-700"
+      ];
+    }
+
+    return [
       "bg-orange/10 text-orange dark:bg-orange/15 dark:text-orange",
       "bg-navy/10 text-navy dark:bg-white/10 dark:text-gray-100",
       "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200"
-    ],
-    []
-  );
+    ];
+  }, [isDarkSurface, isWhiteSurface]);
 
   return (
     <m.div
-      className="relative h-full cursor-pointer overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg shadow-black/5 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/40"
+      className={`relative h-full cursor-pointer overflow-hidden rounded-3xl border shadow-lg transition-opacity duration-300 ${cardSurfaceClass} ${
+        isMuted ? "opacity-80" : "opacity-100"
+      }`}
       onHoverStart={onOpen}
       onHoverEnd={onClose}
       onClick={enableClickToggle ? toggleOpen : undefined}
@@ -86,8 +133,13 @@ export default function CompanyCard({ company, isOpen, onOpen, onClose }) {
     >
       <div className="p-8">
         <div className="flex items-center justify-center p-6">
-          <LogoOrInitials company={company} theme={theme} />
+          <LogoOrInitials company={company} />
         </div>
+        {!isOpen && showHoverHint ? (
+          <p className={`mt-1 text-center text-xs font-semibold uppercase tracking-wider ${secondaryTextClass}`}>
+            {t.hoverForMoreInfo}
+          </p>
+        ) : null}
 
         <m.div
           initial={{ height: 0, opacity: 0 }}
@@ -99,33 +151,33 @@ export default function CompanyCard({ company, isOpen, onOpen, onClose }) {
           className="overflow-hidden"
         >
           <div className="pt-7">
-            <h3 className="text-2xl font-extrabold tracking-tight text-navy dark:text-white">
+            <h3 className={`text-2xl font-extrabold tracking-tight ${primaryTextClass}`}>
               {company.name}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p className={`mt-3 text-sm leading-relaxed ${secondaryTextClass}`}>
               {company.description}
             </p>
 
-            <div className="mt-6 space-y-3 text-sm text-gray-700 dark:text-gray-200">
+            <div className={`mt-6 space-y-3 text-sm ${metaTextClass}`}>
               <div className="flex items-center gap-3">
                 <Briefcase className="h-4 w-4 text-orange" />
                 <span className="font-semibold">{t.industry}:</span>
-                <span className="text-gray-600 dark:text-gray-300">{company.industry || t.tbd}</span>
+                <span className={valueTextClass}>{company.industry || t.tbd}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Users2 className="h-4 w-4 text-orange" />
                 <span className="font-semibold">{t.employees}:</span>
-                <span className="text-gray-600 dark:text-gray-300">{company.employees || t.tbd}</span>
+                <span className={valueTextClass}>{company.employees || t.tbd}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Globe2 className="h-4 w-4 text-orange" />
                 <span className="font-semibold">{t.region}:</span>
-                <span className="text-gray-600 dark:text-gray-300">{company.location || t.tbd}</span>
+                <span className={valueTextClass}>{company.location || t.tbd}</span>
               </div>
             </div>
 
             <div className="mt-6">
-              <p className="text-sm font-semibold text-navy dark:text-white">
+              <p className={`text-sm font-semibold ${primaryTextClass}`}>
                 {t.opportunities}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">

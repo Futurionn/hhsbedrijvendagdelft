@@ -217,6 +217,8 @@ function MarqueeRow({
               <CompanyCard
                 company={company}
                 isOpen={openId === id}
+                isMuted={openId != null && openId !== id}
+                showHoverHint={openId != null && openId !== id}
                 onOpen={() => onOpen(id)}
                 onClose={() => onClose(id)}
               />

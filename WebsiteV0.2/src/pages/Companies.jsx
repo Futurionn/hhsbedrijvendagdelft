@@ -3,25 +3,21 @@ import { ExternalLink, Filter } from "lucide-react";
 import LegalLayout from "./LegalLayout.jsx";
 import { useLanguage } from "../shared/LanguageContext.jsx";
 import { COMPANY_CATEGORY_LABELS, getCompanies } from "../data/companies.js";
-import { useTheme } from "../shared/ThemeContext.jsx";
 
-function Logo({ company, theme }) {
-  const needsShadow =
-    (theme === "dark" && company.logoTone === "dark") ||
-    (theme !== "dark" && company.logoTone === "light");
-
-  const shadowClass = needsShadow
-    ? theme === "dark"
-      ? "drop-shadow-[0_4px_10px_rgba(255,255,255,0.35)]"
-      : "drop-shadow-[0_4px_10px_rgba(0,0,0,0.55)]"
-    : "";
+function Logo({ company }) {
+  const initialsClass =
+    company.logoTone === "light"
+      ? "text-white"
+      : company.logoTone === "dark"
+        ? "text-navy"
+        : "text-navy dark:text-white";
 
   if (company.logo) {
     return (
       <img
         src={company.logo}
         alt={`${company.name} logo`}
-        className={`h-10 w-full max-w-full object-contain ${shadowClass}`}
+        className="h-10 w-full max-w-full object-contain"
         loading="lazy"
       />
     );
@@ -35,40 +31,55 @@ function Logo({ company, theme }) {
     .join("");
 
   return (
-    <div className="text-lg font-extrabold tracking-tight text-navy dark:text-white">
+    <div className={`text-lg font-extrabold tracking-tight ${initialsClass}`}>
       {initials || company.name.slice(0, 2).toUpperCase()}
     </div>
   );
 }
 
-function CompanyRow({ company, theme, lang }) {
+function CompanyRow({ company, lang }) {
   const websiteLabel = lang === "nl" ? "Website" : "Website";
   const labels = COMPANY_CATEGORY_LABELS[lang] ?? COMPANY_CATEGORY_LABELS.en;
+  const isDarkSurface = company.logoTone === "light";
+  const rowSurfaceClass =
+    company.logoTone === "light"
+      ? "border-slate-800 bg-slate-900 shadow-black/35"
+      : company.logoTone === "dark"
+        ? "border-gray-100 bg-white shadow-black/5"
+        : "border-gray-100 bg-white shadow-black/5 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/40";
+  const primaryTextClass = isDarkSurface ? "text-white" : "text-navy dark:text-white";
+  const secondaryTextClass = isDarkSurface ? "text-gray-200" : "text-gray-600 dark:text-gray-300";
+  const bodyTextClass = isDarkSurface ? "text-gray-100" : "text-gray-700 dark:text-gray-200";
+  const categoryChipClass = isDarkSurface
+    ? "bg-white/10 text-gray-100"
+    : "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200";
+
   const maxDescription = 160;
   const description =
     (company.description || "").length > maxDescription
-      ? `${company.description.slice(0, maxDescription).trim()}…`
+      ? `${company.description.slice(0, maxDescription).trim()}...`
       : company.description;
+
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white p-5 shadow-sm shadow-black/5 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/40">
+    <div className={`overflow-hidden rounded-2xl border p-5 shadow-sm ${rowSurfaceClass}`}>
       <div className="grid gap-4 sm:grid-cols-[140px_1fr_auto] sm:items-start">
-        <div className="flex h-16 w-full max-w-[140px] items-center justify-start sm:justify-center">
-          <Logo company={company} theme={theme} />
+        <div className="flex h-16 w-full max-w-[140px] items-center justify-start px-3 sm:justify-center">
+          <Logo company={company} />
         </div>
 
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <div className="text-lg font-extrabold text-navy dark:text-white">
+            <div className={`text-lg font-extrabold ${primaryTextClass}`}>
               {company.name}
             </div>
-            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 dark:bg-white/10 dark:text-gray-200">
+            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${categoryChipClass}`}>
               {labels[company.category] ?? company.category}
             </span>
           </div>
-          <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-            {company.industry} • {company.location}
+          <div className={`mt-1 text-sm ${secondaryTextClass}`}>
+            {company.industry} - {company.location}
           </div>
-          <div className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-200">
+          <div className={`mt-3 text-sm leading-relaxed ${bodyTextClass}`}>
             {description}
           </div>
         </div>
@@ -89,7 +100,6 @@ function CompanyRow({ company, theme, lang }) {
 
 export default function Companies() {
   const { lang } = useLanguage();
-  const { theme } = useTheme();
 
   const title = lang === "nl" ? "Bedrijven" : "Companies";
   const filterLabel = lang === "nl" ? "Filter" : "Filter";
@@ -159,7 +169,7 @@ export default function Companies() {
 
       <div className="space-y-4">
         {visible.map((company) => (
-          <CompanyRow key={company.id} company={company} theme={theme} lang={lang} />
+          <CompanyRow key={company.id} company={company} lang={lang} />
         ))}
       </div>
     </LegalLayout>

@@ -193,6 +193,7 @@ export const COMPANIES = [
   {
     name: "Sweco Nederland B.V.",
     logo: "/logos/sweco.png",
+    logoTone: "dark",
     description:
       "Architecture and engineering consultancy working on sustainable cities, infrastructure and buildings.",
     industry: "Engineering & architecture consultancy",
@@ -284,6 +285,7 @@ export const COMPANIES = [
     id: "de-nationale-carrierebeurs",
     name: "De Nationale Carrierebeurs",
     logo: "/logos/nationale-carrierebeurs.png",
+    logoTone: "dark",
     category: "recruitment",
     description:
       "Organizer of De Nationale Carrierebeurs (24 & 25 April 2026), where students explore the job market, network with leading employers, and connect to first-job opportunities. Also provides professional LinkedIn profile photos for students.",
@@ -352,6 +354,7 @@ export const COMPANIES = [
   {
     name: "Peutz",
     logo: "/logos/peutz.svg",
+    logoTone: "dark",
     description:
       "Engineering consultancy specializing in acoustics, building physics, environmental technology and sustainability.",
     industry: "Engineering consultancy (acoustics/building physics)",
