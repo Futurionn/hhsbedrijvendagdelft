@@ -117,7 +117,7 @@ export default function EventInfo() {
             </p>
 
             <div className="mt-10">
-              <div className="text-4xl font-extrabold text-navy dark:text-white">20+</div>
+              <div className="text-4xl font-extrabold text-navy dark:text-white">30!</div>
               <div className="mt-1 text-sm text-gray-600 dark:text-gray-300">{t.statsCompanies}</div>
             </div>
           </div>

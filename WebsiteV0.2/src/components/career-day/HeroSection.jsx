@@ -81,27 +81,19 @@ export default function HeroSection() {
     `&details=${encodeURIComponent(t.heroSubtitle)}` +
     `&location=${encodeURIComponent(t.locationAddress)}` +
     "&ctz=Europe/Amsterdam";
+  const calendarIcsHref = "/tis-career-day-2026.ics";
 
-  const ics = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//TIS//Career Day 2026//EN",
-    "BEGIN:VEVENT",
-    "UID:tis-career-day-2026@hhs",
-    "DTSTAMP:20260210T000000Z",
-    "DTSTART:20260305T120000Z",
-    "DTEND:20260305T180000Z",
-    `SUMMARY:T.I.S. Career Day 2026`,
-    `DESCRIPTION:${t.heroSubtitle}`,
-    `LOCATION:${t.locationAddress}`,
-    "END:VEVENT",
-    "END:VCALENDAR"
-  ].join("\\r\\n");
-
-  const calendarAppleHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
-  const isApple =
+  const isApple = () =>
     typeof navigator !== "undefined" && /Macintosh|Mac OS X|iPhone|iPad|iPod/.test(navigator.userAgent || "");
-  const calendarHref = isApple ? calendarAppleHref : calendarGoogleHref;
+
+  const addToCalendar = () => {
+    if (typeof window === "undefined") return;
+    if (isApple()) {
+      window.location.href = calendarIcsHref;
+      return;
+    }
+    window.open(calendarGoogleHref, "_blank", "noopener");
+  };
 
   const goToSection = (id, offset = 0) => {
     if (typeof window === "undefined") return;
@@ -178,7 +170,7 @@ export default function HeroSection() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row">
             <button
               type="button"
-              onClick={() => window.open(calendarHref, "_blank", "noopener")}
+              onClick={addToCalendar}
               className="group relative inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3 text-white/90 backdrop-blur-sm transition-all duration-500 hover:bg-white/15 hover:shadow-lg hover:shadow-[#f07c00]/20 focus:outline-none focus:ring-2 focus:ring-white/50"
             >
               <Calendar className="h-5 w-5 text-orange" />

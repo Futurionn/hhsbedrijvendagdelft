@@ -83,7 +83,7 @@ export const STRINGS = {
     footerCtaTitle: "Ready to shape your future?",
     footerCtaBody:
       "Meet companies and associations, ask questions, and grow your network.",
-    footerSponsoredBy: "Website sponsored by Galery Brachot",
+    footerSponsoredBy: "Website sponsored by Gallery Brachot",
     footerAboutTitle: "About",
     footerAboutBody:
       "The Hague University of Applied Sciences prepares students through practical education and strong industry connections.",

@@ -1,0 +1,19 @@
+﻿<svg width="320" height="110" viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Comaen logo</title>
+  <desc id="desc">Stylised C and dot in blue and lime</desc>
+  <style>
+    .blue { fill: #0b3654; }
+    .lime { fill: #b3c63c; }
+  </style>
+  <g transform="translate(10,10)">
+    <path class="blue" d="M46 80c-22 0-40-18-40-40S24 0 46 0c11 0 20 4 27 11l-12 12c-4-4-9-7-15-7-13 0-23 10-23 24s10 24 23 24c6 0 11-3 15-7l12 12c-7 7-16 11-27 11z"/>
+    <path class="lime" d="M73 52c-5 5-12 8-19 8-16 0-28-12-28-28S38 4 54 4c7 0 14 3 19 8l-11 11c-2-2-5-3-8-3-7 0-12 5-12 12s5 12 12 12c3 0 6-1 8-3l11 11z"/>
+  </g>
+  <g transform="translate(110,30)" fill="#0b3654" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="38">
+    <text y="40">comaen</text>
+  </g>
+  <circle class="lime" cx="300" cy="66" r="6" />
+  <g transform="translate(110,72)" fill="#0b3654" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18">
+    <text y="18">find your spark</text>
+  </g>
+</svg>

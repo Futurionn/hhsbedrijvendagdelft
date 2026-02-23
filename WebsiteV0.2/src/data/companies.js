@@ -123,6 +123,7 @@ export const COMPANIES = [
   {
     name: "SASJA careers B.V.",
     logo: "/logos/Sasja.svg",
+    logoTone: "dark",
     description:
       "Recruitment agency connecting technical talent with engineering and technology-focused organizations.",
     industry: "Recruitment / staffing (technical)",
@@ -130,6 +131,19 @@ export const COMPANIES = [
     location: "Aalsmeer, NL",
     opportunities: ["TBD"],
     website: "https://www.sasja-careers.nl/",
+  },
+  {
+    name: "Comaen",
+    logo: "/logos/comaen.svg",
+    logoTone: "dark",
+    category: "recruitment",
+    description:
+      "Recruitment specialist for technical professionals across industrial automation, mechanical, process, and electrical & instrumentation disciplines.",
+    industry: "Technical recruitment (industrial automation, E&I, mechanical, process)",
+    employees: "51-200",
+    location: "Haarlem, NL",
+    opportunities: ["TBD"],
+    website: "https://www.comaen.nl/",
   },
   {
     name: "Wepro",
@@ -267,6 +281,19 @@ export const COMPANIES = [
     website: "https://www.theconfettimaker.com/",
   },
   {
+    id: "de-nationale-carrierebeurs",
+    name: "De Nationale Carrierebeurs",
+    logo: "/logos/nationale-carrierebeurs.png",
+    category: "recruitment",
+    description:
+      "Organizer of De Nationale Carrierebeurs (24 & 25 April 2026), where students explore the job market, network with leading employers, and connect to first-job opportunities. Also provides professional LinkedIn profile photos for students.",
+    industry: "Career event organization / student employability",
+    employees: "N/A",
+    location: "Netherlands",
+    opportunities: ["LinkedIn profile photos", "Networking", "Career orientation"],
+    website: "https://www.carrierebeurs.nl/",
+  },
+  {
     name: "Schulte en Lestraden B.V.",
     logo: "/logos/schulte.png",
     description:
@@ -301,17 +328,6 @@ export const COMPANIES = [
     location: "Rotterdam, NL",
     opportunities: ["TBD"],
     website: "https://www.hanab.nl/energy-solutions/en",
-  },
-  {
-    name: "Nepocon",
-    logo: "/logos/nepocon.png",
-    description:
-      "Engineering and consultancy firm specializing in civil, structural and hydraulic engineering.",
-    industry: "Civil & structural engineering",
-    employees: "N/A",
-    location: "Netherlands",
-    opportunities: ["TBD"],
-    website: "https://www.nepocon.nl/",
   },
   {
     name: "Silicon theatre scenery",
@@ -576,6 +592,18 @@ const COMPANIES_NL_OVERRIDES = {
     ],
     "website": "https://www.theconfettimaker.com/"
   },
+  "de-nationale-carrierebeurs": {
+    "description": "De eerste indruk telt, zeker bij een sollicitatie. Daarom maken wij professionele LinkedIn-foto's van studenten, zodat zij zichzelf sterk en verzorgd kunnen presenteren aan toekomstige werkgevers. Daarnaast zijn wij de trotse organisator van De Nationale Carrierebeurs op 24 en 25 april 2026, het carriere-evenement van Nederland. Tijdens deze dagen nodigen wij studenten uit om zich te orienteren op de arbeidsmarkt, te netwerken met toonaangevende werkgevers en misschien wel hun eerste baan te vinden. Samen zetten we de stap van studie naar carriere. Jij maakt de indruk, wij maken de foto. De Nationale Carrierebeurs!",
+    "industry": "Carriere-evenement / student employability",
+    "employees": "N/A",
+    "location": "Nederland",
+    "opportunities": [
+      "LinkedIn-foto's",
+      "Netwerken",
+      "Orientatie arbeidsmarkt"
+    ],
+    "website": "https://www.carrierebeurs.nl/"
+  },
   "schulte-en-lestraden-b-v": {
     "description": "Installatiebedrijf met services in E/W, meet- en regeltechniek, ontwerp, realisatie en onderhoud.",
     "industry": "Installatietechniek (MEP)",
@@ -605,16 +633,6 @@ const COMPANIES_NL_OVERRIDES = {
       "TBD"
     ],
     "website": "https://www.hanab.nl/energy-solutions/nl"
-  },
-  "nepocon": {
-    "description": "Ingenieurs- en adviesbureau voor civiele, constructieve en waterbouwkundige vraagstukken.",
-    "industry": "Civiele techniek / constructies / water",
-    "employees": "N/A",
-    "location": "NL",
-    "opportunities": [
-      "TBD"
-    ],
-    "website": "https://www.nepocon.nl/"
   },
   "silicon-theatre-scenery": {
     "description": "TBD",
@@ -655,6 +673,16 @@ const COMPANIES_NL_OVERRIDES = {
       "TBD"
     ],
     "website": "https://flux.partners/en/"
+  },
+  "comaen": {
+    "description": "Recruitment specialist voor technische professionals in industriële automatisering, werktuigbouw, proces en E&I.",
+    "industry": "Technische recruitment (industriële automatisering, E&I, werktuigbouw)",
+    "employees": "51-200",
+    "location": "Haarlem, NL",
+    "opportunities": [
+      "TBD"
+    ],
+    "website": "https://www.comaen.nl/"
   }
 };
 
