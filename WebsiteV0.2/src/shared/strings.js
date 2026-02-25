@@ -15,6 +15,12 @@ export const STRINGS = {
     timeHint: "Ga naar planning",
     dateHint: "Voeg toe aan agenda",
     ctaDiscover: "Ontdek bedrijven",
+    ctaMap: "Plattegrond",
+    mapPageTitle: "Plattegrond",
+    mapPageIntro: "Hier komt binnenkort de plattegrond van de bedrijvendag.",
+    mapComingSoonTitle: "Komt binnenkort",
+    mapComingSoonBody:
+      "We werken aan een interactieve kaart met de locaties van alle bedrijven en verenigingen. Kom later terug voor de volledige plattegrond.",
     companiesKicker: "ONZE PARTNERS",
     companiesTitle: "Deelnemende bedrijven",
     companiesSubtitle:
@@ -69,6 +75,12 @@ export const STRINGS = {
     timeHint: "Jump to schedule",
     dateHint: "Add to calendar",
     ctaDiscover: "Discover Companies",
+    ctaMap: "Map",
+    mapPageTitle: "Map",
+    mapPageIntro: "The career day floor plan will be available here soon.",
+    mapComingSoonTitle: "Coming soon",
+    mapComingSoonBody:
+      "We are preparing an interactive map with all company and association locations. Check back later for the full floor plan.",
     companiesKicker: "MEET OUR PARTNERS",
     companiesTitle: "Participating Companies",
     companiesSubtitle:

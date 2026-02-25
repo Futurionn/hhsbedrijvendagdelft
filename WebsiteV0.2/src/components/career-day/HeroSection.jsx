@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { Calendar, Clock, MapPin, Languages, Moon, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../shared/LanguageContext.jsx";
 import { STRINGS } from "../../shared/strings.js";
 import { useTheme } from "../../shared/ThemeContext.jsx";
@@ -211,7 +212,7 @@ export default function HeroSection() {
             </a>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button
               type="button"
               onClick={goCompanies}
@@ -219,6 +220,13 @@ export default function HeroSection() {
             >
               {t.ctaDiscover}
             </button>
+
+            <Link
+              to="/plattegrond"
+              className="inline-flex items-center justify-center rounded-full bg-orange px-10 py-4 font-semibold text-white shadow-lg shadow-[#f07c00]/30 transition-all duration-500 hover:scale-105 hover:shadow-[#f07c00]/45"
+            >
+              {t.ctaMap}
+            </Link>
           </div>
         </m.div>
       </div>
