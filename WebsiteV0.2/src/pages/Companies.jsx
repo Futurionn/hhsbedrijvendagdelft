@@ -1,8 +1,10 @@
-import { useMemo, useState } from "react";
-import { ExternalLink, Filter } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ExternalLink, Filter, MapPin } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
 import LegalLayout from "./LegalLayout.jsx";
 import { useLanguage } from "../shared/LanguageContext.jsx";
 import { COMPANY_CATEGORY_LABELS, getCompanies } from "../data/companies.js";
+import { MAP_HHS_COMPANY_ID_TO_STAND } from "../data/mapHotspots.js";
 
 function Logo({ company }) {
   const initialsClass =
@@ -37,22 +39,46 @@ function Logo({ company }) {
   );
 }
 
-function CompanyRow({ company, lang }) {
+function CompanyRow({ company, lang, isHighlighted }) {
   const websiteLabel = lang === "nl" ? "Website" : "Website";
+  const showOnMapLabel = lang === "nl" ? "Toon op kaart" : "Show on map";
+  const standLabel = lang === "nl" ? "Stand" : "Stand";
   const labels = COMPANY_CATEGORY_LABELS[lang] ?? COMPANY_CATEGORY_LABELS.en;
+  const stand = MAP_HHS_COMPANY_ID_TO_STAND[company.id] ?? null;
+  const hasMapStand = Number.isInteger(stand);
   const isDarkSurface = company.logoTone === "light";
+  const isLightSurface = company.logoTone === "dark";
   const rowSurfaceClass =
-    company.logoTone === "light"
+    isDarkSurface
       ? "border-slate-800 bg-slate-900 shadow-black/35"
-      : company.logoTone === "dark"
+      : isLightSurface
         ? "border-gray-100 bg-white shadow-black/5"
         : "border-gray-100 bg-white shadow-black/5 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/40";
-  const primaryTextClass = isDarkSurface ? "text-white" : "text-navy dark:text-white";
-  const secondaryTextClass = isDarkSurface ? "text-gray-200" : "text-gray-600 dark:text-gray-300";
-  const bodyTextClass = isDarkSurface ? "text-gray-100" : "text-gray-700 dark:text-gray-200";
+  const primaryTextClass = isDarkSurface
+    ? "text-white"
+    : isLightSurface
+      ? "text-navy"
+      : "text-navy dark:text-white";
+  const secondaryTextClass = isDarkSurface
+    ? "text-gray-200"
+    : isLightSurface
+      ? "text-gray-600"
+      : "text-gray-600 dark:text-gray-300";
+  const bodyTextClass = isDarkSurface
+    ? "text-gray-100"
+    : isLightSurface
+      ? "text-gray-700"
+      : "text-gray-700 dark:text-gray-200";
   const categoryChipClass = isDarkSurface
     ? "bg-white/10 text-gray-100"
-    : "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200";
+    : isLightSurface
+      ? "bg-gray-100 text-gray-700"
+      : "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200";
+  const mapButtonClass = isDarkSurface
+    ? "border-orange/40 bg-orange/20 text-white hover:bg-orange/30"
+    : isLightSurface
+      ? "border-orange/40 bg-orange/10 text-navy hover:bg-orange/20"
+      : "border-orange/40 bg-orange/10 text-navy hover:bg-orange/20 dark:text-white dark:hover:bg-orange/30";
 
   const maxDescription = 160;
   const description =
@@ -61,7 +87,14 @@ function CompanyRow({ company, lang }) {
       : company.description;
 
   return (
-    <div className={`overflow-hidden rounded-2xl border p-5 shadow-sm ${rowSurfaceClass}`}>
+    <div
+      id={`company-${company.id}`}
+      className={`overflow-hidden rounded-2xl border p-5 shadow-sm transition-all duration-500 ${rowSurfaceClass} ${
+        isHighlighted
+          ? "ring-2 ring-orange/70 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
+          : ""
+      }`}
+    >
       <div className="grid gap-4 sm:grid-cols-[140px_1fr_auto] sm:items-start">
         <div className="flex h-16 w-full max-w-[140px] items-center justify-start px-3 sm:justify-center">
           <Logo company={company} />
@@ -75,6 +108,11 @@ function CompanyRow({ company, lang }) {
             <span className={`rounded-full px-3 py-1 text-xs font-semibold ${categoryChipClass}`}>
               {labels[company.category] ?? company.category}
             </span>
+            {hasMapStand ? (
+              <span className="rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange">
+                {`${standLabel} #${stand}`}
+              </span>
+            ) : null}
           </div>
           <div className={`mt-1 text-sm ${secondaryTextClass}`}>
             {company.industry} - {company.location}
@@ -84,15 +122,26 @@ function CompanyRow({ company, lang }) {
           </div>
         </div>
 
-        <a
-          href={company.website}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 justify-self-start rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#f07c00]/20 transition-all duration-500 hover:scale-105 sm:justify-self-end"
-        >
-          {websiteLabel}
-          <ExternalLink className="h-4 w-4" />
-        </a>
+        <div className="flex flex-col items-start gap-2 sm:items-end">
+          {hasMapStand ? (
+            <Link
+              to={`/plattegrond?stand=${stand}`}
+              className={`inline-flex items-center gap-2 justify-self-start rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-500 hover:scale-105 ${mapButtonClass}`}
+            >
+              {showOnMapLabel}
+              <MapPin className="h-4 w-4 text-orange" />
+            </Link>
+          ) : null}
+          <a
+            href={company.website}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 justify-self-start rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#f07c00]/20 transition-all duration-500 hover:scale-105 sm:justify-self-end"
+          >
+            {websiteLabel}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -100,6 +149,7 @@ function CompanyRow({ company, lang }) {
 
 export default function Companies() {
   const { lang } = useLanguage();
+  const [searchParams] = useSearchParams();
 
   const title = lang === "nl" ? "Bedrijven" : "Companies";
   const filterLabel = lang === "nl" ? "Filter" : "Filter";
@@ -117,6 +167,7 @@ export default function Companies() {
 
   const [category, setCategory] = useState("all");
   const [sortAZ, setSortAZ] = useState(true);
+  const [highlightId, setHighlightId] = useState(null);
 
   const categories = useMemo(() => {
     const set = new Set(allCompanies.map((c) => c.category).filter(Boolean));
@@ -129,6 +180,24 @@ export default function Companies() {
     if (sortAZ) list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     return list;
   }, [allCompanies, category, sortAZ]);
+
+  const focusId = searchParams.get("focus");
+
+  useEffect(() => {
+    if (!focusId) return;
+
+    const el = document.getElementById(`company-${focusId}`);
+    if (!el) return;
+
+    setHighlightId(focusId);
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    const timer = window.setTimeout(() => {
+      setHighlightId((current) => (current === focusId ? null : current));
+    }, 2400);
+
+    return () => window.clearTimeout(timer);
+  }, [focusId, visible]);
 
   return (
     <LegalLayout title={title}>
@@ -169,7 +238,12 @@ export default function Companies() {
 
       <div className="space-y-4">
         {visible.map((company) => (
-          <CompanyRow key={company.id} company={company} lang={lang} />
+          <CompanyRow
+            key={company.id}
+            company={company}
+            lang={lang}
+            isHighlighted={highlightId === company.id}
+          />
         ))}
       </div>
     </LegalLayout>

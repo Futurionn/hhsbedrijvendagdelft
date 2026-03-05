@@ -21,12 +21,12 @@ export const MAP_HHS_STAND_COMPANIES = {
   17: "Bilfinger Engineering & Consultancy",
   18: "ABB B.V.",
   19: "Quooker",
-  20: "The Confettimaker",
+  20: "Smits Zevenhuizen",
   21: "Schulte en Lestraden BV",
   22: "RH Marine Netherlands B.V.",
   23: "Hanab Energy Solutions",
   24: "Silicon theatre scenery",
-  25: "Smits Zevenhuizen",
+  25: "The Confettimaker",
   26: "Peutz",
   27: "Flux Partners",
   28: "Comaen",
@@ -41,6 +41,44 @@ export const MAP_HHS_STAND_COMPANIES = {
   37: "Delft Solar Team",
   38: "The Curiosity Contest",
 };
+
+export const MAP_HHS_STAND_COMPANY_IDS = {
+  1: "berkel-industrial-b-v",
+  2: "verebus-engineering-b-v",
+  3: "technip-energies",
+  4: "tempcontrol-b-v",
+  5: "halmos-adviseurs",
+  6: "dvp-smart-concepts-b-v",
+  7: "energy-solutions-b-v",
+  8: "sasja-careers-b-v",
+  9: "wepro",
+  10: "emmett-green-engineering-b-v",
+  11: "siemens-nederland-n-v",
+  12: "kern-engineers",
+  13: "sweco-nederland-b-v",
+  14: "iv",
+  15: "van-oord",
+  16: "dcmr-environmental-protection-agency-rijnmond",
+  17: "bilfinger-engineering-consultancy",
+  18: "abb-b-v",
+  19: "quooker",
+  20: "the-confettimaker",
+  21: "schulte-en-lestraden-b-v",
+  22: "rh-marine-netherlands-b-v",
+  23: "hanab-energy-solutions",
+  24: "silicon-theatre-scenery",
+  25: "smits-zevenhuizen",
+  26: "peutz",
+  27: "flux-partners",
+  28: "comaen",
+};
+
+export const MAP_HHS_COMPANY_ID_TO_STAND = Object.fromEntries(
+  Object.entries(MAP_HHS_STAND_COMPANY_IDS).map(([stand, companyId]) => [
+    companyId,
+    Number(stand),
+  ])
+);
 
 export const MAP_HHS_STANDS = [
   { stand: 1, x: 153, y: 1063, width: 80, height: 60 },

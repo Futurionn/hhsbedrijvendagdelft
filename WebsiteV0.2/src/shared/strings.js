@@ -20,7 +20,7 @@ export const STRINGS = {
     mapPageIntro: "Bekijk de interactieve plattegrond van de bedrijvendag.",
     mapComingSoonTitle: "Interactief",
     mapComingSoonBody:
-      "Beweeg over een stand om direct te zien welk bedrijf daar staat.",
+      "Click op een stand om direct te zien welk bedrijf daar staat.",
     companiesKicker: "ONZE PARTNERS",
     companiesTitle: "Deelnemende bedrijven",
     companiesSubtitle:

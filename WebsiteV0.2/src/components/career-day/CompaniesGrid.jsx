@@ -240,6 +240,8 @@ export default function CompaniesGrid() {
   const companyIssuesEmail = "voorzitter@rheonline.nl";
   const listLabel =
     lang === "nl" ? "Bekijk alle bedrijven →" : "View all companies →";
+  const listButtonClass =
+    "inline-flex items-center justify-center rounded-full bg-orange px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-[#f07c00]/25 transition-all duration-500 hover:scale-105";
 
   const [openId, setOpenId] = useState(null);
   const [topRow, bottomRow] = useMemo(() => {
@@ -272,7 +274,7 @@ export default function CompaniesGrid() {
           <div className="mt-4">
             <Link
               to="/companies"
-              className="text-sm font-semibold text-orange transition-all duration-500 hover:opacity-80"
+              className={listButtonClass}
             >
               {listLabel}
             </Link>
@@ -301,7 +303,7 @@ export default function CompaniesGrid() {
       <div className="mx-auto mt-10 max-w-6xl px-6 text-center">
         <Link
           to="/companies"
-          className="inline-flex items-center justify-center rounded-full bg-orange px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-[#f07c00]/25 transition-all duration-500 hover:scale-105"
+          className={listButtonClass}
         >
           {listLabel}
         </Link>

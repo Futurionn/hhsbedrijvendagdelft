@@ -1,17 +1,27 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   MAP_HHS_IMAGE_WIDTH,
   MAP_HHS_IMAGE_HEIGHT,
   MAP_HHS_STANDS,
   MAP_HHS_STAND_COMPANIES,
+  MAP_HHS_STAND_COMPANY_IDS,
 } from "../../data/mapHotspots.js";
 
 function asPct(value, total) {
   return `${(value / total) * 100}%`;
 }
 
-export default function MapHHS({ lang }) {
+export default function MapHHS({ lang, focusedStand = null }) {
   const [activeStand, setActiveStand] = useState(null);
+  const navigate = useNavigate();
+  const isTouchDevice = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(hover: none), (pointer: coarse)").matches,
+    []
+  );
 
   const standAssignments = useMemo(() => {
     return MAP_HHS_STANDS.map((spot, index) => ({
@@ -22,10 +32,55 @@ export default function MapHHS({ lang }) {
   }, []);
 
   const activeSpot = standAssignments.find((spot) => spot.id === activeStand) ?? null;
+  const mappedSpots = useMemo(
+    () => standAssignments.filter((spot) => MAP_HHS_STAND_COMPANY_IDS[spot.stand]),
+    [standAssignments]
+  );
+
+  useEffect(() => {
+    if (!focusedStand) return;
+    const target = standAssignments.find((spot) => spot.stand === focusedStand);
+    if (!target) return;
+    setActiveStand(target.id);
+  }, [focusedStand, standAssignments]);
+
   const hintText =
     lang === "nl"
-      ? "Hover of klik op een stand om het bedrijf te zien."
-      : "Hover or tap a stand to see the company.";
+      ? isTouchDevice
+        ? "Tik eenmaal voor de bedrijfsnaam, tik nogmaals om de bedrijvenlijst te openen."
+        : "Hover om het bedrijf te zien, klik om het in de bedrijvenlijst te openen."
+      : isTouchDevice
+        ? "Tap once to preview the company, tap again to open it in the companies list."
+        : "Hover to view the company, click to open it in the companies list.";
+
+  const openCompaniesAtStand = (spot) => {
+    let targetCompanyId = MAP_HHS_STAND_COMPANY_IDS[spot.stand] ?? null;
+
+    // For stands without a direct listing, jump to the nearest mapped stand.
+    if (!targetCompanyId && mappedSpots.length > 0) {
+      const spotCx = spot.x + spot.width / 2;
+      const spotCy = spot.y + spot.height / 2;
+      let best = mappedSpots[0];
+      let bestDistance = Number.POSITIVE_INFINITY;
+
+      for (const candidate of mappedSpots) {
+        const candidateCx = candidate.x + candidate.width / 2;
+        const candidateCy = candidate.y + candidate.height / 2;
+        const distance = (candidateCx - spotCx) ** 2 + (candidateCy - spotCy) ** 2;
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = candidate;
+        }
+      }
+
+      targetCompanyId = MAP_HHS_STAND_COMPANY_IDS[best.stand] ?? null;
+    }
+
+    const params = new URLSearchParams();
+    if (targetCompanyId) params.set("focus", targetCompanyId);
+    params.set("stand", String(spot.stand));
+    navigate(`/companies?${params.toString()}`);
+  };
 
   return (
     <div>
@@ -65,9 +120,13 @@ export default function MapHHS({ lang }) {
                   }
                   onFocus={() => setActiveStand(spot.id)}
                   onBlur={() => setActiveStand((current) => (current === spot.id ? null : current))}
-                  onClick={() =>
-                    setActiveStand((current) => (current === spot.id ? null : spot.id))
-                  }
+                  onClick={() => {
+                    if (isTouchDevice && activeStand !== spot.id) {
+                      setActiveStand(spot.id);
+                      return;
+                    }
+                    openCompaniesAtStand(spot);
+                  }}
                 >
                   <span className="sr-only">{`Stand ${spot.stand}`}</span>
                 </button>

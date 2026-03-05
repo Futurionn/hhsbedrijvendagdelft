@@ -1,8 +1,8 @@
 import { m } from "framer-motion";
 import { ExternalLink, Globe2, Users2, Briefcase } from "lucide-react";
-import { useMemo } from "react";
 import { useLanguage } from "../../shared/LanguageContext.jsx";
 import { STRINGS } from "../../shared/strings.js";
+import { MAP_HHS_COMPANY_ID_TO_STAND } from "../../data/mapHotspots.js";
 
 function LogoOrInitials({ company }) {
   const initialsClass =
@@ -47,6 +47,9 @@ export default function CompanyCard({
 }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
+  const standLabel = lang === "nl" ? "Stand" : "Stand";
+  const stand = MAP_HHS_COMPANY_ID_TO_STAND[company.id];
+  const standValue = Number.isInteger(stand) ? `#${stand}` : t.tbd || "TBD";
   const isDarkSurface = company.logoTone === "light";
   const isWhiteSurface = company.logoTone === "dark";
   const cardSurfaceClass =
@@ -75,6 +78,7 @@ export default function CompanyCard({
     : isWhiteSurface
       ? "text-slate-700"
       : "text-gray-600 dark:text-gray-300";
+  const standChipClass = "border border-orange/70 bg-orange text-white shadow-sm shadow-[#f07c00]/25";
 
   const enableClickToggle =
     typeof window !== "undefined" &&
@@ -85,30 +89,6 @@ export default function CompanyCard({
     if (isOpen) onClose?.();
     else onOpen?.();
   };
-
-  const opportunityColors = useMemo(() => {
-    if (isDarkSurface) {
-      return [
-        "bg-orange/20 text-orange-100",
-        "bg-white/10 text-white",
-        "bg-white/15 text-gray-100"
-      ];
-    }
-
-    if (isWhiteSurface) {
-      return [
-        "bg-orange/10 text-orange-700",
-        "bg-navy/10 text-slate-900",
-        "bg-gray-100 text-slate-700"
-      ];
-    }
-
-    return [
-      "bg-orange/10 text-orange dark:bg-orange/15 dark:text-orange",
-      "bg-navy/10 text-navy dark:bg-white/10 dark:text-gray-100",
-      "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200"
-    ];
-  }, [isDarkSurface, isWhiteSurface]);
 
   return (
     <m.div
@@ -178,19 +158,12 @@ export default function CompanyCard({
 
             <div className="mt-6">
               <p className={`text-sm font-semibold ${primaryTextClass}`}>
-                {t.opportunities}
+                {standLabel}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {(company.opportunities || [t.tbd]).map((op, idx) => (
-                  <span
-                    key={op}
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                      opportunityColors[idx % opportunityColors.length]
-                    }`}
-                  >
-                    {op}
-                  </span>
-                ))}
+                <span className={`min-w-[3.25rem] rounded-full px-3 py-1 text-center text-xs font-semibold ${standChipClass}`}>
+                  {standValue}
+                </span>
               </div>
             </div>
 
