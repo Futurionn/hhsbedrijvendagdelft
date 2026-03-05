@@ -17,10 +17,10 @@ export const STRINGS = {
     ctaDiscover: "Ontdek bedrijven",
     ctaMap: "Plattegrond",
     mapPageTitle: "Plattegrond",
-    mapPageIntro: "Hier komt binnenkort de plattegrond van de bedrijvendag.",
-    mapComingSoonTitle: "Komt binnenkort",
+    mapPageIntro: "Bekijk de interactieve plattegrond van de bedrijvendag.",
+    mapComingSoonTitle: "Interactief",
     mapComingSoonBody:
-      "We werken aan een interactieve kaart met de locaties van alle bedrijven en verenigingen. Kom later terug voor de volledige plattegrond.",
+      "Beweeg over een stand om direct te zien welk bedrijf daar staat.",
     companiesKicker: "ONZE PARTNERS",
     companiesTitle: "Deelnemende bedrijven",
     companiesSubtitle:
@@ -77,10 +77,10 @@ export const STRINGS = {
     ctaDiscover: "Discover Companies",
     ctaMap: "Map",
     mapPageTitle: "Map",
-    mapPageIntro: "The career day floor plan will be available here soon.",
-    mapComingSoonTitle: "Coming soon",
+    mapPageIntro: "Explore the interactive career day floor plan.",
+    mapComingSoonTitle: "Interactive",
     mapComingSoonBody:
-      "We are preparing an interactive map with all company and association locations. Check back later for the full floor plan.",
+      "Hover over a stand to instantly see which company is located there.",
     companiesKicker: "MEET OUR PARTNERS",
     companiesTitle: "Participating Companies",
     companiesSubtitle:

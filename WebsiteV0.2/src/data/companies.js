@@ -395,6 +395,7 @@ export const COMPANIES = [
 }));
 
 const COMPANIES_NL_OVERRIDES = {
+  
   "berkel-industrial-b-v": {
     "description": "Partner in seriematige machinebouw; ondersteunt machinebouwers met technische oplossingen en supply chain ondersteuning.",
     "industry": "Machinebouw / industriële engineering",
@@ -436,7 +437,7 @@ const COMPANIES_NL_OVERRIDES = {
     "website": "https://www.tempcontrol.nl/en/"
   },
   "halmos-adviseurs": {
-    "description": "Onafhankelijk adviesbureau voor gebouwgebonden installaties met focus op duurzaamheid, energie-efficiÃ«ntie en comfort binnen budget.",
+    "description": "Onafhankelijk adviesbureau voor gebouwgebonden installaties met focus op duurzaamheid, energie efficiëntie en comfort binnen budget.",
     "industry": "Installatieadvies / building services",
     "employees": "N/A",
     "location": "Den Haag, NL",
@@ -645,7 +646,7 @@ const COMPANIES_NL_OVERRIDES = {
     "opportunities": [
       "TBD"
     ],
-    "website": "#"
+    "website": "https://stsonstage.com"
   },
   "smits-zevenhuizen": {
     "description": "TBD",

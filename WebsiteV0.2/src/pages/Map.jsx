@@ -2,6 +2,7 @@ import { MapPin } from "lucide-react";
 import LegalLayout from "./LegalLayout.jsx";
 import { useLanguage } from "../shared/LanguageContext.jsx";
 import { STRINGS } from "../shared/strings.js";
+import MapHHS from "../components/career-day/MapHHS.jsx";
 
 export default function MapPage() {
   const { lang } = useLanguage();
@@ -25,8 +26,8 @@ export default function MapPage() {
 
         <p className="mt-3 max-w-2xl text-gray-700 dark:text-gray-200">{t.mapComingSoonBody}</p>
 
-        <div className="mt-8 flex h-56 items-center justify-center rounded-2xl border border-dashed border-orange/40 bg-white/70 text-sm font-semibold text-gray-600 dark:bg-slate-900/40 dark:text-gray-300">
-          {lang === "nl" ? "Kaart placeholder" : "Map placeholder"}
+        <div className="mt-8">
+          <MapHHS lang={lang} />
         </div>
       </section>
     </LegalLayout>
