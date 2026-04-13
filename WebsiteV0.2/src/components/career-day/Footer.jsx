@@ -152,22 +152,6 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-end">
-            <a
-              href="https://www.galeriebrachot.be/en/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 font-semibold text-white/80 transition-all duration-500 hover:text-white"
-            >
-              <span>{t.footerSponsoredBy}</span>
-              <img
-                src="/logos/galerieb.png"
-                alt="Galerie Brachot"
-                className="h-6 w-auto opacity-90"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-
             <div className="flex items-center gap-6">
               <Link to="/privacy" className="transition-all duration-500 hover:text-white">
                 {t.footerPrivacy}

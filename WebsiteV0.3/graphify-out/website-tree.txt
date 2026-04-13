@@ -1,0 +1,44 @@
+Folder PATH listing
+Volume serial number is 20F8-0152
+C:\USERS\MATGE\DOCUMENTS\GITHUB\HHSBEDRIJVENDAGDELFT\WEBSITEV0.3\SRC
+|   App.jsx
+|   index.css
+|   main.jsx
+|   
++---components
+|   \---career-day
+|           AssociationsSection.jsx
+|           CompaniesGrid.jsx
+|           CompanyCard.jsx
+|           EditionSelector.jsx
+|           EventInfo.jsx
+|           Footer.jsx
+|           HeroSection.jsx
+|           MapHHS.jsx
+|           NovemberCompaniesSection.jsx
+|           NovemberEventInfo.jsx
+|           NovemberHeroSection.jsx
+|           
++---data
+|       associations.js
+|       companies.js
+|       mapHotspots.js
+|       
++---pages
+|       Companies.jsx
+|       CompanyRegistration.jsx
+|       Faq.jsx
+|       Home.jsx
+|       LegalLayout.jsx
+|       Map.jsx
+|       Privacy.jsx
+|       Terms.jsx
+|       
+\---shared
+        companyRegistration.js
+        EditionContext.jsx
+        LanguageContext.jsx
+        MotionProvider.jsx
+        strings.js
+        ThemeContext.jsx
+        

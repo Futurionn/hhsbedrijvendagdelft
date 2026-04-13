@@ -1,0 +1,1441 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "postcss.config.js",
+      "source_location": "L1",
+      "id": "postcss_config_js",
+      "community": 25,
+      "norm_label": "postcss.config.js"
+    },
+    {
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L1",
+      "id": "script_js",
+      "community": 26,
+      "norm_label": "script.js"
+    },
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "tailwind.config.js",
+      "source_location": "L1",
+      "id": "tailwind_config_js",
+      "community": 27,
+      "norm_label": "tailwind.config.js"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "id": "vite_config_js",
+      "community": 28,
+      "norm_label": "vite.config.js"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "src\\App.jsx",
+      "source_location": "L1",
+      "id": "src_app_jsx",
+      "community": 19,
+      "norm_label": "app.jsx"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src\\App.jsx",
+      "source_location": "L14",
+      "id": "app_app",
+      "community": 19,
+      "norm_label": "app()"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src\\main.jsx",
+      "source_location": "L1",
+      "id": "src_main_jsx",
+      "community": 29,
+      "norm_label": "main.jsx"
+    },
+    {
+      "label": "AssociationsSection.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_associationssection_jsx",
+      "community": 0,
+      "norm_label": "associationssection.jsx"
+    },
+    {
+      "label": "Starfield()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L13",
+      "id": "associationssection_starfield",
+      "community": 0,
+      "norm_label": "starfield()"
+    },
+    {
+      "label": "AssociationCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L68",
+      "id": "associationssection_associationcard",
+      "community": 0,
+      "norm_label": "associationcard()"
+    },
+    {
+      "label": "AssociationsSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L119",
+      "id": "associationssection_associationssection",
+      "community": 0,
+      "norm_label": "associationssection()"
+    },
+    {
+      "label": "CompaniesGrid.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_companiesgrid_jsx",
+      "community": 1,
+      "norm_label": "companiesgrid.jsx"
+    },
+    {
+      "label": "splitTwoRows()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L16",
+      "id": "companiesgrid_splittworows",
+      "community": 1,
+      "norm_label": "splittworows()"
+    },
+    {
+      "label": "MarqueeRow()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L21",
+      "id": "companiesgrid_marqueerow",
+      "community": 1,
+      "norm_label": "marqueerow()"
+    },
+    {
+      "label": "CompaniesGrid()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L233",
+      "id": "companiesgrid_companiesgrid",
+      "community": 1,
+      "norm_label": "companiesgrid()"
+    },
+    {
+      "label": "CompanyCard.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompanyCard.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_companycard_jsx",
+      "community": 9,
+      "norm_label": "companycard.jsx"
+    },
+    {
+      "label": "LogoOrInitials()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompanyCard.jsx",
+      "source_location": "L7",
+      "id": "companycard_logoorinitials",
+      "community": 9,
+      "norm_label": "logoorinitials()"
+    },
+    {
+      "label": "CompanyCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\CompanyCard.jsx",
+      "source_location": "L40",
+      "id": "companycard_companycard",
+      "community": 9,
+      "norm_label": "companycard()"
+    },
+    {
+      "label": "EditionSelector.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\EditionSelector.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_editionselector_jsx",
+      "community": 20,
+      "norm_label": "editionselector.jsx"
+    },
+    {
+      "label": "EditionSelector()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\EditionSelector.jsx",
+      "source_location": "L6",
+      "id": "editionselector_editionselector",
+      "community": 20,
+      "norm_label": "editionselector()"
+    },
+    {
+      "label": "EventInfo.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\EventInfo.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_eventinfo_jsx",
+      "community": 10,
+      "norm_label": "eventinfo.jsx"
+    },
+    {
+      "label": "FeatureCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\EventInfo.jsx",
+      "source_location": "L13",
+      "id": "eventinfo_featurecard",
+      "community": 10,
+      "norm_label": "featurecard()"
+    },
+    {
+      "label": "EventInfo()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\EventInfo.jsx",
+      "source_location": "L29",
+      "id": "eventinfo_eventinfo",
+      "community": 10,
+      "norm_label": "eventinfo()"
+    },
+    {
+      "label": "Footer.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_footer_jsx",
+      "community": 2,
+      "norm_label": "footer.jsx"
+    },
+    {
+      "label": "HhsIcon()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L13",
+      "id": "footer_hhsicon",
+      "community": 2,
+      "norm_label": "hhsicon()"
+    },
+    {
+      "label": "IconLink()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L25",
+      "id": "footer_iconlink",
+      "community": 2,
+      "norm_label": "iconlink()"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L39",
+      "id": "footer_footer",
+      "community": 2,
+      "norm_label": "footer()"
+    },
+    {
+      "label": "HeroSection.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_herosection_jsx",
+      "community": 3,
+      "norm_label": "herosection.jsx"
+    },
+    {
+      "label": "Wave()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L15",
+      "id": "herosection_wave",
+      "community": 3,
+      "norm_label": "wave()"
+    },
+    {
+      "label": "FloatingOrbs()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L31",
+      "id": "herosection_floatingorbs",
+      "community": 3,
+      "norm_label": "floatingorbs()"
+    },
+    {
+      "label": "HeroSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L66",
+      "id": "herosection_herosection",
+      "community": 3,
+      "norm_label": "herosection()"
+    },
+    {
+      "label": "MapHHS.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_maphhs_jsx",
+      "community": 11,
+      "norm_label": "maphhs.jsx"
+    },
+    {
+      "label": "asPct()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L11",
+      "id": "maphhs_aspct",
+      "community": 11,
+      "norm_label": "aspct()"
+    },
+    {
+      "label": "MapHHS()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L15",
+      "id": "maphhs_maphhs",
+      "community": 11,
+      "norm_label": "maphhs()"
+    },
+    {
+      "label": "NovemberCompaniesSection.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberCompaniesSection.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_novembercompaniessection_jsx",
+      "community": 12,
+      "norm_label": "novembercompaniessection.jsx"
+    },
+    {
+      "label": "UpdateCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberCompaniesSection.jsx",
+      "source_location": "L14",
+      "id": "novembercompaniessection_updatecard",
+      "community": 12,
+      "norm_label": "updatecard()"
+    },
+    {
+      "label": "NovemberCompaniesSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberCompaniesSection.jsx",
+      "source_location": "L26",
+      "id": "novembercompaniessection_novembercompaniessection",
+      "community": 12,
+      "norm_label": "novembercompaniessection()"
+    },
+    {
+      "label": "NovemberEventInfo.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberEventInfo.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_novembereventinfo_jsx",
+      "community": 13,
+      "norm_label": "novembereventinfo.jsx"
+    },
+    {
+      "label": "FeatureCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberEventInfo.jsx",
+      "source_location": "L17",
+      "id": "novembereventinfo_featurecard",
+      "community": 13,
+      "norm_label": "featurecard()"
+    },
+    {
+      "label": "NovemberEventInfo()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberEventInfo.jsx",
+      "source_location": "L33",
+      "id": "novembereventinfo_novembereventinfo",
+      "community": 13,
+      "norm_label": "novembereventinfo()"
+    },
+    {
+      "label": "NovemberHeroSection.jsx",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L1",
+      "id": "src_components_career_day_novemberherosection_jsx",
+      "community": 4,
+      "norm_label": "novemberherosection.jsx"
+    },
+    {
+      "label": "Wave()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L24",
+      "id": "novemberherosection_wave",
+      "community": 4,
+      "norm_label": "wave()"
+    },
+    {
+      "label": "FloatingOrbs()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L40",
+      "id": "novemberherosection_floatingorbs",
+      "community": 4,
+      "norm_label": "floatingorbs()"
+    },
+    {
+      "label": "NovemberHeroSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L75",
+      "id": "novemberherosection_novemberherosection",
+      "community": 4,
+      "norm_label": "novemberherosection()"
+    },
+    {
+      "label": "associations.js",
+      "file_type": "code",
+      "source_file": "src\\data\\associations.js",
+      "source_location": "L1",
+      "id": "src_data_associations_js",
+      "community": 30,
+      "norm_label": "associations.js"
+    },
+    {
+      "label": "companies.js",
+      "file_type": "code",
+      "source_file": "src\\data\\companies.js",
+      "source_location": "L1",
+      "id": "src_data_companies_js",
+      "community": 14,
+      "norm_label": "companies.js"
+    },
+    {
+      "label": "inferCategory()",
+      "file_type": "code",
+      "source_file": "src\\data\\companies.js",
+      "source_location": "L1",
+      "id": "companies_infercategory",
+      "community": 14,
+      "norm_label": "infercategory()"
+    },
+    {
+      "label": "getCompanies()",
+      "file_type": "code",
+      "source_file": "src\\data\\companies.js",
+      "source_location": "L721",
+      "id": "companies_getcompanies",
+      "community": 14,
+      "norm_label": "getcompanies()"
+    },
+    {
+      "label": "mapHotspots.js",
+      "file_type": "code",
+      "source_file": "src\\data\\mapHotspots.js",
+      "source_location": "L1",
+      "id": "src_data_maphotspots_js",
+      "community": 31,
+      "norm_label": "maphotspots.js"
+    },
+    {
+      "label": "Companies.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L1",
+      "id": "src_pages_companies_jsx",
+      "community": 5,
+      "norm_label": "companies.jsx"
+    },
+    {
+      "label": "Logo()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L9",
+      "id": "companies_logo",
+      "community": 5,
+      "norm_label": "logo()"
+    },
+    {
+      "label": "CompanyRow()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L42",
+      "id": "companies_companyrow",
+      "community": 5,
+      "norm_label": "companyrow()"
+    },
+    {
+      "label": "Companies()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L150",
+      "id": "companies_companies",
+      "community": 5,
+      "norm_label": "companies()"
+    },
+    {
+      "label": "CompanyRegistration.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\CompanyRegistration.jsx",
+      "source_location": "L1",
+      "id": "src_pages_companyregistration_jsx",
+      "community": 15,
+      "norm_label": "companyregistration.jsx"
+    },
+    {
+      "label": "InfoCard()",
+      "file_type": "code",
+      "source_file": "src\\pages\\CompanyRegistration.jsx",
+      "source_location": "L24",
+      "id": "companyregistration_infocard",
+      "community": 15,
+      "norm_label": "infocard()"
+    },
+    {
+      "label": "CompanyRegistration()",
+      "file_type": "code",
+      "source_file": "src\\pages\\CompanyRegistration.jsx",
+      "source_location": "L36",
+      "id": "companyregistration_companyregistration",
+      "community": 15,
+      "norm_label": "companyregistration()"
+    },
+    {
+      "label": "Faq.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Faq.jsx",
+      "source_location": "L1",
+      "id": "src_pages_faq_jsx",
+      "community": 16,
+      "norm_label": "faq.jsx"
+    },
+    {
+      "label": "Item()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Faq.jsx",
+      "source_location": "L4",
+      "id": "faq_item",
+      "community": 16,
+      "norm_label": "item()"
+    },
+    {
+      "label": "Faq()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Faq.jsx",
+      "source_location": "L13",
+      "id": "faq_faq",
+      "community": 16,
+      "norm_label": "faq()"
+    },
+    {
+      "label": "Home.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L1",
+      "id": "src_pages_home_jsx",
+      "community": 6,
+      "norm_label": "home.jsx"
+    },
+    {
+      "label": "MarchEditionHome()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L12",
+      "id": "home_marcheditionhome",
+      "community": 6,
+      "norm_label": "marcheditionhome()"
+    },
+    {
+      "label": "NovemberEditionHome()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L24",
+      "id": "home_novembereditionhome",
+      "community": 6,
+      "norm_label": "novembereditionhome()"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L36",
+      "id": "home_home",
+      "community": 6,
+      "norm_label": "home()"
+    },
+    {
+      "label": "LegalLayout.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\LegalLayout.jsx",
+      "source_location": "L1",
+      "id": "src_pages_legallayout_jsx",
+      "community": 17,
+      "norm_label": "legallayout.jsx"
+    },
+    {
+      "label": "Wave()",
+      "file_type": "code",
+      "source_file": "src\\pages\\LegalLayout.jsx",
+      "source_location": "L5",
+      "id": "legallayout_wave",
+      "community": 17,
+      "norm_label": "wave()"
+    },
+    {
+      "label": "LegalLayout()",
+      "file_type": "code",
+      "source_file": "src\\pages\\LegalLayout.jsx",
+      "source_location": "L21",
+      "id": "legallayout_legallayout",
+      "community": 17,
+      "norm_label": "legallayout()"
+    },
+    {
+      "label": "Map.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Map.jsx",
+      "source_location": "L1",
+      "id": "src_pages_map_jsx",
+      "community": 21,
+      "norm_label": "map.jsx"
+    },
+    {
+      "label": "MapPage()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Map.jsx",
+      "source_location": "L9",
+      "id": "map_mappage",
+      "community": 21,
+      "norm_label": "mappage()"
+    },
+    {
+      "label": "Privacy.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Privacy.jsx",
+      "source_location": "L1",
+      "id": "src_pages_privacy_jsx",
+      "community": 22,
+      "norm_label": "privacy.jsx"
+    },
+    {
+      "label": "Privacy()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Privacy.jsx",
+      "source_location": "L4",
+      "id": "privacy_privacy",
+      "community": 22,
+      "norm_label": "privacy()"
+    },
+    {
+      "label": "Terms.jsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Terms.jsx",
+      "source_location": "L1",
+      "id": "src_pages_terms_jsx",
+      "community": 23,
+      "norm_label": "terms.jsx"
+    },
+    {
+      "label": "Terms()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Terms.jsx",
+      "source_location": "L4",
+      "id": "terms_terms",
+      "community": 23,
+      "norm_label": "terms()"
+    },
+    {
+      "label": "companyRegistration.js",
+      "file_type": "code",
+      "source_file": "src\\shared\\companyRegistration.js",
+      "source_location": "L1",
+      "id": "src_shared_companyregistration_js",
+      "community": 32,
+      "norm_label": "companyregistration.js"
+    },
+    {
+      "label": "EditionContext.jsx",
+      "file_type": "code",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L1",
+      "id": "src_shared_editioncontext_jsx",
+      "community": 7,
+      "norm_label": "editioncontext.jsx"
+    },
+    {
+      "label": "getInitialEdition()",
+      "file_type": "code",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L17",
+      "id": "editioncontext_getinitialedition",
+      "community": 7,
+      "norm_label": "getinitialedition()"
+    },
+    {
+      "label": "EditionProvider()",
+      "file_type": "code",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L25",
+      "id": "editioncontext_editionprovider",
+      "community": 7,
+      "norm_label": "editionprovider()"
+    },
+    {
+      "label": "useEdition()",
+      "file_type": "code",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L44",
+      "id": "editioncontext_useedition",
+      "community": 7,
+      "norm_label": "useedition()"
+    },
+    {
+      "label": "LanguageContext.jsx",
+      "file_type": "code",
+      "source_file": "src\\shared\\LanguageContext.jsx",
+      "source_location": "L1",
+      "id": "src_shared_languagecontext_jsx",
+      "community": 18,
+      "norm_label": "languagecontext.jsx"
+    },
+    {
+      "label": "LanguageProvider()",
+      "file_type": "code",
+      "source_file": "src\\shared\\LanguageContext.jsx",
+      "source_location": "L5",
+      "id": "languagecontext_languageprovider",
+      "community": 18,
+      "norm_label": "languageprovider()"
+    },
+    {
+      "label": "useLanguage()",
+      "file_type": "code",
+      "source_file": "src\\shared\\LanguageContext.jsx",
+      "source_location": "L11",
+      "id": "languagecontext_uselanguage",
+      "community": 18,
+      "norm_label": "uselanguage()"
+    },
+    {
+      "label": "MotionProvider.jsx",
+      "file_type": "code",
+      "source_file": "src\\shared\\MotionProvider.jsx",
+      "source_location": "L1",
+      "id": "src_shared_motionprovider_jsx",
+      "community": 24,
+      "norm_label": "motionprovider.jsx"
+    },
+    {
+      "label": "MotionProvider()",
+      "file_type": "code",
+      "source_file": "src\\shared\\MotionProvider.jsx",
+      "source_location": "L3",
+      "id": "motionprovider_motionprovider",
+      "community": 24,
+      "norm_label": "motionprovider()"
+    },
+    {
+      "label": "strings.js",
+      "file_type": "code",
+      "source_file": "src\\shared\\strings.js",
+      "source_location": "L1",
+      "id": "src_shared_strings_js",
+      "community": 33,
+      "norm_label": "strings.js"
+    },
+    {
+      "label": "ThemeContext.jsx",
+      "file_type": "code",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L1",
+      "id": "src_shared_themecontext_jsx",
+      "community": 8,
+      "norm_label": "themecontext.jsx"
+    },
+    {
+      "label": "applyTheme()",
+      "file_type": "code",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L5",
+      "id": "themecontext_applytheme",
+      "community": 8,
+      "norm_label": "applytheme()"
+    },
+    {
+      "label": "ThemeProvider()",
+      "file_type": "code",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L11",
+      "id": "themecontext_themeprovider",
+      "community": 8,
+      "norm_label": "themeprovider()"
+    },
+    {
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L36",
+      "id": "themecontext_usetheme",
+      "community": 8,
+      "norm_label": "usetheme()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.jsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "src_app_jsx",
+      "_tgt": "app_app",
+      "source": "src_app_jsx",
+      "target": "app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_components_career_day_associationssection_jsx",
+      "_tgt": "associationssection_starfield",
+      "source": "src_components_career_day_associationssection_jsx",
+      "target": "associationssection_starfield",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "src_components_career_day_associationssection_jsx",
+      "_tgt": "associationssection_associationcard",
+      "source": "src_components_career_day_associationssection_jsx",
+      "target": "associationssection_associationcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\AssociationsSection.jsx",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "src_components_career_day_associationssection_jsx",
+      "_tgt": "associationssection_associationssection",
+      "source": "src_components_career_day_associationssection_jsx",
+      "target": "associationssection_associationssection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "src_components_career_day_companiesgrid_jsx",
+      "_tgt": "companiesgrid_splittworows",
+      "source": "src_components_career_day_companiesgrid_jsx",
+      "target": "companiesgrid_splittworows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_components_career_day_companiesgrid_jsx",
+      "_tgt": "companiesgrid_marqueerow",
+      "source": "src_components_career_day_companiesgrid_jsx",
+      "target": "companiesgrid_marqueerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\CompaniesGrid.jsx",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_src": "src_components_career_day_companiesgrid_jsx",
+      "_tgt": "companiesgrid_companiesgrid",
+      "source": "src_components_career_day_companiesgrid_jsx",
+      "target": "companiesgrid_companiesgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\CompanyCard.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "src_components_career_day_companycard_jsx",
+      "_tgt": "companycard_logoorinitials",
+      "source": "src_components_career_day_companycard_jsx",
+      "target": "companycard_logoorinitials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\CompanyCard.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "src_components_career_day_companycard_jsx",
+      "_tgt": "companycard_companycard",
+      "source": "src_components_career_day_companycard_jsx",
+      "target": "companycard_companycard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\EditionSelector.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_career_day_editionselector_jsx",
+      "_tgt": "editionselector_editionselector",
+      "source": "src_components_career_day_editionselector_jsx",
+      "target": "editionselector_editionselector",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\EventInfo.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_components_career_day_eventinfo_jsx",
+      "_tgt": "eventinfo_featurecard",
+      "source": "src_components_career_day_eventinfo_jsx",
+      "target": "eventinfo_featurecard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\EventInfo.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "src_components_career_day_eventinfo_jsx",
+      "_tgt": "eventinfo_eventinfo",
+      "source": "src_components_career_day_eventinfo_jsx",
+      "target": "eventinfo_eventinfo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_components_career_day_footer_jsx",
+      "_tgt": "footer_hhsicon",
+      "source": "src_components_career_day_footer_jsx",
+      "target": "footer_hhsicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "src_components_career_day_footer_jsx",
+      "_tgt": "footer_iconlink",
+      "source": "src_components_career_day_footer_jsx",
+      "target": "footer_iconlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\Footer.jsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "src_components_career_day_footer_jsx",
+      "_tgt": "footer_footer",
+      "source": "src_components_career_day_footer_jsx",
+      "target": "footer_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "src_components_career_day_herosection_jsx",
+      "_tgt": "herosection_wave",
+      "source": "src_components_career_day_herosection_jsx",
+      "target": "herosection_wave",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_components_career_day_herosection_jsx",
+      "_tgt": "herosection_floatingorbs",
+      "source": "src_components_career_day_herosection_jsx",
+      "target": "herosection_floatingorbs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\HeroSection.jsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_src": "src_components_career_day_herosection_jsx",
+      "_tgt": "herosection_herosection",
+      "source": "src_components_career_day_herosection_jsx",
+      "target": "herosection_herosection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_components_career_day_maphhs_jsx",
+      "_tgt": "maphhs_aspct",
+      "source": "src_components_career_day_maphhs_jsx",
+      "target": "maphhs_aspct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "src_components_career_day_maphhs_jsx",
+      "_tgt": "maphhs_maphhs",
+      "source": "src_components_career_day_maphhs_jsx",
+      "target": "maphhs_maphhs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\MapHHS.jsx",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_src": "maphhs_maphhs",
+      "_tgt": "maphhs_aspct",
+      "source": "maphhs_aspct",
+      "target": "maphhs_maphhs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberCompaniesSection.jsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novembercompaniessection_jsx",
+      "_tgt": "novembercompaniessection_updatecard",
+      "source": "src_components_career_day_novembercompaniessection_jsx",
+      "target": "novembercompaniessection_updatecard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberCompaniesSection.jsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novembercompaniessection_jsx",
+      "_tgt": "novembercompaniessection_novembercompaniessection",
+      "source": "src_components_career_day_novembercompaniessection_jsx",
+      "target": "novembercompaniessection_novembercompaniessection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberEventInfo.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novembereventinfo_jsx",
+      "_tgt": "novembereventinfo_featurecard",
+      "source": "src_components_career_day_novembereventinfo_jsx",
+      "target": "novembereventinfo_featurecard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberEventInfo.jsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novembereventinfo_jsx",
+      "_tgt": "novembereventinfo_novembereventinfo",
+      "source": "src_components_career_day_novembereventinfo_jsx",
+      "target": "novembereventinfo_novembereventinfo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novemberherosection_jsx",
+      "_tgt": "novemberherosection_wave",
+      "source": "src_components_career_day_novemberherosection_jsx",
+      "target": "novemberherosection_wave",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novemberherosection_jsx",
+      "_tgt": "novemberherosection_floatingorbs",
+      "source": "src_components_career_day_novemberherosection_jsx",
+      "target": "novemberherosection_floatingorbs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\career-day\\NovemberHeroSection.jsx",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_src": "src_components_career_day_novemberherosection_jsx",
+      "_tgt": "novemberherosection_novemberherosection",
+      "source": "src_components_career_day_novemberherosection_jsx",
+      "target": "novemberherosection_novemberherosection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\companies.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "src_data_companies_js",
+      "_tgt": "companies_infercategory",
+      "source": "src_data_companies_js",
+      "target": "companies_infercategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\companies.js",
+      "source_location": "L721",
+      "weight": 1.0,
+      "_src": "src_data_companies_js",
+      "_tgt": "companies_getcompanies",
+      "source": "src_data_companies_js",
+      "target": "companies_getcompanies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_pages_companies_jsx",
+      "_tgt": "companies_logo",
+      "source": "src_pages_companies_jsx",
+      "target": "companies_logo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "src_pages_companies_jsx",
+      "_tgt": "companies_companyrow",
+      "source": "src_pages_companies_jsx",
+      "target": "companies_companyrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Companies.jsx",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_src": "src_pages_companies_jsx",
+      "_tgt": "companies_companies",
+      "source": "src_pages_companies_jsx",
+      "target": "companies_companies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\CompanyRegistration.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "src_pages_companyregistration_jsx",
+      "_tgt": "companyregistration_infocard",
+      "source": "src_pages_companyregistration_jsx",
+      "target": "companyregistration_infocard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\CompanyRegistration.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "src_pages_companyregistration_jsx",
+      "_tgt": "companyregistration_companyregistration",
+      "source": "src_pages_companyregistration_jsx",
+      "target": "companyregistration_companyregistration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Faq.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_pages_faq_jsx",
+      "_tgt": "faq_item",
+      "source": "src_pages_faq_jsx",
+      "target": "faq_item",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Faq.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_pages_faq_jsx",
+      "_tgt": "faq_faq",
+      "source": "src_pages_faq_jsx",
+      "target": "faq_faq",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_pages_home_jsx",
+      "_tgt": "home_marcheditionhome",
+      "source": "src_pages_home_jsx",
+      "target": "home_marcheditionhome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "src_pages_home_jsx",
+      "_tgt": "home_novembereditionhome",
+      "source": "src_pages_home_jsx",
+      "target": "home_novembereditionhome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "src_pages_home_jsx",
+      "_tgt": "home_home",
+      "source": "src_pages_home_jsx",
+      "target": "home_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\LegalLayout.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "src_pages_legallayout_jsx",
+      "_tgt": "legallayout_wave",
+      "source": "src_pages_legallayout_jsx",
+      "target": "legallayout_wave",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\LegalLayout.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_pages_legallayout_jsx",
+      "_tgt": "legallayout_legallayout",
+      "source": "src_pages_legallayout_jsx",
+      "target": "legallayout_legallayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Map.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_pages_map_jsx",
+      "_tgt": "map_mappage",
+      "source": "src_pages_map_jsx",
+      "target": "map_mappage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Privacy.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_pages_privacy_jsx",
+      "_tgt": "privacy_privacy",
+      "source": "src_pages_privacy_jsx",
+      "target": "privacy_privacy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Terms.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_pages_terms_jsx",
+      "_tgt": "terms_terms",
+      "source": "src_pages_terms_jsx",
+      "target": "terms_terms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "src_shared_editioncontext_jsx",
+      "_tgt": "editioncontext_getinitialedition",
+      "source": "src_shared_editioncontext_jsx",
+      "target": "editioncontext_getinitialedition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "src_shared_editioncontext_jsx",
+      "_tgt": "editioncontext_editionprovider",
+      "source": "src_shared_editioncontext_jsx",
+      "target": "editioncontext_editionprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\EditionContext.jsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "src_shared_editioncontext_jsx",
+      "_tgt": "editioncontext_useedition",
+      "source": "src_shared_editioncontext_jsx",
+      "target": "editioncontext_useedition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\LanguageContext.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "src_shared_languagecontext_jsx",
+      "_tgt": "languagecontext_languageprovider",
+      "source": "src_shared_languagecontext_jsx",
+      "target": "languagecontext_languageprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\LanguageContext.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_shared_languagecontext_jsx",
+      "_tgt": "languagecontext_uselanguage",
+      "source": "src_shared_languagecontext_jsx",
+      "target": "languagecontext_uselanguage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\MotionProvider.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_shared_motionprovider_jsx",
+      "_tgt": "motionprovider_motionprovider",
+      "source": "src_shared_motionprovider_jsx",
+      "target": "motionprovider_motionprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "src_shared_themecontext_jsx",
+      "_tgt": "themecontext_applytheme",
+      "source": "src_shared_themecontext_jsx",
+      "target": "themecontext_applytheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_shared_themecontext_jsx",
+      "_tgt": "themecontext_themeprovider",
+      "source": "src_shared_themecontext_jsx",
+      "target": "themecontext_themeprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\shared\\ThemeContext.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "src_shared_themecontext_jsx",
+      "_tgt": "themecontext_usetheme",
+      "source": "src_shared_themecontext_jsx",
+      "target": "themecontext_usetheme",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
