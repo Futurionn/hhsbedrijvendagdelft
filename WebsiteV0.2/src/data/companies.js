@@ -42,7 +42,7 @@ export const COMPANIES = [
     industry: "Machine building / industrial engineering",
     employees: "~ 15",
     location: "Berkel en Rodenrijs, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.berkelindustrial.com/en/",
   },
   {
@@ -55,7 +55,7 @@ export const COMPANIES = [
     industry: "Asset management / technical documentation",
     employees: "N/A",
     location: "Rijswijk, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://verebus.nl/",
   },
   {
@@ -67,7 +67,7 @@ export const COMPANIES = [
     industry: "Energy engineering / EPC",
     employees: "N/A",
     location: "Amsterdam, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.ten.com/en",
   },
   {
@@ -79,7 +79,7 @@ export const COMPANIES = [
     industry: "Instrumentation / sensors",
     employees: "~ 11 - 50",
     location: "Nootdorp, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.tempcontrol.nl/en/",
   },
   {
@@ -92,7 +92,7 @@ export const COMPANIES = [
     industry: "Building services engineering",
     employees: "N/A",
     location: "The Hague, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://halmos.nl/",
   },
   {
@@ -105,7 +105,7 @@ export const COMPANIES = [
     industry: "Building services consultancy / smart buildings",
     employees: "~ 10",
     location: "The Hague, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://dvpsmartconcepts.nl/",
   },
   {
@@ -117,7 +117,7 @@ export const COMPANIES = [
     industry: "High-voltage / power systems",
     employees: "N/A",
     location: "Delft, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.ensol.nl/en/",
   },
   {
@@ -129,7 +129,7 @@ export const COMPANIES = [
     industry: "Recruitment / staffing (technical)",
     employees: "N/A",
     location: "Aalsmeer, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.sasja-careers.nl/",
   },
   {
@@ -142,18 +142,19 @@ export const COMPANIES = [
     industry: "Technical recruitment (industrial automation, E&I, mechanical, process)",
     employees: "51-200",
     location: "Haarlem, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.comaen.nl/",
   },
   {
     name: "Wepro",
     logo: "/logos/wepro.png",
+    logoTone: "dark",
     description:
       "Engineering service provider active in mechanical, electrical, industrial automation and installation technology.",
     industry: "Engineering services",
     employees: "~ 501 -1000",
     location: "Arnhem, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://wepro.nl/",
   },
   {
@@ -165,7 +166,7 @@ export const COMPANIES = [
     industry: "Electrical engineering / energy transition",
     employees: "~ 11 - 50",
     location: "Delft, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://emmettgreen.nl/",
   },
   {
@@ -176,7 +177,7 @@ export const COMPANIES = [
     industry: "Industry / energy / automation",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.siemens.com/nl/en.html",
   },
   {
@@ -187,7 +188,7 @@ export const COMPANIES = [
     industry: "Recruitment / staffing (engineering)",
     employees: "N/A",
     location: "The Hague, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://kernengineers.nl/",
   },
   {
@@ -199,7 +200,7 @@ export const COMPANIES = [
     industry: "Engineering & architecture consultancy",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.sweco.nl/",
   },
   {
@@ -211,7 +212,7 @@ export const COMPANIES = [
     industry: "Engineering consultancy",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.iv.nl/en/",
   },
   {
@@ -223,7 +224,7 @@ export const COMPANIES = [
     industry: "Marine contracting / offshore",
     employees: "N/A",
     location: "Rotterdam, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.vanoord.com/en/",
   },
   {
@@ -234,7 +235,7 @@ export const COMPANIES = [
     industry: "Public environmental authority",
     employees: "N/A",
     location: "Rijnmond region, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.dcmr.nl/",
   },
   {
@@ -245,7 +246,7 @@ export const COMPANIES = [
     industry: "Industrial engineering & consultancy",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.bilfinger.com/en/nl/",
   },
   {
@@ -256,7 +257,7 @@ export const COMPANIES = [
     industry: "Electrification / automation",
     employees: "N/A",
     location: "Netherlands / Benelux",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://new.abb.com/benelux",
   },
   {
@@ -267,18 +268,20 @@ export const COMPANIES = [
     industry: "Consumer products / kitchen appliances",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.quooker.com/",
   },
   {
     name: "The Confettimaker",
     logo: "/logos/confetti.png",
     logoTone: "dark",
-    description: "TBD",
-    industry: "TBD",
+    category: "technology",
+    description:
+      "Designer and producer of biodegradable confetti and confetti machines for events, festivals and productions.",
+    industry: "Event effects manufacturing",
     employees: "N/A",
-    location: "TBD",
-    opportunities: ["TBD"],
+    location: "Harderwijk, NL",
+    opportunities: ["Not publicly specified"],
     website: "https://www.theconfettimaker.com/",
   },
   {
@@ -303,7 +306,7 @@ export const COMPANIES = [
     industry: "Building services / MEP contractor",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://senl.nl/",
   },
   {
@@ -316,7 +319,7 @@ export const COMPANIES = [
     industry: "Maritime system integration",
     employees: "~ 201–500",
     location: "Schiedam, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://rhmarine.com/",
   },
   {
@@ -328,28 +331,32 @@ export const COMPANIES = [
     industry: "High-voltage infrastructure / energy services",
     employees: "N/A",
     location: "Rotterdam, NL",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://www.hanab.nl/energy-solutions/en",
   },
   {
     name: "Silicon theatre scenery",
     logo: "/logos/sts.webp",
-    description: "TBD",
-    industry: "TBD",
+    category: "technology",
+    description:
+      "Develops and delivers stage engineering and automation systems for theaters, venues and live entertainment productions.",
+    industry: "Stage engineering / show automation",
     employees: "N/A",
-    location: "TBD",
-    opportunities: ["TBD"],
+    location: "Rijsenhout, NL",
+    opportunities: ["Not publicly specified"],
     website: "https://stsonstage.com/",
   },
   {
     name: "Smits Zevenhuizen",
     logo: "/logos/smits.png",
-    description: "TBD",
-    industry: "TBD",
+    category: "engineering",
+    description:
+      "Specialist in steel and stainless steel processing, including laser cutting, bending, welding and assembly.",
+    industry: "Metalworking / steel fabrication",
     employees: "N/A",
-    location: "TBD",
-    opportunities: ["TBD"],
-    website: "#",
+    location: "Zevenhuizen, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://smitszevenhuizen.nl/",
   },
   {
     name: "Peutz",
@@ -360,7 +367,7 @@ export const COMPANIES = [
     industry: "Engineering consultancy (acoustics/building physics)",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://peutz.nl/",
   },
   {
@@ -372,8 +379,137 @@ export const COMPANIES = [
     industry: "Consultancy (tender & project support)",
     employees: "N/A",
     location: "Netherlands",
-    opportunities: ["TBD"],
+    opportunities: ["Not publicly specified"],
     website: "https://flux.partners/en/",
+  },
+  {
+    name: "Technisch Bureau Koppe B.V.",
+    logo: "/logos/tbk.png",
+    logoTone: "white",
+    category: "technology",
+    description:
+      "Supplier of precision drive technology and machine components, with a long history in mechanical power transmission solutions.",
+    industry: "Mechanical drive technology / machine components",
+    employees: "N/A",
+    location: "Katwijk, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.koppe.nl/",
+  },
+  {
+    name: "Sensor",
+    logo: "/logos/sensor.svg",
+    logoTone: "dark",
+    category: "recruitment",
+    description:
+      "Technical recruitment and secondment agency connecting specialists with projects and employers in construction, infrastructure, energy and industry.",
+    industry: "Technical recruitment / secondment",
+    employees: "N/A",
+    location: "Netherlands",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.yoursensor.com/",
+  },
+  {
+    name: "Mammoet",
+    logo: "/logos/Mammoet-logo.svg",
+    logoTone: "dark",
+    category: "engineering",
+    description:
+      "Global company specialized in engineered heavy lifting and transport for large and complex industrial projects.",
+    industry: "Heavy lifting and transport engineering",
+    employees: "N/A",
+    location: "Netherlands / Global",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.mammoet.com/",
+  },
+  {
+    name: "Stedin Netbeheer",
+    logo: "/logos/stedin.svg",
+    logoTone: "dark",
+    category: "energy-transition",
+    description:
+      "Regional grid operator active in electricity and gas distribution infrastructure in the Netherlands.",
+    industry: "Grid operator / energy infrastructure",
+    employees: "N/A",
+    location: "Netherlands",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.stedin.net/",
+  },
+  {
+    name: "Dosign B.V.",
+    logo: "/logos/Dosign-Engineering-BV-logo.jpg",
+    logoTone: "dark",
+    category: "recruitment",
+    description:
+      "Engineering recruitment and secondment specialist active since 1985, connecting technical professionals with projects in industry and infrastructure.",
+    industry: "Engineering recruitment / secondment",
+    employees: "N/A",
+    location: "Rotterdam, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.dosign.nl/",
+  },
+  {
+    name: "Continu B.V.",
+    logo: "/logos/Logo-Continu.webp",
+    logoTone: "dark",
+    category: "recruitment",
+    description:
+      "Intermediary for professionals and employers in sectors such as construction, infrastructure, engineering and public services, focused on recruitment and secondment.",
+    industry: "Professional recruitment / secondment",
+    employees: "N/A",
+    location: "Eindhoven, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.continu.nl/",
+  },
+  {
+    name: "Hydro Motion Team",
+    logo: "/logos/HydroMotion.png",
+    logoTone: "dark",
+    category: "energy-transition",
+    description:
+      "TU Delft student team designing and racing hydrogen-powered boats to accelerate innovation in sustainable maritime transport.",
+    industry: "Student engineering team / hydrogen maritime innovation",
+    employees: "N/A",
+    location: "Delft, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://hydromotionteam.nl/",
+  },
+  {
+    name: "Even Groene Vrienden",
+    logo: "/logos/EGV_white.avif",
+    logoTone: "white",
+    description:
+      "Network for transdisciplinary learning communities where students, educators and external partners collaborate on societal and sustainability challenges.",
+    industry: "Education innovation / learning communities",
+    employees: "N/A",
+    location: "Delft, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://www.evengroenevrienden.nl/",
+  },
+  {
+    name: "Delft Solar Team",
+    logo: "/logos/delftsolarteam.png",
+    logoTone: "dark",
+    category: "energy-transition",
+    description:
+      "TU Delft student team that develops high-efficiency solar race cars and competes in the Bridgestone World Solar Challenge.",
+    industry: "Student engineering team / solar mobility",
+    employees: "N/A",
+    location: "Delft, NL",
+    opportunities: ["Not publicly specified"],
+    website: "https://delftsolarteam.com/",
+  },
+  {
+    name: "The Curiosity Contest",
+    logo: "/logos/Curiosity-logo-black-colour-1024x501.png",
+    logoTone: "dark",
+    category: "technology",
+    description:
+      "Space innovation challenge where student teams develop and present ideas for real-world space and Earth-focused applications.",
+    industry: "Student innovation challenge / space technology",
+    employees: "N/A",
+    location: "Netherlands",
+    opportunities: ["Not publicly specified"],
+    website: "https://onespacehub.eu/programs/curiosity-contest/",
   },
 ].map((c) => ({
   // consistent fallback logic
@@ -385,11 +521,11 @@ export const COMPANIES = [
       .replace(/(^-|-$)/g, ""),
   logo: c.logo ?? "/logos/WIP.png",
   category: c.category ?? inferCategory(c.industry),
-  description: c.description ?? "TBD",
-  industry: c.industry ?? "TBD",
+  description: c.description ?? "Not publicly specified",
+  industry: c.industry ?? "Not publicly specified",
   employees: c.employees ?? "N/A",
-  location: c.location ?? "TBD",
-  opportunities: c.opportunities ?? ["TBD"],
+  location: c.location ?? "Not publicly specified",
+  opportunities: c.opportunities ?? ["Not publicly specified"],
   website: c.website ?? "#",
   ...c,
 }));
@@ -402,7 +538,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 15",
     "location": "Berkel en Rodenrijs, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.berkelindustrial.com/en/"
   },
@@ -412,7 +548,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Rijswijk, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://verebus.nl/"
   },
@@ -422,7 +558,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Amsterdam, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.ten.com/en"
   },
@@ -432,7 +568,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 11â€“50",
     "location": "Nootdorp, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.tempcontrol.nl/en/"
   },
@@ -442,7 +578,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Den Haag, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://halmos.nl/"
   },
@@ -452,7 +588,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 10",
     "location": "Den Haag, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://dvpsmartconcepts.nl/"
   },
@@ -462,7 +598,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Delft, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.ensol.nl/en/"
   },
@@ -472,7 +608,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Aalsmeer, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.sasja-careers.nl/"
   },
@@ -482,7 +618,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 501â€“1000",
     "location": "Arnhem, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://wepro.nl/"
   },
@@ -492,7 +628,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 11â€“50",
     "location": "Delft, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://emmettgreen.nl/"
   },
@@ -502,7 +638,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.siemens.com/nl/nl.html"
   },
@@ -512,7 +648,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Den Haag, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://kernengineers.nl/"
   },
@@ -522,7 +658,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.sweco.nl/"
   },
@@ -532,7 +668,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.iv.nl/en/"
   },
@@ -542,7 +678,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Rotterdam, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.vanoord.com/en/"
   },
@@ -552,7 +688,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Rijnmond, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.dcmr.nl/"
   },
@@ -562,7 +698,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.bilfinger.com/en/nl/"
   },
@@ -572,7 +708,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL / Benelux",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://new.abb.com/benelux"
   },
@@ -582,17 +718,17 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.quooker.nl/"
   },
   "the-confettimaker": {
-    "description": "TBD",
-    "industry": "TBD",
+    "description": "Ontwerpt en produceert biologisch afbreekbare confetti en confetti-machines voor events, festivals en producties.",
+    "industry": "Event-effecten / productie",
     "employees": "N/A",
-    "location": "TBD",
+    "location": "Harderwijk, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.theconfettimaker.com/"
   },
@@ -614,7 +750,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://senl.nl/"
   },
@@ -624,7 +760,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "~ 201â€“500",
     "location": "Schiedam, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://rhmarine.com/"
   },
@@ -634,29 +770,29 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "Rotterdam, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.hanab.nl/energy-solutions/nl"
   },
   "silicon-theatre-scenery": {
-    "description": "TBD",
-    "industry": "TBD",
+    "description": "Ontwikkelt en levert podiumtechniek en automatiseringssystemen voor theaters, podia en live-entertainment.",
+    "industry": "Podiumtechniek / show-automatisering",
     "employees": "N/A",
-    "location": "TBD",
+    "location": "Rijsenhout, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://stsonstage.com"
   },
   "smits-zevenhuizen": {
-    "description": "TBD",
-    "industry": "TBD",
+    "description": "Specialist in staal- en RVS-bewerking, waaronder lasersnijden, kanten, lassen en assemblage.",
+    "industry": "Metaalbewerking / staalconstructie",
     "employees": "N/A",
-    "location": "TBD",
+    "location": "Zevenhuizen, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
-    "website": "#"
+    "website": "https://smitszevenhuizen.nl/"
   },
   "peutz": {
     "description": "Adviesbureau in akoestiek, bouwfysica, milieu, duurzaamheid en geveltechniek.",
@@ -664,7 +800,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://peutz.nl/"
   },
@@ -674,7 +810,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "N/A",
     "location": "NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://flux.partners/en/"
   },
@@ -684,7 +820,7 @@ const COMPANIES_NL_OVERRIDES = {
     "employees": "51-200",
     "location": "Haarlem, NL",
     "opportunities": [
-      "TBD"
+      "Not publicly specified"
     ],
     "website": "https://www.comaen.nl/"
   }
@@ -734,3 +870,4 @@ export function getCompanies(lang) {
     return merged;
   });
 }
+

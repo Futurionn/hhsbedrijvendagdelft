@@ -95,8 +95,8 @@ export default function NovemberHeroSection() {
 
   const heroSubtitle =
     lang === "nl"
-      ? "De novembereditie van de T.I.S. Bedrijvendag is in voorbereiding. De exacte datum en deelnemende bedrijven worden later bekendgemaakt."
-      : "The November edition of the T.I.S. Career Day is in preparation. The exact date and participating companies will be announced later.";
+      ? "De novembereditie van de Haagse Hogeschool Bedrijvendag op Delft T.I.S. Campus is in voorbereiding. De exacte datum en deelnemende bedrijven worden later bekendgemaakt."
+      : "The November edition of The Hague University of Applied Sciences Career Day in Delft T.I.S. Campus is in preparation. The exact date and participating companies will be announced later.";
   const dateValue = lang === "nl" ? "Datum volgt" : "Date to be announced";
   const timeValue = lang === "nl" ? "Tijd volgt" : "Time to be announced";
   const locationValue = lang === "nl" ? "HHS Delft" : "THUAS Delft";
