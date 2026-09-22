@@ -1,21 +1,86 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLOBAL STYLESHEET
+
+   Almost all styling is done with Tailwind classes written directly in the
+   components (className="bg-orange px-4 ..."). This file is only for the
+   things Tailwind cannot express:
+
+     - the three @tailwind lines that pull Tailwind in (do not remove them)
+     - the default page background, text colour and text rendering
+     - the keyframes that make the logo rows drift sideways
+     - the accessibility preferences at the bottom
+
+   COLOURS AND TYPE SIZES ARE NOT DEFINED HERE. They live in tailwind.config.js.
+   ───────────────────────────────────────────────────────────────────────────── */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Stops iOS from inflating text in landscape and breaking the type scale. */
+    -webkit-text-size-adjust: 100%;
+    /* Tells the browser which native widgets to draw: scrollbars, form
+       controls and the address bar all follow this. Without it, a dark page
+       still gets a light scrollbar and light <select> menus. */
+    color-scheme: light;
+    /* Removes the 300ms wait before a tap registers, without disabling zoom. */
+    touch-action: manipulation;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-white text-body text-slate-900 dark:bg-ink dark:text-slate-100;
+    /* The grey flash Safari/Chrome paint over a tapped element. Each control
+       provides its own press feedback, so the default is off. */
+    -webkit-tap-highlight-color: transparent;
+    /* Thinner, more evenly-spaced glyphs; closer to how the type was drawn. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Let variable fonts pick the right optical size for the rendered size. */
+    font-optical-sizing: auto;
+  }
+
+  /* Headings get their weight, leading and tracking from the type scale in
+     tailwind.config.js, so they must not inherit a second bold from the
+     browser's stylesheet. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: inherit;
+    text-wrap: balance;
+  }
+
+  /* Keeps a lone short word from dropping to its own line in body copy. */
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One consistent focus ring everywhere, for keyboard users only. */
+  :focus-visible {
+    outline: none;
+  }
 }
 
-body {
-  @apply bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100;
-}
+/* ── Logo marquee ────────────────────────────────────────────────────────────
+   The company rows on the home page render their list TWICE, side by side.
+   The animation slides the track left by exactly 50% — one full copy — and
+   then snaps back to the start. Because the second copy is identical, the
+   snap is invisible and the row appears to scroll forever.
 
-.no-scrollbar {
-  scrollbar-width: none;
-}
+   TO CHANGE THE SPEED: edit the `72s` below. Bigger number = slower.
+   Both directions should normally use the same value.
+   ──────────────────────────────────────────────────────────────────────────── */
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.marquee-track {
+  display: flex;
+  width: max-content;
 }
 
 @keyframes marquee-left {
@@ -36,20 +101,86 @@ body {
   }
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-}
-
 .marquee-left {
-  animation: marquee-left 60s linear infinite;
+  animation: marquee-left 72s linear infinite;
 }
 
 .marquee-right {
-  animation: marquee-right 60s linear infinite;
+  animation: marquee-right 72s linear infinite;
 }
 
+/* Lets a finger swipe the row sideways while the page still scrolls normally. */
 .marquee-scroll {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
+}
+
+/* Hides the scrollbar on the logo rows without disabling scrolling itself. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY PREFERENCES
+
+   Three separate system settings, handled independently. A visitor can have
+   any combination of them, so none of these blocks assumes the others.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* "Reduce motion" does not mean no feedback — it means feedback that does not
+   move things across the screen. Colour and opacity changes still convey what
+   happened, so they stay. Framer Motion is handled separately, by
+   <MotionConfig reducedMotion="user"> in src/shared/context/MotionProvider.jsx */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-left,
+  .marquee-right {
+    animation: none;
+  }
+
+  /* The rows stop drifting, so let them be scrolled by hand instead. */
+  .marquee-scroll {
+    overflow-x: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* "Reduce transparency": make the frosted surfaces solid. Blur is expensive to
+   read through for some people, and on low-contrast backgrounds the text on a
+   translucent pill can fall below a legible contrast ratio. */
+@media (prefers-reduced-transparency: reduce) {
+  .backdrop-blur-md,
+  .backdrop-blur-sm,
+  .backdrop-blur-lg {
+    backdrop-filter: none !important;
+  }
+
+  .bg-white\/10,
+  .bg-white\/12,
+  .bg-white\/\[0\.07\],
+  .bg-white\/\[0\.08\] {
+    background-color: rgb(30 58 95) !important; /* solid navy */
+  }
+}
+
+/* "Increase contrast": firm up the edges that are deliberately soft. */
+@media (prefers-contrast: more) {
+  .ring-inset {
+    --tw-ring-opacity: 0.5 !important;
+  }
 }

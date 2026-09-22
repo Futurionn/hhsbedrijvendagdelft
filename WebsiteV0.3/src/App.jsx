@@ -1,69 +1,129 @@
-import { LanguageProvider } from "./shared/LanguageContext.jsx";
-import { ThemeProvider } from "./shared/ThemeContext.jsx";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Companies from "./pages/Companies.jsx";
-import Faq from "./pages/Faq.jsx";
-import MapPage from "./pages/Map.jsx";
-import Privacy from "./pages/Privacy.jsx";
-import Terms from "./pages/Terms.jsx";
-import MotionProvider from "./shared/MotionProvider.jsx";
-import { EditionProvider } from "./shared/EditionContext.jsx";
-import CompanyRegistration from "./pages/CompanyRegistration.jsx";
-import { useEffect } from "react";
+// ═════════════════════════════════════════════════════════════════════════════
+//  APP  —  THE ROUTE TABLE
+//
+//  This file answers one question: which web address shows which page?
+//  It is the best place to start if you are new to this codebase.
+//
+//  ─── THE ADDRESSES ──────────────────────────────────────────────────────────
+//
+//    /                           the active edition's home page
+//                                (which edition that is: src/site.config.js)
+//
+//    /November2026               November 2026 home        ← the live edition
+//    /November2026/bedrijven     its company list
+//    /November2026/plattegrond   its floor plan
+//
+//    /March2026                  March 2026 home           ← frozen archive
+//    /March2026/bedrijven        its company list
+//    /March2026/plattegrond      its floor plan
+//
+//    /voor-bedrijven             company registration form
+//    /faq                        frequently asked questions
+//    /privacy                    privacy policy
+//    /terms                      terms of use
+//
+//    /companies, /plattegrond    old addresses from before editions had their
+//                                own URLs. They redirect, so links that were
+//                                shared in the past keep working.
+//
+//    anything else               redirects to /
+//
+//  ─── HOW EDITION ROUTES ARE BUILT ───────────────────────────────────────────
+//  They are NOT typed out one by one. The list below is generated from
+//  src/editions/index.js, so registering a new edition there automatically
+//  gives it all three of its addresses.
+//
+//  ─── THE PROVIDER STACK ─────────────────────────────────────────────────────
+//  The nested wrappers below give every component access to shared state:
+//      ThemeProvider     light/dark mode
+//      LanguageProvider  NL/EN
+//      MotionProvider    the animation engine
+//      BrowserRouter     the URL
+//  Order matters only in that everything must sit inside all of them.
+// ═════════════════════════════════════════════════════════════════════════════
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-function ScrollManager() {
-  const { pathname, hash } = useLocation();
+import { LanguageProvider } from "./shared/context/LanguageContext.jsx";
+import { ThemeProvider } from "./shared/context/ThemeContext.jsx";
+import MotionProvider from "./shared/context/MotionProvider.jsx";
+import ScrollManager from "./shared/components/ScrollManager.jsx";
 
-  useEffect(() => {
-    if (!hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      return;
-    }
+import CompaniesPage from "./pages/CompaniesPage.jsx";
+import CompanyRegistrationPage from "./pages/CompanyRegistrationPage.jsx";
+import FaqPage from "./pages/FaqPage.jsx";
+import FloorPlanPage from "./pages/FloorPlanPage.jsx";
+import PrivacyPage from "./pages/PrivacyPage.jsx";
+import TermsPage from "./pages/TermsPage.jsx";
 
-    const id = hash.slice(1);
-    const scrollToHash = () => {
-      const element = document.getElementById(id);
-      if (!element) return false;
-      element.scrollIntoView({ behavior: "auto", block: "start" });
-      return true;
-    };
+import {
+  EDITIONS,
+  SUBPAGE,
+  editionPath,
+  getActiveEdition,
+  getLegacyEdition
+} from "./editions/index.js";
 
-    if (scrollToHash()) return;
-
-    const frame = window.requestAnimationFrame(scrollToHash);
-    const timer = window.setTimeout(scrollToHash, 250);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.clearTimeout(timer);
-    };
-  }, [pathname, hash]);
-
-  return null;
-}
+import { COMPANY_REGISTRATION } from "./site.config.js";
 
 export default function App() {
+  const activeEdition = getActiveEdition();
+  const legacyEdition = getLegacyEdition();
+
   return (
-    <EditionProvider>
-      <ThemeProvider>
-        <LanguageProvider>
-          <MotionProvider>
-            <BrowserRouter>
-              <ScrollManager />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/companies" element={<Companies />} />
-                <Route path="/voor-bedrijven" element={<CompanyRegistration />} />
-                <Route path="/plattegrond" element={<MapPage />} />
-                <Route path="/faq" element={<Faq />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/terms" element={<Terms />} />
-              </Routes>
-            </BrowserRouter>
-          </MotionProvider>
-        </LanguageProvider>
-      </ThemeProvider>
-    </EditionProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <MotionProvider>
+          <BrowserRouter>
+            <ScrollManager />
+
+            <Routes>
+              {/* The bare domain shows the active edition. */}
+              <Route
+                path="/"
+                element={<activeEdition.Home edition={activeEdition} />}
+              />
+
+              {/* Three routes per edition, generated from the registry. */}
+              {EDITIONS.map((edition) => (
+                <Route key={edition.id} path={editionPath(edition)}>
+                  <Route index element={<edition.Home edition={edition} />} />
+                  <Route
+                    path={SUBPAGE.companies}
+                    element={<CompaniesPage edition={edition} />}
+                  />
+                  <Route
+                    path={SUBPAGE.floorPlan}
+                    element={<FloorPlanPage edition={edition} />}
+                  />
+                </Route>
+              ))}
+
+              {/* Pages that belong to the site rather than to one edition. */}
+              <Route path={COMPANY_REGISTRATION.route} element={<CompanyRegistrationPage />} />
+              <Route path="/faq" element={<FaqPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+
+              {/* Old addresses. `replace` keeps them out of the back button. */}
+              <Route
+                path="/companies"
+                element={
+                  <Navigate to={editionPath(legacyEdition, SUBPAGE.companies)} replace />
+                }
+              />
+              <Route
+                path="/plattegrond"
+                element={
+                  <Navigate to={editionPath(legacyEdition, SUBPAGE.floorPlan)} replace />
+                }
+              />
+
+              {/* Anything unrecognised goes home rather than showing nothing. */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </MotionProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

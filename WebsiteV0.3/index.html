@@ -1,51 +1,93 @@
 <!doctype html>
 <html lang="nl">
+  <!--
+    THE HTML SHELL — the only .html file the browser downloads.
+
+    It is nearly empty on purpose. React fills in the empty div at the bottom,
+    and everything a visitor sees is built from the files in /src.
+
+    Edit here:      the SEO and social tags below (the site-wide fallbacks).
+    Edit elsewhere: page text -> src/shared/strings.js or an edition config.
+                    per-page titles -> each page calls usePageMeta().
+                    the module script -> Vite rewrites it during the build.
+
+    IMPORTANT: never write an HTML tag name in angle brackets inside a comment
+    in this file. Vite injects its dev-mode scripts after the first literal
+    head tag it finds, and if that match is inside a comment the scripts are
+    commented out too — which silently gives you a blank page in `npm run dev`
+    while the production build still works.
+  -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>T.I.S. Bedrijvendag 26 november 2026 | De Haagse Hogeschool Delft</title>
     <meta
       name="description"
-      content="De novembereditie van de T.I.S. Bedrijvendag in Delft is in voorbereiding. Bekijk de laatste updates, locatie-informatie en het interesseformulier voor bedrijven."
+      content="T.I.S. Bedrijvendag op donderdag 26 november 2026, 13:00-19:00 uur, De Haagse Hogeschool Delft. Ontmoet bedrijven, ontdek stages en starterskansen, en blijf voor de netwerkborrel vanaf 16:00."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
       content="Delft Bedrijvendag T.I.S., bedrijvendag Delft, bedrijven dag Delft, De Haagse Hogeschool, Haagse Hogeschool Delft, The Hague University of Applied Sciences, Delft Campus, career day Delft, bedrijven HHS, bedrijvendag november 2026, TIS bedrijvendag, career days Delft, career delft, career event Delft, bedrijfsbezoek Delft, stageplaatsen Delft, vacatures Delft, netwerk evenement Delft, HBO, MBO, studenten, werkgevers, bedrijfsleven, technologie, innovatie, duurzaamheid"
     />
+
+    <!-- Overwritten per page by usePageMeta(); this is the fallback. -->
     <link rel="canonical" href="https://hhsbedrijvendagdelft.nl/" />
+
+    <!-- How the site looks when shared on LinkedIn, WhatsApp or Facebook. -->
     <meta property="og:locale" content="nl_NL" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="T.I.S. Bedrijvendag Delft" />
     <meta
       property="og:title"
-      content="Bedrijvendag November 2026 Delft | Delft Career Day | De Haagse Hogeschool Delft T.I.S. Campus"
+      content="T.I.S. Bedrijvendag 26 november 2026 | De Haagse Hogeschool Delft"
     />
     <meta
       property="og:description"
-      content="De novembereditie van de T.I.S. Bedrijvendag in Delft is in voorbereiding. Bekijk de laatste updates, locatie-informatie en het interesseformulier voor bedrijven."
+      content="Donderdag 26 november 2026, 13:00-19:00 uur op de Delft T.I.S. Campus. Ontmoet bedrijven, ontdek stages en starterskansen, en blijf voor de netwerkborrel vanaf 16:00."
     />
     <meta property="og:url" content="https://hhsbedrijvendagdelft.nl/" />
+
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="T.I.S. Bedrijvendag November 2026 | De Haagse Hogeschool Delft"
+      content="T.I.S. Bedrijvendag 26 november 2026 | De Haagse Hogeschool Delft"
     />
     <meta
       name="twitter:description"
-      content="De novembereditie van de T.I.S. Bedrijvendag in Delft is in voorbereiding. Bekijk de laatste updates, locatie-informatie en het interesseformulier voor bedrijven."
+      content="Donderdag 26 november 2026, 13:00-19:00 uur op de Delft T.I.S. Campus."
     />
+
     <link rel="icon" type="image/png" href="/HHS/HHS1.png" />
-    <title>T.I.S. Bedrijvendag November 2026 | De Haagse Hogeschool Delft</title>
+
+    <!-- Colours the mobile browser chrome. Kept in step with the light/dark
+         choice by src/shared/context/ThemeContext.jsx -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!--
+      Re-applies the saved dark/light choice before React starts, so a visitor
+      who chose dark mode does not get a white flash on every page load.
+      Keep it inline and keep it above the app script.
+    -->
     <script>
       (function () {
         try {
-          var t = localStorage.getItem("theme");
-          if (t === "dark") document.documentElement.classList.add("dark");
-        } catch (e) {}
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+            document
+              .querySelector('meta[name="theme-color"]')
+              ?.setAttribute("content", "#020617");
+          }
+        } catch (e) {
+          /* Private browsing can block localStorage; the default is light. */
+        }
       })();
     </script>
   </head>
+
   <body>
+    <!-- React renders the entire site into this element. -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

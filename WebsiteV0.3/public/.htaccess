@@ -1,8 +1,56 @@
+# ═════════════════════════════════════════════════════════════════════════════
+#  APACHE CONFIGURATION  —  uploaded with the site, sits next to index.html
+#
+#  WHY THIS FILE IS ESSENTIAL
+#  This is a single-page app: only index.html really exists on the server.
+#  Addresses like /November2026/bedrijven are invented by JavaScript after the
+#  page loads. So if a visitor opens that address directly, or refreshes on it,
+#  Apache looks for a folder called "November2026/bedrijven", does not find one,
+#  and returns 404.
+#
+#  The rules below say: "if the requested thing is not a real file or folder,
+#  serve index.html and let the app work out what to show."
+#
+#  WITHOUT THIS FILE every page except the home page 404s on refresh.
+#  Make sure it is uploaded — FTP clients often hide files starting with a dot.
+# ═════════════════════════════════════════════════════════════════════════════
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # index.html is served as-is.
   RewriteRule ^index\.html$ - [L]
+
+  # Real files (images, CSS, JS) and real folders are served as-is.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Everything else: hand it to the app.
   RewriteRule . /index.html [L]
+</IfModule>
+
+# ── Caching ──────────────────────────────────────────────────────────────────
+# Files in /assets/ get a content hash in their name on every build
+# (index-Dd5iYbd0.js), so an old copy can never be mistaken for a new one.
+# Those are safe to cache forever.
+#
+# Everything else — your logos, the floor plan image, index.html — keeps the
+# SAME filename when you replace it. Caching those hard would leave visitors
+# looking at an old logo for a year, so they get a short cache instead.
+<IfModule mod_headers.c>
+  <IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "^/assets/" FINGERPRINTED=1
+    Header set Cache-Control "public, max-age=31536000, immutable" env=FINGERPRINTED
+  </IfModule>
+
+  # Replaceable images: cached for an hour, so a swapped logo shows up quickly.
+  <FilesMatch "\.(png|jpe?g|svg|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+
+  # Never cache these, or visitors keep seeing the previous version of the site.
+  <FilesMatch "^(index\.html|sitemap\.xml|robots\.txt|\.htaccess)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
 </IfModule>

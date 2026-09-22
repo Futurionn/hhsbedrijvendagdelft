@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TIS//Bedrijvendag November 2026//NL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tis-bedrijvendag-2026-11-26@hhsbedrijvendagdelft.nl
+DTSTAMP:20260922T000000Z
+DTSTART:20261126T120000Z
+DTEND:20261126T180000Z
+SUMMARY:T.I.S. Bedrijvendag 2026
+DESCRIPTION:Bedrijvendag op de Delft T.I.S. Campus van De Haagse Hogeschool. 13:00-19:00 uur\, met vanaf 16:00 de netwerkborrel. Gratis toegang\, aanmelden niet nodig. Meer informatie: https://hhsbedrijvendagdelft.nl/
+LOCATION:De Haagse Hogeschool Delft\, Rotterdamseweg 137\, 2628 AL Delft
+URL:https://hhsbedrijvendagdelft.nl/
+END:VEVENT
+END:VCALENDAR

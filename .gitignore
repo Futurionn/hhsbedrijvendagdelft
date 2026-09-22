@@ -1,0 +1,19 @@
+# Dependencies (reinstall with: npm install)
+node_modules/
+
+# Build output (regenerate with: npm run build)
+dist/
+
+# Vite cache
+.vite/
+*.local
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-error.log*

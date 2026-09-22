@@ -1,120 +1,238 @@
+// ─────────────────────────────────────────────────────────────────────────────
+//  SITE-WIDE TEXT  (Dutch + English)
+//
+//  Text that appears on MORE THAN ONE page lives here: buttons, footer links,
+//  table headers, the companies filter, and so on.
+//
+//  Text that belongs to ONE edition (hero title, event date, the "what to
+//  expect" cards) does NOT live here. It lives in that edition's config file:
+//      src/editions/november-2026/edition.config.js
+//      src/editions/march-2026/edition.config.js
+//
+//  HOW TO USE IT IN A COMPONENT:
+//      const { lang } = useLanguage();
+//      const t = STRINGS[lang];
+//      <p>{t.footerPrivacy}</p>
+//
+//  HOW TO ADD A NEW PIECE OF TEXT:
+//      1. Add the key to BOTH the `nl` block and the `en` block below.
+//      2. Use it as `t.yourNewKey`.
+//      Keep the two blocks in the same order so they stay easy to compare.
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const STRINGS = {
+  // ───────────────────────────────── DUTCH ──────────────────────────────────
   nl: {
-    topPill: "De Haagse Hogeschool",
-    heroTitle: "T.I.S. Bedrijvendag",
-    heroSubtitle:
-      "Ontmoet toonaangevende bedrijven, ontdek kansen en zet de eerste stap naar jouw carrière.",
-    dateLabel: "Datum",
-    dateValue: "5 Maart 2026",
-    timeLabel: "Tijd",
-    timeValue: "13u - 19u",
-    locationLabel: "Locatie",
-    locationValue: "HHS Delft",
-    locationAddress: "Rotterdamseweg 137, 2628 AL Delft",
-    addToCalendar: "Zet in je agenda",
-    timeHint: "Ga naar planning",
-    dateHint: "Voeg toe aan agenda",
-    ctaDiscover: "Ontdek bedrijven",
-    ctaMap: "Plattegrond",
-    mapPageTitle: "Plattegrond",
-    mapPageIntro: "Bekijk de interactieve plattegrond van de bedrijvendag.",
-    mapComingSoonTitle: "Interactief",
-    mapComingSoonBody:
-      "Click op een stand om direct te zien welk bedrijf daar staat.",
+    // -- Header / navigation -----------------------------------------------
+    navLabel: "Hoofdnavigatie",
+    navOpen: "Menu openen",
+    navClose: "Menu sluiten",
+    navProgramme: "Programma",
+    navAbout: "Over het event",
+    navAssociations: "Verenigingen",
+
+    // -- Top bar controls --------------------------------------------------
+    switchLanguage: "Wissel van taal",
+    toggleDarkMode: "Licht/donker wisselen",
+    themeLight: "Licht",
+    themeDark: "Donker",
+    backToHome: "Terug naar home",
+    hhsLogoAlt: "De Haagse Hogeschool",
+
+    // -- Companies section on the home page --------------------------------
     companiesKicker: "ONZE PARTNERS",
     companiesTitle: "Deelnemende bedrijven",
     companiesSubtitle:
       "Beweeg over een bedrijf om meer te leren over hun missie en beschikbare mogelijkheden.",
-    aboutKicker: "WAT JE KUNT VERWACHTEN",
-    aboutTitleA: "Jouw toegangspoort tot",
-    aboutTitleB: "professioneel succes",
-    aboutBody:
-      "Career Day 2026 brengt de slimste studenten en toonaangevende bedrijven samen. Of je nu op zoek bent naar een stage, een startersfunctie of je carrièrepad wilt verkennen: dit is jouw kans om waardevolle connecties te leggen.",
-    statsCompanies: "Bedrijven",
-    statsStudents: "Studenten",
-    statsOpportunities: "Kansen",
+    companiesViewAll: "Bekijk alle bedrijven",
+    companiesIssuesLabel: "Problemen met uw bedrijf representatie?",
+    companiesEmpty:
+      "De bedrijvenlijst voor deze editie is nog niet gepubliceerd. Zodra de deelnemers bekend zijn, verschijnen ze hier.",
+
+    // -- Companies list page -----------------------------------------------
+    companiesPageTitle: "Bedrijven",
+    companiesPageIntro:
+      "Bekijk alle deelnemende bedrijven. Gebruik de filter om snel te zoeken.",
+    filter: "Filter",
+    category: "Categorie",
+    sortAZ: "Sorteer A-Z",
+    on: "aan",
+    off: "uit",
+    showOnMap: "Toon op kaart",
+    stand: "Stand",
+    website: "Website",
+
+    // -- Company card details ----------------------------------------------
+    industry: "Sector",
+    employees: "Medewerkers",
+    region: "Regio",
+    visitWebsite: "Website bezoeken",
+    hoverForMoreInfo: "Hover voor meer info",
+
+    // -- Floor plan page ---------------------------------------------------
+    mapPageTitle: "Plattegrond",
+    mapPageIntro: "Bekijk de interactieve plattegrond van de bedrijvendag.",
+    mapBadge: "Interactief",
+    mapHeading: "Interactieve plattegrond",
+    mapIntro: "Klik op een stand om direct te zien welk bedrijf daar staat.",
+    mapHintMouse:
+      "Hover om het bedrijf te zien, klik om het in de bedrijvenlijst te openen.",
+    mapHintTouch:
+      "Tik eenmaal voor de bedrijfsnaam, tik nogmaals om de bedrijvenlijst te openen.",
+    mapAltText: "Plattegrond HHS Delft",
+    mapStandUnassigned: "Bedrijf volgt binnenkort",
+    mapEmpty:
+      "Voor deze editie is nog geen plattegrond beschikbaar. Zodra de indeling vastligt, verschijnt die hier.",
+
+    // -- Study associations section ----------------------------------------
+    associationsKicker: "ORGANISERENDE VERENIGINGEN",
+    associationsTitle: "Studieverenigingen",
+    associationsSubtitle: "Klik op een vereniging om naar de website te gaan.",
+
+    // -- Footer -------------------------------------------------------------
     footerCtaTitle: "Klaar om jouw toekomst vorm te geven?",
     footerCtaBody:
       "Kom langs, ontmoet bedrijven en verenigingen, en breid je netwerk uit.",
-    footerAboutTitle: "Over",
+    footerFreeEntry: "Gratis toegang",
+    footerOpenToAll: "Open voor iedereen",
+    footerOrganisation: "De Haagse Hogeschool",
     footerAboutBody:
       "De Haagse Hogeschool verbindt onderwijs en werkveld en helpt studenten klaar te stomen voor de uitdagingen van morgen.",
     footerLinksTitle: "Snelle links",
     footerLinkAbout: "Over het event",
     footerLinkCompanies: "Bedrijven",
-    footerLinkSchedule: "Programma",
+    footerLinkAssociations: "Verenigingen",
     footerLinkFaq: "FAQ",
+    footerLinkForCompanies: "Voor bedrijven",
     footerContactTitle: "Contact",
     footerPrivacy: "Privacybeleid",
     footerTerms: "Gebruiksvoorwaarden",
-    visitWebsite: "Website bezoeken",
-    industry: "Sector",
-    employees: "Medewerkers",
-    region: "Regio",
-    opportunities: "Mogelijkheden",
-    hoverForMoreInfo: "Hover voor meer info",
-    associationsKicker: "ORGANISERENDE VERENIGINGEN",
-    associationsTitle: "Studieverenigingen",
-    associationsSubtitle: "Klik op een vereniging om naar de website te gaan.",
+    footerSiteIssues: "Problemen met de website?",
+
+    // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"
   },
+
+  // ──────────────────────────────── ENGLISH ─────────────────────────────────
   en: {
-    topPill: "The Hague University of Applied Sciences",
-    heroTitle: "T.I.S. Career Day",
-    heroSubtitle:
-      "Connect with leading companies, explore opportunities, and take the first step towards your career.",
-    dateLabel: "Date",
-    dateValue: "5 March 2026",
-    timeLabel: "Time",
-    timeValue: "13:00 - 19:00",
-    locationLabel: "Location",
-    locationValue: "THUAS Delft",
-    locationAddress: "Rotterdamseweg 137, 2628 AL Delft",
-    addToCalendar: "Add to calendar",
-    timeHint: "Jump to schedule",
-    dateHint: "Add to calendar",
-    ctaDiscover: "Discover Companies",
-    ctaMap: "Map",
-    mapPageTitle: "Map",
-    mapPageIntro: "Explore the interactive career day floor plan.",
-    mapComingSoonTitle: "Interactive",
-    mapComingSoonBody:
-      "Hover over a stand to instantly see which company is located there.",
+    // -- Header / navigation -----------------------------------------------
+    navLabel: "Main navigation",
+    navOpen: "Open menu",
+    navClose: "Close menu",
+    navProgramme: "Programme",
+    navAbout: "About the event",
+    navAssociations: "Associations",
+
+    // -- Top bar controls --------------------------------------------------
+    switchLanguage: "Switch language",
+    toggleDarkMode: "Toggle dark mode",
+    themeLight: "Light",
+    themeDark: "Dark",
+    backToHome: "Back to home",
+    hhsLogoAlt: "The Hague University of Applied Sciences",
+
+    // -- Companies section on the home page --------------------------------
     companiesKicker: "MEET OUR PARTNERS",
     companiesTitle: "Participating Companies",
     companiesSubtitle:
       "Hover over each company to learn more about their mission and available roles.",
-    aboutKicker: "WHAT TO EXPECT",
-    aboutTitleA: "Your gateway to",
-    aboutTitleB: "professional success",
-    aboutBody:
-      "Career Day 2026 brings together top students and leading companies. Whether you're seeking an internship, a graduate role, or exploring career paths, this is your chance to build meaningful connections.",
-    statsCompanies: "Companies",
-    statsStudents: "Students",
-    statsOpportunities: "Opportunities",
+    companiesViewAll: "View all companies",
+    companiesIssuesLabel: "Issues with your company listing?",
+    companiesEmpty:
+      "The company list for this edition has not been published yet. Participants will appear here once they are confirmed.",
+
+    // -- Companies list page -----------------------------------------------
+    companiesPageTitle: "Companies",
+    companiesPageIntro:
+      "Browse all participating companies. Use the filter to quickly find what you need.",
+    filter: "Filter",
+    category: "Category",
+    sortAZ: "Sort A-Z",
+    on: "on",
+    off: "off",
+    showOnMap: "Show on map",
+    stand: "Stand",
+    website: "Website",
+
+    // -- Company card details ----------------------------------------------
+    industry: "Industry",
+    employees: "Employees",
+    region: "Region",
+    visitWebsite: "Visit Website",
+    hoverForMoreInfo: "Hover for more info",
+
+    // -- Floor plan page ---------------------------------------------------
+    mapPageTitle: "Map",
+    mapPageIntro: "Explore the interactive career day floor plan.",
+    mapBadge: "Interactive",
+    mapHeading: "Interactive floor plan",
+    mapIntro: "Hover over a stand to instantly see which company is located there.",
+    mapHintMouse: "Hover to view the company, click to open it in the companies list.",
+    mapHintTouch:
+      "Tap once to preview the company, tap again to open it in the companies list.",
+    mapAltText: "THUAS Delft floor plan",
+    mapStandUnassigned: "Company coming soon",
+    mapEmpty:
+      "No floor plan is available for this edition yet. It will appear here once the layout is final.",
+
+    // -- Study associations section ----------------------------------------
+    associationsKicker: "ORGANISING ASSOCIATIONS",
+    associationsTitle: "Study Associations",
+    associationsSubtitle: "Click on an association to visit its website.",
+
+    // -- Footer -------------------------------------------------------------
     footerCtaTitle: "Ready to shape your future?",
     footerCtaBody:
       "Meet companies and associations, ask questions, and grow your network.",
-    footerAboutTitle: "About",
+    footerFreeEntry: "Free entry",
+    footerOpenToAll: "Open to everyone",
+    footerOrganisation: "The Hague University of Applied Sciences",
     footerAboutBody:
       "The Hague University of Applied Sciences prepares students through practical education and strong industry connections.",
     footerLinksTitle: "Quick Links",
     footerLinkAbout: "About the Event",
     footerLinkCompanies: "Companies",
-    footerLinkSchedule: "Schedule",
+    footerLinkAssociations: "Associations",
     footerLinkFaq: "FAQ",
+    footerLinkForCompanies: "For companies",
     footerContactTitle: "Contact",
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Service",
-    visitWebsite: "Visit Website",
-    industry: "Industry",
-    employees: "Employees",
-    region: "Region",
-    opportunities: "Opportunities",
-    hoverForMoreInfo: "Hover for more info",
-    associationsKicker: "ORGANISING ASSOCIATIONS",
-    associationsTitle: "Study Associations",
-    associationsSubtitle: "Click on an association to visit its website.",
+    footerSiteIssues: "Website issues?",
+
+    // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"
+  }
+};
+
+/**
+ * Labels for the company categories used by the filter on the companies page.
+ * The KEY must match the `category` field of a company in a data file.
+ *
+ * TO ADD A CATEGORY: add the same key to both blocks below, then use that key
+ * as `category:` on a company.
+ */
+export const CATEGORY_LABELS = {
+  nl: {
+    all: "Alle",
+    other: "Overig",
+    defence: "Defensie",
+    "energy-transition": "Energietransitie",
+    engineering: "Engineering",
+    consultancy: "Consultancy",
+    recruitment: "Recruitment",
+    technology: "Technologie",
+    installation: "Installatie"
+  },
+  en: {
+    all: "All",
+    other: "Other",
+    defence: "Defence",
+    "energy-transition": "Energy transition",
+    engineering: "Engineering",
+    consultancy: "Consultancy",
+    recruitment: "Recruitment",
+    technology: "Technology",
+    installation: "Installation"
   }
 };
