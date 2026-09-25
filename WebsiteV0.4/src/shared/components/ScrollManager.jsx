@@ -9,27 +9,40 @@
 //    plain link  (/faq)          -> jump to the top
 //    anchor link (/#companies)   -> scroll to that section
 //
+//  It lives INSIDE the page that fades in (see PageTransition.jsx), so it runs
+//  when the new page appears — after the old one has faded out, never while
+//  it is still on screen. That first jump is instant: the page is invisible
+//  at that moment, so there is nothing to watch. A later anchor link on the
+//  same page scrolls smoothly instead.
+//
 //  Anchor links get two retries, because the target section may not exist yet
 //  on the first paint — images and animated sections settle a moment later.
 // ─────────────────────────────────────────────────────────────────────────────
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const RETRY_DELAY_MS = 250;
 
-export default function ScrollManager() {
-  const { pathname, hash } = useLocation();
+export default function ScrollManager({ location }) {
+  const { pathname, hash } = location;
+  const isFirstRun = useRef(true);
 
   useEffect(() => {
+    const behavior = isFirstRun.current ? "instant" : "smooth";
+    isFirstRun.current = false;
+
     if (!hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      window.scrollTo({ top: 0, left: 0, behavior });
       return;
     }
 
+    // Land just below the pinned header bar, measured (its drawn height
+    // changes with the PC's 80% zoom and on phones).
     const scrollToHash = () => {
       const element = document.getElementById(hash.slice(1));
       if (!element) return false;
-      element.scrollIntoView({ behavior: "auto", block: "start" });
+      const bar = document.querySelector("header")?.getBoundingClientRect().height ?? 72;
+      const top = element.getBoundingClientRect().top + window.scrollY - bar - 16;
+      window.scrollTo({ top: Math.max(0, top), left: 0, behavior });
       return true;
     };
 

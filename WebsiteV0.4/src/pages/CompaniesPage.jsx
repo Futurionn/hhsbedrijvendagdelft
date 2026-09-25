@@ -8,11 +8,18 @@
 //      ?focus=<company-id>     scrolls to that company and rings it in orange
 //                              (this is what the floor plan links to)
 //
+//  And one longer address:
+//      /<edition>/bedrijven/<company-id>
+//                              the same list, opened at that company with ALL
+//                              its details (full description, size, category).
+//                              This is where "Meer info" on the home-page
+//                              gallery leads.
+//
 //  The list itself comes from the edition's data/companies.js — not from here.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Filter, MapPin } from "lucide-react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import PageLayout from "../shared/components/PageLayout.jsx";
 import CompanyLogo from "../shared/ui/CompanyLogo.jsx";
 import { useLanguage } from "../shared/context/LanguageContext.jsx";
@@ -32,7 +39,7 @@ const DESCRIPTION_LIMIT = 160;
 /** How long the orange highlight ring stays on a focused company. */
 const HIGHLIGHT_MS = 2400;
 
-function CompanyRow({ company, edition, isHighlighted, showMapLink }) {
+function CompanyRow({ company, edition, isHighlighted, isExpanded, showMapLink }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
   const labels = CATEGORY_LABELS[lang] ?? CATEGORY_LABELS.en;
@@ -41,7 +48,7 @@ function CompanyRow({ company, edition, isHighlighted, showMapLink }) {
   const hasStand = Number.isInteger(company.stand);
 
   const description =
-    company.description.length > DESCRIPTION_LIMIT
+    !isExpanded && company.description.length > DESCRIPTION_LIMIT
       ? `${company.description.slice(0, DESCRIPTION_LIMIT).trim()}…`
       : company.description;
 
@@ -79,6 +86,23 @@ function CompanyRow({ company, edition, isHighlighted, showMapLink }) {
             {company.industry} - {company.location}
           </div>
           <div className={`mt-3 text-sm leading-relaxed ${text.body}`}>{description}</div>
+
+          {isExpanded ? (
+            <dl className={`mt-4 grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 ${text.secondary}`}>
+              {[
+                [t.industry, company.industry],
+                [t.category, labels[company.category] ?? company.category],
+                [t.employees, company.employees],
+                [t.region, company.location],
+                [t.stand, hasStand ? `#${company.stand}` : t.tbd]
+              ].map(([label, value]) => (
+                <div key={label} className="flex gap-2">
+                  <dt className="font-semibold">{label}:</dt>
+                  <dd className={text.primary}>{value || t.tbd}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : null}
         </div>
 
         <div className="flex flex-col items-start gap-2 sm:items-end">
@@ -152,10 +176,15 @@ export default function CompaniesPage({ edition }) {
       : filtered;
   }, [allCompanies, category, sortAZ]);
 
-  const focusId = searchParams.get("focus");
+  // /bedrijven/<id> opens a company in full; ?focus=<id> only points at it.
+  const { companyId } = useParams();
+  const focusId = companyId ?? searchParams.get("focus");
+  const openCompany = companyId ? allCompanies.find((company) => company.id === companyId) : null;
 
   usePageMeta({
-    title: `${t.companiesPageTitle} ${edition.label} | T.I.S. Bedrijvendag Delft`,
+    title: openCompany
+      ? `${openCompany.name} | ${t.companiesPageTitle} ${edition.label} | T.I.S. Bedrijvendag Delft`
+      : `${t.companiesPageTitle} ${edition.label} | T.I.S. Bedrijvendag Delft`,
     description: t.companiesPageIntro,
     canonicalPath: editionPath(edition, SUBPAGE.companies)
   });
@@ -168,14 +197,17 @@ export default function CompaniesPage({ edition }) {
     if (!element) return;
 
     setHighlightedId(focusId);
-    element.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Arriving from another page the list is still fading in, so jump
+    // straight there; within the page, glide.
+    element.scrollIntoView({ behavior: companyId ? "instant" : "smooth", block: "center" });
+    if (companyId) return undefined; // an opened company keeps its ring
 
     const timer = window.setTimeout(() => {
       setHighlightedId((current) => (current === focusId ? null : current));
     }, HIGHLIGHT_MS);
 
     return () => window.clearTimeout(timer);
-  }, [focusId, visibleCompanies]);
+  }, [focusId, companyId, visibleCompanies]);
 
   const showMapLink = hasFloorPlan(edition);
 
@@ -228,6 +260,7 @@ export default function CompaniesPage({ edition }) {
                 company={company}
                 edition={edition}
                 isHighlighted={highlightedId === company.id}
+                isExpanded={companyId === company.id}
                 showMapLink={showMapLink}
               />
             ))}

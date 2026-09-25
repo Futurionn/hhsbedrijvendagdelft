@@ -11,6 +11,7 @@
 //
 //    /November2026               November 2026 home        ← the live edition
 //    /November2026/bedrijven     its company list
+//    /November2026/bedrijven/x   that list, opened at company x
 //    /November2026/plattegrond   its floor plan
 //
 //    /March2026                  March 2026 home           ← frozen archive
@@ -41,12 +42,12 @@
 //      BrowserRouter     the URL
 //  Order matters only in that everything must sit inside all of them.
 // ═════════════════════════════════════════════════════════════════════════════
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route } from "react-router-dom";
 
 import { LanguageProvider } from "./shared/context/LanguageContext.jsx";
 import { ThemeProvider } from "./shared/context/ThemeContext.jsx";
 import MotionProvider from "./shared/context/MotionProvider.jsx";
-import ScrollManager from "./shared/components/ScrollManager.jsx";
+import PageTransition from "./shared/components/PageTransition.jsx";
 
 import CompaniesPage from "./pages/CompaniesPage.jsx";
 import CompanyRegistrationPage from "./pages/CompanyRegistrationPage.jsx";
@@ -74,9 +75,8 @@ export default function App() {
       <LanguageProvider>
         <MotionProvider>
           <BrowserRouter>
-            <ScrollManager />
-
-            <Routes>
+            {/* <PageTransition> is <Routes> plus a soft fade between pages. */}
+            <PageTransition>
               {/* The bare domain shows the active edition. */}
               <Route
                 path="/"
@@ -89,6 +89,11 @@ export default function App() {
                   <Route index element={<edition.Home edition={edition} />} />
                   <Route
                     path={SUBPAGE.companies}
+                    element={<CompaniesPage edition={edition} />}
+                  />
+                  {/* One company opened in full: "Meer info" on the gallery. */}
+                  <Route
+                    path={`${SUBPAGE.companies}/:companyId`}
                     element={<CompaniesPage edition={edition} />}
                   />
                   <Route
@@ -120,7 +125,7 @@ export default function App() {
 
               {/* Anything unrecognised goes home rather than showing nothing. */}
               <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+            </PageTransition>
           </BrowserRouter>
         </MotionProvider>
       </LanguageProvider>

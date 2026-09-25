@@ -3,7 +3,7 @@
 //  of detail underneath.
 //
 //      Wanneer                          Waar
-//      Donderdag 26 november            Delft T.I.S. Campus ↗
+//      Donderdag 26 november            Delft T.I.S. Campus  (underlined)
 //      13:00–19:00 · borrel vanaf 16:00 Rotterdamseweg 137, 2628 AL Delft
 //
 //  Put several inside a <dl> (EditionHero does this). Made for the navy hero,
@@ -12,28 +12,16 @@
 //      <MetaRow label="Waar" value="Delft T.I.S. Campus"
 //               detail="Rotterdamseweg 137, 2628 AL Delft" href={mapsUrl} />
 //
-//  With `href` or `onClick` only the VALUE becomes a link (underlined, with
-//  an arrow); the label and detail stay plain text. The link's hit area is
+//  With `href` or `onClick` only the VALUE becomes a link (underlined, no
+//  arrow); the label and detail stay plain text. The link's hit area is
 //  44px tall without pushing the layout apart.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ARROWS = {
-  down: { glyph: "↓", cls: "arr s" },
-  right: { glyph: "→", cls: "arr" },
-  out: { glyph: "↗", cls: "arr ne" }
-};
+// The negative margin gives the value a 44px hit area without pushing the
+// rows apart.
+const VALUE_LINK = "tlink -my-[9px] text-left font-normal";
 
-// The value keeps the reference's tight "Campus ↗" spacing; the negative
-// margin gives it a 44px hit area without pushing the rows apart.
-const VALUE_LINK = "tlink -my-[9px] gap-[0.3em] text-left font-normal";
-
-export default function MetaRow({ label, icon: Icon, value, detail, onClick, href, arrow }) {
-  const Arrow = ARROWS[arrow ?? (href ? "out" : "right")];
-  const arrowEl = (
-    <span className={Arrow.cls} aria-hidden="true">
-      {Arrow.glyph}
-    </span>
-  );
+export default function MetaRow({ label, icon: Icon, value, detail, onClick, href }) {
 
   let valueEl = value;
   if (href) {
@@ -45,14 +33,12 @@ export default function MetaRow({ label, icon: Icon, value, detail, onClick, hre
         {...(isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
       >
         {value}
-        {arrowEl}
       </a>
     );
   } else if (onClick) {
     valueEl = (
       <button type="button" onClick={onClick} className={VALUE_LINK}>
         {value}
-        {arrowEl}
       </button>
     );
   }

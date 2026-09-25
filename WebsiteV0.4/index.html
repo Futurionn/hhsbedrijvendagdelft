@@ -20,6 +20,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Phones show the PC layout, zoomed out to fit, instead of a restacked
+      phone layout. The page is laid out 800px wide (the PC arrangement:
+      timeline across, facts side by side) and the phone shrinks it to its
+      screen; the html.pc-on-phone class (src/index.css) then enlarges the
+      type and controls so they stay readable and tappable.
+      Pinch-zoom keeps working. Tablets and laptops are untouched.
+    -->
+    <script>
+      (function () {
+        // A phone: a small screen AND a touch screen. The touch check keeps
+        // small laptop screens (e.g. 1024 x 600) on the normal PC layout.
+        var small = Math.min(screen.width, screen.height) < 700;
+        var touch = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
+        if (small && touch) {
+          document
+            .querySelector('meta[name="viewport"]')
+            .setAttribute("content", "width=800");
+          document.documentElement.classList.add("pc-on-phone");
+        }
+      })();
+    </script>
 
     <title>T.I.S. Bedrijvendag 26 november 2026 | De Haagse Hogeschool Delft</title>
     <meta

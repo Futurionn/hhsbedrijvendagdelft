@@ -1,0 +1,541 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLOBAL STYLESHEET
+
+   Almost all styling is done with Tailwind classes written directly in the
+   components (className="bg-orange px-4 ..."). This file is for:
+
+     - the TOKENS: the `:root` block from design/tis-reference.html, as CSS
+       variables. tailwind.config.js reads them (text-display, px-gutter...).
+     - the default page background, text colour and text rendering
+     - the few primitives whose CSS Tailwind cannot express neatly: the
+       typographic link, the bubbles, the stars, the programme axis, the FAQ
+       rows, the logo grid
+     - the keyframes that make the company logo rows drift sideways
+     - the accessibility preferences at the bottom
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── TOKENS — copied from design/tis-reference.html ─────────────────────────
+   Colours are ALSO in tailwind.config.js (as hex, so `/opacity` works) and in
+   src/shared/theme.js. Change all three together.
+   ──────────────────────────────────────────────────────────────────────────── */
+:root {
+  --navy: #1f3a5f; /* hero */
+  --navy-deep: #16294a; /* dark bottom section */
+  --orange: #f07d00; /* action + fixed accents, never decoration */
+  --ink: #122038;
+  --muted: #5a6a80;
+  --paper: #ffffff;
+  --rule: rgba(18, 32, 56, 0.14);
+  --rule-strong: rgba(18, 32, 56, 0.9);
+  --on-dark: #ffffff;
+  --on-dark-2: rgba(255, 255, 255, 0.72);
+  --on-dark-3: rgba(255, 255, 255, 0.6); /* reference: .5 — raised for AA */
+  --rule-dark: rgba(255, 255, 255, 0.16);
+
+  /* type scale */
+  --t-meta: 0.8125rem; /* 13 */
+  --t-small: 0.9375rem; /* 15 */
+  --t-body: 1.0625rem; /* 17 */
+  --t-lede: clamp(1.1875rem, 1.4vw, 1.5rem); /* 19–24 */
+  --t-h3: clamp(1.25rem, 1.6vw, 1.625rem); /* 20–26 */
+  --t-h2: clamp(2.25rem, 4.6vw, 4.25rem); /* 36–68 */
+  --t-num: clamp(3rem, 5.2vw, 5rem); /* timeline numerals */
+  --t-display: clamp(3.4rem, 15vw, 15rem); /* "Bedrijvendag", fills the grid */
+  --tis-ratio: 0.36; /* "T.I.S." as a fraction of the display size */
+
+  /* space */
+  --section: clamp(3rem, 5.5vw, 5.5rem);
+  --gutter: clamp(1rem, 4.4vw, 4rem);
+  --max: 1440px;
+  --gap: clamp(1rem, 1.7vw, 1.5rem);
+
+  --radius: 2px; /* the only radius; bubbles and stars are the only circles */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.45s;
+}
+
+/* Dark mode: the light page's hairlines and copy colours flip. Components use
+   Tailwind `dark:` classes; these cover the CSS-only primitives below. */
+.dark {
+  --ink: #f1f5f9;
+  --muted: #94a3b8;
+  --rule: rgba(255, 255, 255, 0.14);
+  --rule-strong: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 699px) {
+  :root {
+    --t-display: clamp(3rem, 15.2vw, 6rem);
+    --tis-ratio: 0.46;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Stops iOS from inflating text in landscape and breaking the type scale. */
+    -webkit-text-size-adjust: 100%;
+    /* Tells the browser which native widgets to draw: scrollbars, form
+       controls and the address bar all follow this. */
+    color-scheme: light;
+    /* Removes the 300ms wait before a tap registers, without disabling zoom. */
+    touch-action: manipulation;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-white text-body text-fg dark:bg-ink dark:text-slate-100;
+    /* Tabular figures, so 13:00 and 16:00 are exactly the same width. */
+    font-feature-settings: "tnum";
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Headings get their weight, leading and tracking from the type scale in
+     tailwind.config.js, not from the browser. They wrap naturally (no
+     `balance`), as in the reference. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: inherit;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One focus style everywhere, for keyboard users only: the orange outline
+     from the reference. */
+  :focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 3px;
+  }
+}
+
+/* ── Typographic link (.tlink) ────────────────────────────────────────────────
+   A full underline at rest that retracts to the right on hover; the arrow
+   (.arr, with .ne / .s for ↗ / ↓) nudges in its own direction. Colour
+   follows the text. `Button variant="link"` renders this.
+   ──────────────────────────────────────────────────────────────────────────── */
+@layer components {
+  .tlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: 44px;
+    font-weight: 500;
+    background: linear-gradient(currentColor, currentColor) 0 calc(100% - 10px) / 100% 1px
+      no-repeat;
+    transition:
+      background-size var(--dur) var(--ease),
+      color 0.2s;
+  }
+
+  .tlink:hover {
+    background-size: 0 1px;
+    background-position: 100% calc(100% - 10px);
+  }
+
+  .arr {
+    display: inline-block;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .group:hover .arr,
+  .tlink:hover .arr {
+    transform: translateX(4px);
+  }
+
+  .group:hover .arr.ne,
+  .tlink:hover .arr.ne {
+    transform: translate(3px, -3px);
+  }
+
+  .group:hover .arr.s,
+  .tlink:hover .arr.s {
+    transform: translateY(3px);
+  }
+
+  /* The primary button inverts to white on navy (the reference's `.btn`
+     hover). Outranks the light-page hover classes in Button.jsx. */
+  .on-dark .btn-primary:hover {
+    background-color: #fff;
+    color: var(--navy);
+  }
+
+  /* ── Bubbles: translucent, lit from the top-left, drifting slowly.
+        Placed at the edges of the hero and cropped by it — never a solid
+        disc behind text. Size and drift are set per bubble (see
+        src/shared/ui/FloatingOrbs.jsx). ─────────────────────────────────── */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 32% 28%,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.045) 42%,
+      rgba(255, 255, 255, 0.02) 68%,
+      rgba(255, 255, 255, 0.035)
+    );
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    animation: drift var(--d, 22s) ease-in-out infinite alternate;
+  }
+
+  /* ── Stars: tiny dots that twinkle, behind the dark bottom band. ───────── */
+  /* The whole field drifts slowly (.star-drift); each star twinkles between
+     a third of its brightness and a little over full, with a soft glow. */
+  .star-drift {
+    position: absolute;
+    inset: -40px;
+    animation: star-drift 30s linear infinite;
+  }
+
+  .star {
+    position: absolute;
+    width: var(--s, 2px);
+    height: var(--s, 2px);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 var(--g, 6px) rgba(255, 255, 255, 0.55);
+    opacity: var(--o, 0.5);
+    animation: twinkle var(--d, 5s) ease-in-out infinite alternate;
+    animation-delay: var(--dl, 0s);
+  }
+
+  /* ── Programme axis: a strong top line, an hour tick every 1/--hours of
+        the width and a shorter half-hour tick in between. ───────────────── */
+  .tl-axis {
+    position: relative;
+    height: 14px;
+    border-top: 1px solid var(--rule-strong);
+    background:
+      linear-gradient(90deg, var(--rule-strong) 1px, transparent 1px) 0 0 /
+        calc(100% / var(--hours, 6)) 14px repeat-x,
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px) 0 0 /
+        calc(100% / (var(--hours, 6) * 2)) 7px repeat-x;
+  }
+
+  .tl-axis::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 14px;
+    background: var(--rule-strong);
+  }
+
+  /* ── Hover text (the footer's big date, src/shared/ui/HoverText.jsx) ──── */
+  .hover-text-glyphs {
+    font-size: 100px;
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    dominant-baseline: alphabetic;
+  }
+
+  .hover-text-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  .hover-text-draw.is-drawn {
+    animation: hover-text-draw 4s ease-in-out forwards;
+  }
+
+  /* ── Programme lanes: every lane already owns its full box (padding and
+        bar are there at rest), so hovering only tints the box and thickens
+        the bar upwards with a shadow — nothing below moves. The other lanes
+        fade. Touch screens show everything at full strength. ─────────────── */
+  @media (hover: hover) and (min-width: 700px) {
+    .tl-lanes > li {
+      transition:
+        opacity var(--dur) var(--ease),
+        background-color 0.2s var(--ease),
+        box-shadow 0.2s var(--ease);
+    }
+
+    .tl-lanes:hover > li:not(:hover) {
+      opacity: 0.4;
+    }
+
+    .tl-lanes > li:hover {
+      background-color: var(--lane-bg);
+      box-shadow: 0 -4px 0 0 var(--lane-c);
+    }
+  }
+
+  /* ── "Voor bedrijven" link row: orange underline draws under the title,
+        the arrow slides and turns orange. ─────────────────────────────────── */
+  .bizlink-title {
+    background: linear-gradient(var(--orange), var(--orange)) 0 100% / 0 2px no-repeat;
+    transition: background-size var(--dur) var(--ease);
+    padding-bottom: 0.05em;
+  }
+
+  .bizlink:hover .bizlink-title {
+    background-size: 100% 2px;
+  }
+
+  .bizlink-arr {
+    transition:
+      transform var(--dur) var(--ease),
+      color 0.2s;
+  }
+
+  .bizlink:hover .bizlink-arr {
+    transform: translateX(8px);
+    color: var(--orange);
+  }
+
+  /* ── FAQ rows: <details>, with a + that turns into a − when open. ─────── */
+  .faq summary {
+    list-style: none;
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    justify-self: end;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .faq-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq details[open] .faq-icon::after {
+    transform: rotate(0);
+  }
+
+  /* The answer slides open instead of snapping. Browsers that can animate
+     to `height: auto` (Chrome/Edge 131+) grow the row smoothly; everywhere
+     else the answer at least fades and settles into place. */
+  .faq details {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size var(--dur) var(--ease),
+      content-visibility var(--dur) var(--ease) allow-discrete;
+  }
+
+  .faq details[open]::details-content {
+    block-size: auto;
+  }
+
+  .faq details[open] > :not(summary) {
+    animation: faq-open var(--dur) var(--ease);
+  }
+
+  @keyframes faq-open {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  /* ── Association logos: a grid of hairlines. Each cell draws its right
+        and bottom edge; the last cell of each row drops its right edge, so
+        the right-hand border depends on the column count per breakpoint. ── */
+  .logo-grid > li {
+    border-right: 1px solid var(--rule-dark);
+    border-bottom: 1px solid var(--rule-dark);
+  }
+
+  .logo-grid > li:nth-child(2n) {
+    border-right: 0;
+  }
+
+  @media (min-width: 700px) {
+    .logo-grid > li:nth-child(2n) {
+      border-right: 1px solid var(--rule-dark);
+    }
+
+    .logo-grid > li:nth-child(3n) {
+      border-right: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-grid > li:nth-child(3n) {
+      border-right: 1px solid var(--rule-dark);
+    }
+
+    .logo-grid > li:nth-child(4n) {
+      border-right: 0;
+    }
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--x, 12px), var(--y, -18px), 0);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: calc(var(--o, 0.5) * 0.3);
+  }
+  to {
+    opacity: min(1, calc(var(--o, 0.5) * 1.3));
+  }
+}
+
+@keyframes hover-text-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes star-drift {
+  0%,
+  100% {
+    transform: translate3d(-20px, 15px, 0);
+  }
+  50% {
+    transform: translate3d(30px, -20px, 0);
+  }
+}
+
+/* ── Logo marquee ────────────────────────────────────────────────────────────
+   The company rows on the home page render their list TWICE, side by side.
+   The animation slides the track left by exactly 50% — one full copy — and
+   then snaps back to the start. Because the second copy is identical, the
+   snap is invisible and the row appears to scroll forever.
+
+   TO CHANGE THE SPEED: edit the `72s` below. Bigger number = slower.
+   Both directions should normally use the same value.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  animation: marquee-left 72s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 72s linear infinite;
+}
+
+/* Lets a finger swipe the row sideways while the page still scrolls normally. */
+.marquee-scroll {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+/* Hides the scrollbar on the logo rows without disabling scrolling itself. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY PREFERENCES
+
+   Three separate system settings, handled independently. A visitor can have
+   any combination of them, so none of these blocks assumes the others.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* "Reduce motion": the bubbles, stars and logo rows stand still, and no
+   transition moves anything. Colour changes still show what happened.
+   Framer Motion is handled separately, by <MotionConfig reducedMotion="user">
+   in src/shared/context/MotionProvider.jsx */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-left,
+  .marquee-right {
+    animation: none;
+  }
+
+  /* The footer date shows its outline straight away instead of drawing it. */
+  .hover-text-draw {
+    stroke-dashoffset: 0;
+  }
+
+  /* The rows stop drifting, so let them be scrolled by hand instead. */
+  .marquee-scroll {
+    overflow-x: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* "Reduce transparency": make the frosted surfaces solid. */
+@media (prefers-reduced-transparency: reduce) {
+  .backdrop-blur-md,
+  .backdrop-blur-sm,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl {
+    backdrop-filter: none !important;
+  }
+
+  .bg-navy\/90 {
+    background-color: rgb(31 58 95) !important; /* solid navy */
+  }
+}

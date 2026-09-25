@@ -43,6 +43,8 @@ export const STRINGS = {
 
     // -- Hero ---------------------------------------------------------------
     heroOrganisation: "De Haagse Hogeschool, Delft",
+    heroCampus: "Campus",
+    tisFullName: "Faculteit Technologie, Innovatie & Samenleving",
     heroLabelWhen: "Wanneer",
     heroLabelWhere: "Waar",
 
@@ -54,11 +56,20 @@ export const STRINGS = {
     companiesKicker: "Onze partners",
     companiesTitle: "Deelnemende bedrijven",
     companiesSubtitle:
-      "Beweeg over een bedrijf om meer te leren over hun missie en beschikbare mogelijkheden.",
+      "Klik op een bedrijf om meer te leren over hun missie en beschikbare mogelijkheden.",
     companiesViewAll: "Bekijk alle bedrijven",
     companiesIssuesLabel: "Problemen met uw bedrijf representatie?",
     companiesEmpty:
       "De bedrijvenlijst voor deze editie is nog niet gepubliceerd. Zodra de deelnemers bekend zijn, verschijnen ze hier.",
+    companiesGalleryHint: "Sleep of veeg om te bladeren, klik op een bedrijf voor meer info.",
+    companiesPreviousKicker: "Vorige editie",
+    companiesPreviousTitle: "Zij waren er in maart",
+    companiesPreviousSubtitle:
+      "De bedrijven voor november volgen nog. Dit waren de deelnemers van maart 2026.",
+    galleryPrevious: "Vorig bedrijf",
+    galleryNext: "Volgend bedrijf",
+    galleryClose: "Sluiten",
+    moreInfo: "Meer info",
 
     // -- Companies list page -----------------------------------------------
     companiesPageTitle: "Bedrijven",
@@ -121,6 +132,8 @@ export const STRINGS = {
     footerPrivacy: "Privacybeleid",
     footerTerms: "Gebruiksvoorwaarden",
     footerSiteIssues: "Problemen met de website?",
+    footerMoreTitle: "Meer",
+    footerRegistrationOpen: "Aanmelding open",
 
     // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"
@@ -148,6 +161,8 @@ export const STRINGS = {
 
     // -- Hero ---------------------------------------------------------------
     heroOrganisation: "The Hague University of Applied Sciences, Delft",
+    heroCampus: "Campus",
+    tisFullName: "Faculty of Technology, Innovation & Society",
     heroLabelWhen: "When",
     heroLabelWhere: "Where",
 
@@ -159,11 +174,20 @@ export const STRINGS = {
     companiesKicker: "Our partners",
     companiesTitle: "Participating Companies",
     companiesSubtitle:
-      "Hover over each company to learn more about their mission and available roles.",
+      "Click a company to learn more about their mission and available roles.",
     companiesViewAll: "View all companies",
     companiesIssuesLabel: "Issues with your company listing?",
     companiesEmpty:
       "The company list for this edition has not been published yet. Participants will appear here once they are confirmed.",
+    companiesGalleryHint: "Drag or swipe to browse, click a company for more.",
+    companiesPreviousKicker: "Previous edition",
+    companiesPreviousTitle: "They were there in March",
+    companiesPreviousSubtitle:
+      "The companies for November are still to come. These took part in March 2026.",
+    galleryPrevious: "Previous company",
+    galleryNext: "Next company",
+    galleryClose: "Close",
+    moreInfo: "More info",
 
     // -- Companies list page -----------------------------------------------
     companiesPageTitle: "Companies",
@@ -225,6 +249,8 @@ export const STRINGS = {
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Service",
     footerSiteIssues: "Website issues?",
+    footerMoreTitle: "More",
+    footerRegistrationOpen: "Registration open",
 
     // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"

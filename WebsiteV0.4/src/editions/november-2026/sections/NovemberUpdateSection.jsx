@@ -6,20 +6,19 @@
 //  edition.config.js AND data/companies.js has entries, NovemberHome swaps
 //  this section out for the real scrolling company logos.
 //
-//      01 Programma   Donderdag 26 november
+//      Programma
+//      Donderdag 26 november
 //
-//                     13:00                   16:00            19:00
-//                     ┬──────┬──────┬──────┬──────┬──────┬──────┐   ← axis
-//                     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   navy lane
-//                     13:00–19:00 Bedrijvendag ...
-//                                             ━━━━━━━━━━━━━━━━━━━━   orange lane
-//                                             16:00–19:00 Netwerkborrel
+//      13:00                   16:00                   19:00
+//      ┬──────┬──────┬──────┬──────┬──────┬──────┐            ← axis
+//      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  navy | orange
+//      13:00–16:00 Bedrijvendag  16:00–19:00 Netwerkborrel
 //
-//                     Voor bedrijven                              →
+//      Voor bedrijven             (orange underline draws in on hover)
 //
 //  The lanes are placed on a grid with one column per hour, so a lane's
-//  from/to in the config IS its position. On phones the axis goes and each
-//  lane becomes a row with a coloured left border and its own time.
+//  from/to in the config IS its position; lanes that follow each other share
+//  a line. Hovering one lane fades the others (.tl-lanes in index.css).
 //
 //  All the wording comes from ../edition.config.js (keys starting `update`).
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,9 +32,10 @@ import { NOVEMBER_2026_CONTENT as content } from "../edition.config.js";
 /** "16:00" -> 16 */
 const hourOf = (time) => Number.parseInt(time, 10);
 
+// --lane-c / --lane-bg feed the hover in index.css (.tl-lanes).
 const LANE_TONES = {
-  navy: "border-navy dark:border-slate-300",
-  orange: "border-orange"
+  navy: "border-navy [--lane-c:#1f3a5f] [--lane-bg:rgba(31,58,95,0.05)] dark:border-slate-300 dark:[--lane-c:#cbd5e1] dark:[--lane-bg:rgba(255,255,255,0.05)]",
+  orange: "border-orange [--lane-c:#f07d00] [--lane-bg:rgba(240,125,0,0.07)]"
 };
 
 function Timeline({ timeline, lang }) {
@@ -43,7 +43,7 @@ function Timeline({ timeline, lang }) {
   const hours = hourOf(timeline.end) - start;
 
   return (
-    <div className="mt-[clamp(2.5rem,5vw,4.5rem)]">
+    <div className="mt-[clamp(2rem,3.5vw,3rem)]">
       {/* The printed times and the axis are a picture of the lanes below,
           which carry the same times as text — so screen readers skip them. */}
       <div aria-hidden="true" className="hidden tab:block">
@@ -69,15 +69,15 @@ function Timeline({ timeline, lang }) {
       </div>
 
       <ol
-        className="grid grid-cols-1 gap-y-8 tab:mt-8 tab:[grid-template-columns:repeat(var(--hours),minmax(0,1fr))]"
+        className="tl-lanes grid grid-cols-1 gap-y-8 tab:mt-8 tab:[grid-template-columns:repeat(var(--hours),minmax(0,1fr))]"
         style={{ "--hours": hours }}
       >
-        {timeline.lanes.map((lane, index) => (
+        {timeline.lanes.map((lane) => (
           <li
             key={lane.from + lane.to}
-            className={`border-l-4 pl-6 tab:border-l-0 tab:border-t-[5px] tab:pl-0 tab:pt-6 tab:[grid-column:var(--lane)] ${
+            className={`border-l-4 pl-6 tab:border-l-0 tab:border-t-[5px] tab:px-5 tab:pb-6 tab:pt-5 tab:[grid-column:var(--lane)] ${
               LANE_TONES[lane.tone] ?? LANE_TONES.navy
-            } ${index > 0 ? "ml-8 tab:ml-0" : ""}`}
+            }`}
             style={{
               "--lane": `${hourOf(lane.from) - start + 1} / ${hourOf(lane.to) - start + 1}`
             }}
@@ -107,7 +107,7 @@ export default function NovemberUpdateSection() {
       className="scroll-mt-6 bg-white py-section dark:bg-ink"
     >
       <Container className={GRID}>
-        <SectionRail number="01">{pick(content.updateKicker, lang)}</SectionRail>
+        <SectionRail>{pick(content.updateKicker, lang)}</SectionRail>
 
         <SectionMain>
           <h2 id="november-update-title" className="text-title text-fg dark:text-white">
@@ -122,7 +122,7 @@ export default function NovemberUpdateSection() {
           {companies ? (
             <Link
               to={COMPANY_REGISTRATION.route}
-              className="bizlink mt-[clamp(3.5rem,7vw,6rem)] grid grid-cols-1 items-center gap-4 border-b border-t border-b-rule border-t-rule-strong py-8 dark:border-b-white/15 dark:border-t-white/70 tab:grid-cols-[1fr_auto]"
+              className="bizlink mt-[clamp(2rem,4vw,3.5rem)] grid grid-cols-1 items-center gap-4 border-b border-t border-b-rule border-t-rule-strong py-8 dark:border-b-white/15 dark:border-t-white/70"
             >
               <div>
                 <strong className="bizlink-title inline text-title font-normal leading-none text-fg dark:text-white">
@@ -132,12 +132,6 @@ export default function NovemberUpdateSection() {
                   {pick(companies.body, lang)}
                 </span>
               </div>
-              <span
-                className="bizlink-arr hidden text-title font-light leading-none text-fg dark:text-white tab:block"
-                aria-hidden="true"
-              >
-                →
-              </span>
             </Link>
           ) : null}
         </SectionMain>

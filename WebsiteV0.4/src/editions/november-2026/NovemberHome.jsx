@@ -14,11 +14,13 @@
 //
 //  ─── THE PAGE IN ORDER ──────────────────────────────────────────────────────
 //      hero
-//      01 programme   (or the companies, once showCompanies is true)
-//      02 about
-//      03 FAQ
-//      04 associations  (the dark band, ending in the big date)
-//      footer
+//      programme      (or the companies, once showCompanies is true)
+//      companies      the card gallery; March's companies until November's
+//                     own list is filled in
+//      about
+//      FAQ
+//      associations   (a small row at the top of the dark band)
+//      footer         (same navy: the big hover date, then the links)
 //
 //  To move a section, move its line in the returned block at the bottom.
 //  To remove one, delete its line. To add a new one, write a component and
@@ -32,7 +34,7 @@ import { pick } from "../../shared/i18n.js";
 import { STRINGS } from "../../shared/strings.js";
 import { PAGE_SURFACE } from "../../shared/theme.js";
 import { COMPANY_REGISTRATION, VENUE } from "../../site.config.js";
-import { hasCompanies, showAssociations } from "../index.js";
+import { getEditionById, hasCompanies, showAssociations } from "../index.js";
 
 import AboutSection from "../../shared/components/AboutSection.jsx";
 import AssociationsSection from "../../shared/components/AssociationsSection.jsx";
@@ -62,6 +64,7 @@ export default function NovemberHome({ edition }) {
   // Once companies are added and switched on, the real companies section
   // replaces the "coming later" update cards automatically.
   const showCompanies = hasCompanies(edition);
+  const previousEdition = getEditionById("march-2026");
 
   usePageMeta({
     title:
@@ -128,18 +131,28 @@ export default function NovemberHome({ edition }) {
         />
 
       {showCompanies ? (
-        <CompaniesSection edition={edition} number="01" />
+        <CompaniesSection edition={edition} />
       ) : (
-        <NovemberUpdateSection />
+        <>
+          <NovemberUpdateSection />
+          {/* Until November's own list is filled in, show who came in March. */}
+          <CompaniesSection
+            edition={previousEdition}
+            kicker={t.companiesPreviousKicker}
+            title={t.companiesPreviousTitle}
+            subtitle={t.companiesPreviousSubtitle}
+            showIssues={false}
+            joinsPrevious
+          />
+        </>
       )}
 
-      {/* Section numbers follow the order on the page. */}
-      <AboutSection content={content} number="02" />
-      <FaqSection number="03" />
+      <AboutSection content={content} />
+      <FaqSection />
       {showAssociations(edition) ? (
-        <AssociationsSection number="04" bigDate={content.bigDate} />
+        <AssociationsSection />
       ) : null}
-      <Footer edition={edition} />
+      <Footer edition={edition} bigText={content.bigDate} />
       </main>
     </>
   );

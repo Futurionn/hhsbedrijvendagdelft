@@ -34,7 +34,7 @@ import { useTheme } from "../context/ThemeContext.jsx";
 import { useScrollToSection } from "../hooks/useScrollToSection.js";
 import { STRINGS } from "../strings.js";
 import { COMPANY_REGISTRATION } from "../../site.config.js";
-import { editionPath, hasCompanies } from "../../editions/index.js";
+import { editionPath, getActiveEdition, hasCompanies } from "../../editions/index.js";
 import HhsLogo from "../ui/HhsLogo.jsx";
 
 /** How far the page must scroll before the bar materialises. */
@@ -74,7 +74,11 @@ export default function SiteHeader({ edition }) {
   const menuRef = useRef(null);
 
   const homePath = edition ? editionPath(edition) : "/";
-  const isOnEditionHome = pathname === homePath || (!edition && pathname === "/");
+  // "/" shows the active edition too, so its section links scroll in place
+  // instead of navigating to /November2026 and reloading the page.
+  const isOnEditionHome =
+    pathname === homePath ||
+    (pathname === "/" && (!edition || edition.id === getActiveEdition().id));
   const companiesSection = edition && hasCompanies(edition) ? "companies" : "november-update";
 
   const navItems = [
@@ -105,7 +109,10 @@ export default function SiteHeader({ edition }) {
   const goToSection = (sectionId) => {
     setIsMenuOpen(false);
     if (isOnEditionHome) {
-      scrollToSection(sectionId, -72); // clear the pinned bar
+      // Clear the pinned bar, measured rather than assumed: its drawn
+      // height changes with the PC's 80% zoom and on phones.
+      const barHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72;
+      scrollToSection(sectionId, -(barHeight + 16));
     } else {
       navigate(`${homePath}#${sectionId}`);
     }

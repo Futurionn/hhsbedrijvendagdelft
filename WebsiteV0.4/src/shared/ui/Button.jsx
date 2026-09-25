@@ -21,7 +21,8 @@
 //  inside anything marked `.on-dark` (the hero is) — see src/index.css.
 //  `variant="ghost"` is the old name for `link`, kept for the March archive.
 //
-//  Arrows — they nudge in their own direction on hover:
+//  Arrows — on the FILLED buttons only (a `link` ignores `arrow` and stays a
+//  plain underline). They nudge in their own direction on hover:
 //
 //    <Button arrow="down">Bekijk het programma</Button>    ↓  scrolls down
 //    <Button arrow="right">Voor bedrijven</Button>         →  another page
@@ -90,7 +91,9 @@ export default function Button({
     .filter(Boolean)
     .join(" ");
 
-  const Arrow = arrow ? ARROWS[arrow] : null;
+  // Underlined links carry no arrow: the underline already says "clickable".
+  // Only the filled buttons show one.
+  const Arrow = arrow && !isLink ? ARROWS[arrow] : null;
 
   const inner = (
     <>
