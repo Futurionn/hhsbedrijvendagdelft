@@ -21,6 +21,11 @@
 //              ("26.11.26"); every other page gets "T.I.S.".
 //    showCta   accepted for older call sites (the March archive passes it);
 //              the footer no longer has a call-to-action panel.
+//    associations  optional list of association names (see
+//              src/shared/data/associations.js). When given, their logos sit
+//              under the "T.I.S. Bedrijvendag" text as "Georganiseerd door",
+//              and the footer opens with the white-to-navy wave itself.
+//              The November home uses this instead of a separate section.
 //
 //  The text comes from src/shared/strings.js.
 //  The email addresses and social links come from src/site.config.js.
@@ -35,7 +40,9 @@ import {
   getActiveEdition,
   hasCompanies
 } from "../../editions/index.js";
+import { ASSOCIATIONS } from "../data/associations.js";
 import { Container } from "../ui/Section.jsx";
+import Wave from "../ui/Wave.jsx";
 import HoverText from "../ui/HoverText.jsx";
 import Starfield from "../ui/Starfield.jsx";
 import TisName from "../ui/TisName.jsx";
@@ -111,7 +118,58 @@ function SocialLink({ label, href, children }) {
   );
 }
 
-export default function Footer({ edition, bigText = "T.I.S." }) {
+/** "Georganiseerd door" + the association logos, under the brand text. */
+function FooterAssociations({ names }) {
+  const { lang } = useLanguage();
+  const t = STRINGS[lang];
+  const list = names.map((name) => ASSOCIATIONS.find((a) => a.name === name)).filter(Boolean);
+  if (list.length === 0) return null;
+
+  return (
+    <div id="associations" className="mt-6 scroll-mt-28 border-t border-rule-dark pt-5">
+      <p className="text-caption font-medium uppercase tracking-[0.14em] text-on-dark-3">
+        {t.footerAssociations}
+      </p>
+      <ul className="mt-4 flex flex-wrap gap-x-7 gap-y-4">
+        {list.map((association) => {
+          const href = association.website.startsWith("http")
+            ? association.website
+            : `https://${association.website}`;
+          return (
+            <li key={association.name}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-3"
+              >
+                <span className="flex h-10 w-12 items-center justify-center transition-transform duration-settle ease-settle group-hover:-translate-y-0.5">
+                  <img
+                    src={association.logoSrc}
+                    alt=""
+                    className={`max-h-full max-w-full object-contain ${
+                      association.logoTone === "color" ? "" : "brightness-0 invert opacity-90"
+                    }`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span className="leading-tight">
+                  <span className="block text-small font-medium text-white transition-colors duration-settle group-hover:text-orange">
+                    {association.name}
+                  </span>
+                  <span className="block text-caption text-on-dark-3">{association.field}</span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+export default function Footer({ edition, bigText = "T.I.S.", associations }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
 
@@ -121,6 +179,7 @@ export default function Footer({ edition, bigText = "T.I.S." }) {
 
   return (
     <footer className="relative isolate z-[1] overflow-hidden bg-navy-deep text-white">
+      {associations ? <Wave edge="top" /> : null}
       <Starfield />
       {/* The warm glow rising from the bottom edge. */}
       <div
@@ -133,7 +192,7 @@ export default function Footer({ edition, bigText = "T.I.S." }) {
       />
 
       <Container className="relative z-[1]">
-        {bigText ? <HoverText text={bigText} className="pt-[clamp(1.5rem,3vw,2.5rem)]" /> : null}
+        {bigText ? <HoverText text={bigText} className="mx-auto max-w-[78%] pt-[clamp(1.5rem,3vw,2.5rem)]" /> : null}
 
         <div className="grid grid-cols-1 gap-8 pb-10 pt-[clamp(2rem,4vw,3.5rem)] sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-12">
           {/* -- Brand -- */}
@@ -142,6 +201,7 @@ export default function Footer({ edition, bigText = "T.I.S." }) {
               <TisName className="text-orange" /> {t.footerEvent.replace("T.I.S. ", "")}
             </p>
             <p className="mt-4 max-w-sm text-body text-on-dark-2">{t.footerAboutBody}</p>
+            {associations ? <FooterAssociations names={associations} /> : null}
           </div>
 
           <Column title={t.footerLinksTitle}>
@@ -171,14 +231,8 @@ export default function Footer({ edition, bigText = "T.I.S." }) {
 
           <Column title={t.footerMoreTitle}>
             <li>
-              <Link className={`${LINK} group inline-flex items-center gap-2.5`} to={COMPANY_REGISTRATION.route}>
+              <Link className={LINK} to={COMPANY_REGISTRATION.route}>
                 {t.footerLinkForCompanies}
-                {/* Pulsing dot: registration is open. */}
-                <span className="relative flex h-2 w-2" title={t.footerRegistrationOpen}>
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-orange" />
-                </span>
-                <span className="sr-only">({t.footerRegistrationOpen})</span>
               </Link>
             </li>
             <li>

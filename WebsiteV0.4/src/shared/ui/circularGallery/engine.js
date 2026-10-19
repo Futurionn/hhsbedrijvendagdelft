@@ -239,9 +239,13 @@ export class GalleryEngine {
     const drifting = !this.hovered && !this.frozen && !this.dragging && !this.reducedMotion;
     if (drifting) this.scroll.target += DRIFT_PX_PER_SEC * this.pxToWorld * dt;
 
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.dragging ? 0.25 : 0.075);
+    // A clicked card glides to the middle faster than the idle smoothing,
+    // and the panel opens once it is within half a pixel: waiting for the
+    // lerp to creep the last fraction made opening feel sluggish.
+    const ease = this.dragging ? 0.25 : this.pendingSettle ? 0.16 : 0.075;
+    this.scroll.current = lerp(this.scroll.current, this.scroll.target, ease);
 
-    if (this.pendingSettle && Math.abs(this.scroll.target - this.scroll.current) < 0.004) {
+    if (this.pendingSettle && Math.abs(this.scroll.target - this.scroll.current) < this.pxToWorld * 0.5) {
       this.pendingSettle = false;
       this.scroll.current = this.scroll.target;
       this.onSettled?.(this.selected, this.centreRect(this.selected.row));

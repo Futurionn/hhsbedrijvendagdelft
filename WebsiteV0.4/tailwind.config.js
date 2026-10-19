@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import containerQueries from "@tailwindcss/container-queries";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  THE DESIGN SYSTEM — colours, type, space and motion all live here.
@@ -172,5 +173,12 @@ export default {
       }
     }
   },
-  plugins: []
+  // Container queries: `@container` on a box, then `@xl:` etc. on what is
+  // inside it, to lay out by the room the box really has. Prefer them over
+  // `md:`/`lg:` for anything inside a card or panel. Phones get the 800px
+  // PC layout with 1.5× text (html.pc-on-phone), so a screen breakpoint
+  // like `md:` fires there although the room is that of a ~530px screen.
+  // The container sizes are in rem, and rem follows that 1.5×, so they do
+  // not have that problem.
+  plugins: [containerQueries]
 };

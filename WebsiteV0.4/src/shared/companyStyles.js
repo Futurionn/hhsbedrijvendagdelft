@@ -74,3 +74,49 @@ export function mapButtonClasses(logoTone) {
     "dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-navy"
   );
 }
+
+/**
+ * The colours of an opened company card (gallery panel) and a row in the
+ * companies list. The card keeps a FIXED surface in both themes, because
+ * the logos are made for it:
+ *
+ *   logoTone "light"  (white logo)  -> navy card, white text
+ *   anything else                   -> WHITE card, dark text, also in
+ *                                      dark mode (a white card on the dark
+ *                                      page is fine; white text on it is not)
+ *
+ * So these classes deliberately have no `dark:` variants: the text follows
+ * the card, not the site theme.
+ */
+export function cardPalette(logoTone) {
+  if (logoTone === "light") {
+    return {
+      surface: "border-white/10 bg-navy-deep",
+      primary: "text-white",
+      muted: "text-on-dark-2",
+      faint: "text-on-dark-3",
+      rule: "border-rule-dark",
+      chip: "bg-white/10 text-on-dark-2",
+      wanted: "bg-white/10 text-white",
+      open: "border-rule-dark text-on-dark-2",
+      openHighlight: "border-orange text-orange",
+      accent: "text-orange",
+      close: "text-on-dark-2 hover:text-white",
+      button: "outline-on-dark"
+    };
+  }
+  return {
+    surface: "border-rule bg-white",
+    primary: "text-fg",
+    muted: "text-fg-muted",
+    faint: "text-fg-muted",
+    rule: "border-rule",
+    chip: "bg-navy/[0.07] text-fg-muted",
+    wanted: "bg-navy/[0.07] text-navy",
+    open: "border-rule text-fg-muted",
+    openHighlight: "border-orange-deep text-orange-deep",
+    accent: "text-orange-deep",
+    close: "text-fg-muted hover:text-fg",
+    button: "outline-on-light"
+  };
+}

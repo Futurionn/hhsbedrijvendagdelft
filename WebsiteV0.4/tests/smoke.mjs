@@ -154,7 +154,9 @@ console.log("\n— companies & floor plan —");
 
   await stands.first().click();
   await page.waitForTimeout(800);
-  check("clicking a stand opens its company", page.url().includes("/bedrijven?focus="));
+  // /March2026 is the archived V0.2 site (archive/march-2026), whose list
+  // lives at /companies.
+  check("clicking a stand opens its company", page.url().includes("/March2026/companies?focus="));
   check(
     "the opened company is highlighted",
     ((await page.locator('[id^="company-"].ring-2').count()) > 0)
@@ -243,17 +245,11 @@ console.log("\n— on a phone —");
   await page.waitForTimeout(700);
   check("tap again collapses it", (await openCards()) === 0, `${await openCards()} open`);
 
-  // On the map, the first tap must only preview, never navigate.
-  await page.goto(`${BASE_URL}/March2026/plattegrond`, { waitUntil: "networkidle" });
-  const stand = page.locator('button[aria-label^="Stand 1:"]').first();
-  await stand.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(300);
-  await stand.tap();
-  await page.waitForTimeout(500);
-  check("first tap only previews the stand", page.url().includes("/plattegrond"));
-  await stand.tap();
-  await page.waitForTimeout(800);
-  check("second tap opens the company", page.url().includes("/bedrijven?focus="));
+  // "First tap only previews, second tap opens" is the current floor plan
+  // (FloorPlanMap.jsx). No live page shows it until November's map is
+  // switched on (`showFloorPlan`); point a check at /November2026/plattegrond
+  // then. /March2026/plattegrond is the archived V0.2 map, which opens on
+  // the first tap.
 
   await ctx.close();
 }
@@ -283,12 +279,14 @@ console.log("\n— header —");
   await page.waitForTimeout(900);
   check("nav reaches the about section", page.url().includes("#about"), page.url().split("4173")[1]);
 
-  // The logo must escape the March archive, not loop back into it.
+  // The logo must escape the March archive (the old V0.2 site, which has no
+  // <header>), not loop back into it.
   await page.goto(`${BASE_URL}/March2026`, { waitUntil: "networkidle" });
-  const logoHref = await page.locator("header a[aria-label]").first().getAttribute("href");
+  const archiveLogo = page.locator("a[aria-label]:has(img)").first();
+  const logoHref = await archiveLogo.getAttribute("href");
   check("logo points at the site root from March", logoHref === "/", `href=${logoHref}`);
 
-  await page.locator("header a[aria-label]").first().click();
+  await archiveLogo.click();
   await page.waitForTimeout(800);
   check("logo click leaves the archive", new URL(page.url()).pathname === "/", page.url().split("4173")[1]);
 

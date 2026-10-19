@@ -29,8 +29,8 @@ const CARDS = [
     icon: CalendarDays,
     title: { nl: "Wanneer", en: "When" },
     body: {
-      nl: "Donderdag 26 november 2026, van 13:00 tot 19:00 uur. Vanaf 16:00 is er een netwerkborrel.",
-      en: "Thursday 26 November 2026, from 13:00 to 19:00. Networking drinks from 16:00."
+      nl: "Donderdag 26 november 2026, van 12:00 tot 19:00 uur. Vanaf 16:00 is er een netwerkborrel.",
+      en: "Thursday 26 November 2026, from 12:00 to 19:00. Networking drinks from 16:00."
     }
   },
   {

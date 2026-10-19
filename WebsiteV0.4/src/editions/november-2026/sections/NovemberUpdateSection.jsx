@@ -1,20 +1,17 @@
 // ─────────────────────────────────────────────────────────────────────────────
-//  NOVEMBER UPDATE SECTION  —  "01 Programma": the day as a time axis. It
-//  stands in for the company list while participants are being confirmed.
-//
-//  It disappears on its own: as soon as `showCompanies` is true in
-//  edition.config.js AND data/companies.js has entries, NovemberHome swaps
-//  this section out for the real scrolling company logos.
+//  NOVEMBER UPDATE SECTION  —  "Programma": the day as a time axis. Always
+//  on the home page, directly above the company gallery.
 //
 //      Programma
 //      Donderdag 26 november
 //
-//      13:00                   16:00                   19:00
+//      12:00                   16:00                   19:00
 //      ┬──────┬──────┬──────┬──────┬──────┬──────┐            ← axis
 //      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  navy | orange
-//      13:00–16:00 Bedrijvendag  16:00–19:00 Netwerkborrel
+//      12:00–16:00 Bedrijvendag  16:00–19:00 Netwerkborrel
 //
-//      Voor bedrijven             (orange underline draws in on hover)
+//  The "Voor bedrijven" row that used to sit under it is now its own
+//  section above the FAQ (ForCompaniesSection.jsx).
 //
 //  The lanes are placed on a grid with one column per hour, so a lane's
 //  from/to in the config IS its position; lanes that follow each other share
@@ -22,10 +19,8 @@
 //
 //  All the wording comes from ../edition.config.js (keys starting `update`).
 // ─────────────────────────────────────────────────────────────────────────────
-import { Link } from "react-router-dom";
 import { useLanguage } from "../../../shared/context/LanguageContext.jsx";
 import { pick } from "../../../shared/i18n.js";
-import { COMPANY_REGISTRATION } from "../../../site.config.js";
 import { Container, GRID, SectionMain, SectionRail } from "../../../shared/ui/Section.jsx";
 import { NOVEMBER_2026_CONTENT as content } from "../edition.config.js";
 
@@ -55,7 +50,8 @@ function Timeline({ timeline, lang }) {
             return (
               <span
                 key={mark}
-                className="absolute top-0"
+                // Inner marks are centred on their hour, the ends sit flush.
+                className={`absolute top-0 ${isFirst || isLast ? "" : "-translate-x-1/2"}`}
                 style={
                   isFirst ? { left: "-0.04em" } : isLast ? { right: 0 } : { left: `${offset}%` }
                 }
@@ -98,7 +94,6 @@ function Timeline({ timeline, lang }) {
 
 export default function NovemberUpdateSection() {
   const { lang } = useLanguage();
-  const companies = content.updateCompanies;
 
   return (
     <section
@@ -118,22 +113,6 @@ export default function NovemberUpdateSection() {
           </p>
 
           <Timeline timeline={content.updateTimeline} lang={lang} />
-
-          {companies ? (
-            <Link
-              to={COMPANY_REGISTRATION.route}
-              className="bizlink mt-[clamp(2rem,4vw,3.5rem)] grid grid-cols-1 items-center gap-4 border-b border-t border-b-rule border-t-rule-strong py-8 dark:border-b-white/15 dark:border-t-white/70"
-            >
-              <div>
-                <strong className="bizlink-title inline text-title font-normal leading-none text-fg dark:text-white">
-                  {pick(companies.title, lang)}
-                </strong>
-                <span className="mt-[0.6rem] block max-w-[60ch] text-body text-fg-muted dark:text-slate-400">
-                  {pick(companies.body, lang)}
-                </span>
-              </div>
-            </Link>
-          ) : null}
         </SectionMain>
       </Container>
     </section>

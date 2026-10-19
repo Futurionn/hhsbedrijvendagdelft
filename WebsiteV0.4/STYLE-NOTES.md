@@ -97,8 +97,13 @@ rules; this file is about the look and feel.
 5. **FAQ:**
    - Rows are `<details>` elements with a +/− icon, and answers slide open.
    - The items "Wie heeft deze website gemaakt?" and "Logo/bedrijfsinfo
-     toevoegen…" were removed on purpose.
-6. **Associations:**
+     toevoegen…" are hidden on the **home page only** (`homePage: false` in
+     `faq.jsx`). The dedicated `/faq` page still shows all questions.
+6. **Associations** (October 2026: on the November home they moved INTO the
+   footer, under the "T.I.S. Bedrijvendag" text, as "Georganiseerd door" +
+   small logos with name and study. `Footer associations={[...]}`; the
+   footer then draws the white-to-navy wave itself. The separate section
+   below is still used by the March archive):
    - A wave from white into the deep-navy band, with **clearly visible,
      drifting, twinkling stars**.
    - A small uppercase caption, then **one centred row of small logos**,
@@ -376,6 +381,16 @@ design:
   browser. Close only the test browser (CDP `Browser.close`).
 - **Checking a WebGL canvas:** you can't read its state from the DOM.
   Compare two screenshots of the canvas instead (equal means paused).
+
+### Scope of "remove this" requests
+- When the owner says to remove something **from a page** ("van de main
+  page"), remove it from **that page only**. Data files like `faq.jsx` are
+  shared by several pages. Hide it there with a flag (`homePage: false`);
+  never delete it from the shared data.
+- This went wrong once: two FAQ questions were deleted from the data and
+  vanished from `/faq` too. They had to be restored.
+- If it is unclear whether something should go everywhere or on one page
+  only, ask.
 
 ### Rules from AGENTS.md that are easy to break
 - **`src/editions/march-2026/` is frozen.**

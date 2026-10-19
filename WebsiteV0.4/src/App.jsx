@@ -14,9 +14,10 @@
 //    /November2026/bedrijven/x   that list, opened at company x
 //    /November2026/plattegrond   its floor plan
 //
-//    /March2026                  March 2026 home           ← frozen archive
-//    /March2026/bedrijven        its company list
-//    /March2026/plattegrond      its floor plan
+//    /March2026/...              the March 2026 archive: NOT this app but
+//                                the old V0.2 site, built separately from
+//                                archive/march-2026 (an edition with
+//                                `archiveSite: true` in the registry)
 //
 //    /voor-bedrijven             company registration form
 //    /faq                        frequently asked questions
@@ -52,6 +53,7 @@ import PageTransition from "./shared/components/PageTransition.jsx";
 import CompaniesPage from "./pages/CompaniesPage.jsx";
 import CompanyRegistrationPage from "./pages/CompanyRegistrationPage.jsx";
 import FaqPage from "./pages/FaqPage.jsx";
+import ArchiveRedirect from "./shared/components/ArchiveRedirect.jsx";
 import FloorPlanPage from "./pages/FloorPlanPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
@@ -84,7 +86,14 @@ export default function App() {
               />
 
               {/* Three routes per edition, generated from the registry. */}
-              {EDITIONS.map((edition) => (
+              {EDITIONS.map((edition) =>
+                edition.archiveSite ? (
+                  <Route
+                    key={edition.id}
+                    path={`${editionPath(edition)}/*`}
+                    element={<ArchiveRedirect />}
+                  />
+                ) : (
                 <Route key={edition.id} path={editionPath(edition)}>
                   <Route index element={<edition.Home edition={edition} />} />
                   <Route
@@ -101,7 +110,8 @@ export default function App() {
                     element={<FloorPlanPage edition={edition} />}
                   />
                 </Route>
-              ))}
+                )
+              )}
 
               {/* Pages that belong to the site rather than to one edition. */}
               <Route path={COMPANY_REGISTRATION.route} element={<CompanyRegistrationPage />} />

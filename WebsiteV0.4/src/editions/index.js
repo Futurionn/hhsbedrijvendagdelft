@@ -63,7 +63,14 @@ export const EDITIONS = [
     content: MARCH_2026_CONTENT,
     companies: MARCH_2026_COMPANIES,
     floorPlan: MARCH_2026_FLOOR_PLAN,
-    Home: MarchHome
+    Home: MarchHome,
+    /**
+     * /March2026 is the old V0.2 site itself, built from archive/march-2026,
+     * not March's data drawn in the current design. This app hands every
+     * /March2026... address over to it (src/App.jsx). The data above is still
+     * used, e.g. by November's "came in March" fallback.
+     */
+    archiveSite: true
   }
 ];
 

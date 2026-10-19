@@ -20,10 +20,14 @@
 //        en: <>Email us at <Link href="mailto:x@y.nl">x@y.nl</Link>.</>
 //      }
 //
+//  ─── HOME PAGE OR /faq ONLY ─────────────────────────────────────────────────
+//  Every question shows on the /faq page. The home page shows the same list
+//  except questions marked `homePage: false`, which stay on /faq only.
+//
 //  This file is .jsx (not .js) precisely because answers may contain markup.
 // ═════════════════════════════════════════════════════════════════════════════
 import { Link as RouterLink } from "react-router-dom";
-import { VENUE } from "../../site.config.js";
+import { CONTACT, CREDITS, VENUE } from "../../site.config.js";
 
 const LINK_CLASS =
   "font-medium text-fg underline decoration-fg/35 underline-offset-4 transition-colors duration-settle hover:decoration-fg dark:text-white dark:decoration-white/40 dark:hover:decoration-white";
@@ -104,6 +108,71 @@ export const FAQ_ITEMS = [
           Yes. The March 2026 edition stays online, with every participating
           company and the floor plan, at{" "}
           <Link href="/March2026">hhsbedrijvendagdelft.nl/March2026</Link>.
+        </>
+      )
+    }
+  },
+  {
+    // Only on the /faq page, not in the home-page FAQ (the owner asked).
+    homePage: false,
+    q: { nl: "Wie heeft deze website gemaakt?", en: "Who created this website?" },
+    a: {
+      nl: (
+        <>
+          Deze website is in {CREDITS.year} gemaakt door {CREDITS.authorName}, in de
+          functie van {CREDITS.authorRole.nl}. Bekijk zijn profiel via{" "}
+          <Link href={CREDITS.authorLinkedIn}>linkedin.com/in/mathis-g</Link>.
+        </>
+      ),
+      en: (
+        <>
+          This website was created in {CREDITS.year} by {CREDITS.authorName}, in the
+          role of {CREDITS.authorRole.en}. View the profile via{" "}
+          <Link href={CREDITS.authorLinkedIn}>linkedin.com/in/mathis-g</Link>.
+        </>
+      )
+    }
+  },
+  {
+    // Only on the /faq page, not in the home-page FAQ (the owner asked).
+    homePage: false,
+    q: {
+      nl: "Logo/bedrijfsinfo toevoegen of aanpassen + feedback",
+      en: "Add/update company info + feedback"
+    },
+    a: {
+      nl: (
+        <>
+          Mail je logo (PNG/SVG), een korte beschrijving (2–4 zinnen), eventuele kansen
+          (stage/traineeship/afstuderen), locatie en website-link naar{" "}
+          <Link href={`mailto:${CONTACT.webmaster}`}>{CONTACT.webmaster}</Link>.
+          <div className="mt-3">
+            <span className="font-semibold">Logo-tip:</span> bij voorkeur een SVG of een
+            PNG met transparante achtergrond. Zorg dat het logo scherp is (liefst
+            minimaal ~600px breed) en zonder grote witte randen.
+          </div>
+          <div className="mt-3">
+            <span className="font-semibold">Feedback/bugs:</span> stuur je feedback/bug
+            (liefst met screenshot + wat je deed) naar{" "}
+            <Link href={`mailto:${CONTACT.webmaster}`}>{CONTACT.webmaster}</Link>.
+          </div>
+        </>
+      ),
+      en: (
+        <>
+          Email your logo (PNG/SVG), a short description (2–4 sentences), opportunities
+          (internship/traineeship/thesis), location and website link to{" "}
+          <Link href={`mailto:${CONTACT.webmaster}`}>{CONTACT.webmaster}</Link>.
+          <div className="mt-3">
+            <span className="font-semibold">Logo tip:</span> preferably SVG, or a PNG
+            with a transparent background. Make sure it is crisp (ideally at least
+            ~600px wide) and without large white margins.
+          </div>
+          <div className="mt-3">
+            <span className="font-semibold">Feedback/bugs:</span> send your feedback/bug
+            (ideally with a screenshot + steps to reproduce) to{" "}
+            <Link href={`mailto:${CONTACT.webmaster}`}>{CONTACT.webmaster}</Link>.
+          </div>
         </>
       )
     }

@@ -51,6 +51,14 @@ const VARIANT_CLASSES = {
     "inline-flex items-center justify-center gap-3 rounded-sm border border-navy/30 font-medium text-navy " +
     "hover:border-navy hover:bg-navy hover:text-white " +
     "dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-navy",
+  // The same outline on a surface that does NOT follow the theme (the
+  // white / navy company cards): no dark-mode flip.
+  "outline-on-light":
+    "inline-flex items-center justify-center gap-3 rounded-sm border border-navy/30 font-medium text-navy " +
+    "hover:border-navy hover:bg-navy hover:text-white",
+  "outline-on-dark":
+    "inline-flex items-center justify-center gap-3 rounded-sm border border-white/40 font-medium text-white " +
+    "hover:border-white hover:bg-white hover:text-navy",
   // The reference's `.tlink`.
   link: "tlink",
   ghost: "tlink"

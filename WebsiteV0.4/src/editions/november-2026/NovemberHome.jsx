@@ -14,13 +14,14 @@
 //
 //  ─── THE PAGE IN ORDER ──────────────────────────────────────────────────────
 //      hero
-//      programme      (or the companies, once showCompanies is true)
+//      programme      the day as a time axis (always shown)
 //      companies      the card gallery; March's companies until November's
-//                     own list is filled in
+//                     own list is filled in and showCompanies is true
 //      about
+//      for companies  the "Voor bedrijven" link row
 //      FAQ
-//      associations   (a small row at the top of the dark band)
-//      footer         (same navy: the big hover date, then the links)
+//      footer         (navy: the big hover date, then the links; the
+//                     organising associations sit under the T.I.S. text)
 //
 //  To move a section, move its line in the returned block at the bottom.
 //  To remove one, delete its line. To add a new one, write a component and
@@ -33,11 +34,11 @@ import { useAddToCalendar } from "../../shared/hooks/useAddToCalendar.js";
 import { pick } from "../../shared/i18n.js";
 import { STRINGS } from "../../shared/strings.js";
 import { PAGE_SURFACE } from "../../shared/theme.js";
+import { ASSOCIATIONS } from "../../shared/data/associations.js";
 import { COMPANY_REGISTRATION, VENUE } from "../../site.config.js";
 import { getEditionById, hasCompanies, showAssociations } from "../index.js";
 
 import AboutSection from "../../shared/components/AboutSection.jsx";
-import AssociationsSection from "../../shared/components/AssociationsSection.jsx";
 import CompaniesSection from "../../shared/components/CompaniesSection.jsx";
 import EditionHero from "../../shared/components/EditionHero.jsx";
 import FaqSection from "../../shared/components/FaqSection.jsx";
@@ -46,6 +47,7 @@ import SiteHeader from "../../shared/components/SiteHeader.jsx";
 import Button from "../../shared/ui/Button.jsx";
 import MetaRow from "../../shared/ui/MetaRow.jsx";
 
+import ForCompaniesSection from "./sections/ForCompaniesSection.jsx";
 import NovemberUpdateSection from "./sections/NovemberUpdateSection.jsx";
 import { NOVEMBER_2026_CONTENT as content } from "./edition.config.js";
 
@@ -130,11 +132,12 @@ export default function NovemberHome({ edition }) {
           }
         />
 
+      {/* The programme always shows; the companies follow straight under it. */}
+      <NovemberUpdateSection />
       {showCompanies ? (
-        <CompaniesSection edition={edition} />
+        <CompaniesSection edition={edition} joinsPrevious />
       ) : (
         <>
-          <NovemberUpdateSection />
           {/* Until November's own list is filled in, show who came in March. */}
           <CompaniesSection
             edition={previousEdition}
@@ -148,11 +151,18 @@ export default function NovemberHome({ edition }) {
       )}
 
       <AboutSection content={content} />
+      <ForCompaniesSection />
       <FaqSection />
-      {showAssociations(edition) ? (
-        <AssociationsSection />
-      ) : null}
-      <Footer edition={edition} bigText={content.bigDate} />
+      {/* The associations sit in the footer, under the T.I.S. text. */}
+      <Footer
+        edition={edition}
+        bigText={content.bigDate}
+        associations={
+          showAssociations(edition)
+            ? content.associations ?? ASSOCIATIONS.map((association) => association.name)
+            : undefined
+        }
+      />
       </main>
     </>
   );

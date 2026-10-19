@@ -37,7 +37,7 @@ export const NOVEMBER_2026_CONTENT = {
    * ONLY flip this to true AFTER you have added companies to
    * src/editions/november-2026/data/companies.js
    */
-  showCompanies: false,
+  showCompanies: true,
 
   /**
    * false → no floor plan anywhere for this edition.
@@ -53,6 +53,12 @@ export const NOVEMBER_2026_CONTENT = {
    * Set to false to remove it entirely.
    */
   showAssociations: true,
+
+  /**
+   * Which associations the strip shows, in this order. Names must match
+   * `name` in src/shared/data/associations.js. Leave it out to show all of them.
+   */
+  associations: ["Kybernetes", "Rheon"],
 
   /**
    * The date is confirmed, so the date pill is an "add to calendar" button.
@@ -100,32 +106,29 @@ export const NOVEMBER_2026_CONTENT = {
 
   /** "Wanneer" and the line under it. */
   whenValue: { nl: "Donderdag 26 november", en: "Thursday 26 November" },
-  whenDetail: { nl: "13:00–19:00 · borrel vanaf 16:00", en: "13:00–19:00 · drinks from 16:00" },
+  whenDetail: { nl: "12:00–19:00 · borrel vanaf 16:00", en: "12:00–19:00 · drinks from 16:00" },
 
   /** The third action under the hero (only when showAddToCalendar is true). */
   dateTooltip: { nl: "Voeg toe aan agenda", en: "Add to calendar" },
 
   // ── The actions under the hero ─────────────────────────────────────────────
 
-  /** Scrolls down to the update section. */
-  ctaPrimary: { nl: "Bekijk het programma", en: "See the programme" },
+  /** Scrolls down to the companies (or the update section while showCompanies is false). */
+  ctaPrimary: { nl: "Bekijk de bedrijven", en: "See the companies" },
 
   /** Goes to the company registration form at /voor-bedrijven. */
   ctaRegistration: { nl: "Voor bedrijven", en: "For companies" },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  //  PROGRAMME SECTION  —  shown while `showCompanies` is false
-  //
-  //  Once the company list goes live this section is replaced by the
-  //  scrolling company logos.
+  //  PROGRAMME SECTION  —  always shown, directly above the companies
   // ═══════════════════════════════════════════════════════════════════════════
 
   /** The section's name in the left rail, next to its number. */
   updateKicker: { nl: "Programma", en: "Programme" },
   updateTitle: { nl: "Donderdag 26 november", en: "Thursday 26 November" },
   updateSubtitle: {
-    nl: "Datum, tijd en locatie staan vast. De deelnemende bedrijven en de plattegrond volgen zodra de inschrijving rond is.",
-    en: "The date, time and venue are confirmed. Participating companies and the floor plan follow once registration closes."
+    nl: "Datum, tijd en locatie staan vast. Hieronder zie je welke bedrijven er komen; de plattegrond volgt.",
+    en: "The date, time and venue are confirmed. The companies taking part are listed below; the floor plan follows."
   },
 
   /**
@@ -133,17 +136,17 @@ export const NOVEMBER_2026_CONTENT = {
    * per part of the day (like a Gantt chart). `marks` are the times printed
    * above the axis. Whole hours only.
    * `tone`: "navy" for the stands, "orange" for the borrel.
-   * Lanes that follow each other (13–16, 16–19) sit on one line; a lane
+   * Lanes that follow each other (12–16, 16–19) sit on one line; a lane
    * that overlaps another drops to a line of its own.
    * ADD A LANE: copy a { } block and set its from/to.
    */
   updateTimeline: {
-    start: "13:00",
+    start: "12:00",
     end: "19:00",
-    marks: ["13:00", "16:00", "19:00"],
+    marks: ["12:00", "16:00", "19:00"],
     lanes: [
       {
-        from: "13:00",
+        from: "12:00",
         to: "16:00",
         tone: "navy",
         title: { nl: "Bedrijvendag", en: "Career day" },
@@ -165,7 +168,7 @@ export const NOVEMBER_2026_CONTENT = {
     ]
   },
 
-  /** The full-width "Voor bedrijven" link row under the timeline. */
+  /** The full-width "Voor bedrijven" link row above the FAQ (ForCompaniesSection). */
   updateCompanies: {
     title: { nl: "Voor bedrijven", en: "For companies" },
     body: {
@@ -209,8 +212,8 @@ export const NOVEMBER_2026_CONTENT = {
       label: { nl: "Wanneer", en: "When" },
       title: { nl: "Donderdag 26 november", en: "Thursday 26 November" },
       body: {
-        nl: "13:00 tot 19:00 uur, met vanaf 16:00 de netwerkborrel.",
-        en: "13:00 to 19:00, with networking drinks from 16:00."
+        nl: "12:00 tot 19:00 uur, met vanaf 16:00 de netwerkborrel.",
+        en: "12:00 to 19:00, with networking drinks from 16:00."
       }
     },
     {
@@ -241,14 +244,14 @@ export const NOVEMBER_2026_CONTENT = {
   //  CALENDAR  —  used by the date pill when `showAddToCalendar` is true
   //
   //  Times are in UTC and must be written as YYYYMMDDTHHMMSSZ.
-  //  The Netherlands is UTC+1 in November, so 12:00Z = 13:00 local time.
+  //  The Netherlands is UTC+1 in November, so 11:00Z = 12:00 local time.
   //
   //  The .ics file in /public must match these times — Apple devices use the
   //  file, everyone else is sent to Google Calendar.
   // ═══════════════════════════════════════════════════════════════════════════
   calendar: {
     eventName: "T.I.S. Bedrijvendag 2026",
-    startUtc: "20261126T120000Z", // 13:00 Amsterdam
+    startUtc: "20261126T110000Z", // 12:00 Amsterdam
     endUtc: "20261126T180000Z", //   19:00 Amsterdam
     icsFile: "/tis-bedrijvendag-november-2026.ics"
   }

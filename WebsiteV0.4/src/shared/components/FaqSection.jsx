@@ -2,8 +2,9 @@
 //  FAQ  —  the questions as <details> rows separated by hairlines, each with
 //  a + that turns into a − when it opens.
 //
-//    <FaqList />        just the rows; the /faq page uses this
-//    <FaqSection />     "03 FAQ" on the home page: rail, heading, rows
+//    <FaqList />        just the rows, ALL questions; the /faq page uses this
+//    <FaqSection />     the FAQ on the home page: rail, heading, rows,
+//                       minus the questions marked `homePage: false`
 //
 //  The questions and answers live in src/shared/data/faq.jsx.
 //  The heading text is in src/shared/strings.js (keys starting "faq").
@@ -15,12 +16,13 @@ import { STRINGS } from "../strings.js";
 import { FAQ_ITEMS } from "../data/faq.jsx";
 import { Container, GRID, SectionMain, SectionRail } from "../ui/Section.jsx";
 
-export function FaqList() {
+export function FaqList({ homePage = false }) {
   const { lang } = useLanguage();
+  const items = homePage ? FAQ_ITEMS.filter((item) => item.homePage !== false) : FAQ_ITEMS;
 
   return (
     <div className="faq border-t border-rule-strong dark:border-white/70">
-      {FAQ_ITEMS.map((item) => (
+      {items.map((item) => (
         <details key={pick(item.q, "en")} className="border-b border-rule dark:border-white/15">
           <summary className="grid min-h-[76px] cursor-pointer grid-cols-[1fr_2rem] items-center gap-4 py-6 text-heading font-normal text-fg transition-colors duration-settle hover:text-navy dark:text-white dark:hover:text-slate-300">
             {pick(item.q, lang)}
@@ -52,7 +54,7 @@ export default function FaqSection({ number }) {
           <h2 id="faq-title" className="pb-after text-title text-fg dark:text-white">
             {t.faqTitle}
           </h2>
-          <FaqList />
+          <FaqList homePage />
         </SectionMain>
       </Container>
     </section>

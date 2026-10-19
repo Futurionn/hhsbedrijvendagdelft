@@ -12,7 +12,8 @@
 //    • Click a card: it glides to the middle, the others step back, and the
 //      card opens into a panel with the details and a "Meer info" button to
 //      the company's own entry on the companies page.
-//      Esc, the ×, clicking elsewhere or dragging closes it.
+//      Esc, the ×, clicking elsewhere or dragging closes it. A click while a
+//      card is open only closes; it does not open the card under the pointer.
 //
 //  The cards are drawn with WebGL (src/shared/ui/circularGallery/). That code
 //  is loaded only when this section is on the page, so it does not slow the
@@ -28,10 +29,11 @@ import { X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { STRINGS } from "../strings.js";
 import { SUBPAGE, editionPath } from "../../editions/index.js";
-import { surfaceTextClasses } from "../companyStyles.js";
+import { cardPalette } from "../companyStyles.js";
 import Button from "../ui/Button.jsx";
 import CompanyLogo from "../ui/CompanyLogo.jsx";
 import CompanyMarquee from "./CompanyMarquee.jsx";
+import CompanyTags from "./CompanyTags.jsx";
 
 const SPRING = { type: "spring", bounce: 0, duration: 0.5 };
 
@@ -54,52 +56,56 @@ function guessHeight() {
   return 2 * (cardH + (phone ? 10 : 16) + bend) + 24;
 }
 
-/** The opened card: grows out of the card's own size into a panel. */
-function CompanyPanel({ company, rect, edition, onClose, containerWidth, containerHeight }) {
+/**
+ * The opened card: grows out of the card's own size into a panel, gliding
+ * from where the card sits to the middle of the gallery so it never hangs
+ * over the heading above or the text below.
+ *
+ * The panel stays WHITE in both themes (navy for white logos), like the card
+ * it grew out of, so the logo keeps the background it was made for. Its text
+ * follows the card, not the site theme: see cardPalette() in companyStyles.js.
+ */
+function CompanyPanel({ company, rect, edition, study, onClose, containerWidth, containerHeight }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
-  const dark = company.logoTone === "light";
-  const text = surfaceTextClasses(company.logoTone);
   // Phones see the page zoomed out (html.pc-on-phone), so a card-sized
-  // panel would be tiny: there it opens almost screen-wide, centred in the
-  // gallery. On a PC it grows to ~1.7× the card, over the card itself.
+  // panel would be tiny: there it opens almost screen-wide. On a PC it grows
+  // to ~2× the card.
   const onPhone = document.documentElement.classList.contains("pc-on-phone");
   const panelWidth = onPhone
     ? Math.min(containerWidth - 48, 720)
-    : Math.min(Math.max(rect.width * 1.7, 340), containerWidth - 24);
-  const anchor = onPhone ? { x: containerWidth / 2, y: containerHeight / 2 } : rect;
+    : Math.min(Math.max(rect.width * 2.1, 420), containerWidth - 24);
+  const centre = { x: containerWidth / 2, y: containerHeight / 2 };
+  const from = { x: rect.x - centre.x, y: rect.y - centre.y };
   const detailPath = `${editionPath(edition, SUBPAGE.companies)}/${company.id}`;
+  const c = cardPalette(company.logoTone);
 
   return (
     <div
       className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2"
-      style={{ left: anchor.x, top: anchor.y }}
+      style={{ left: centre.x, top: centre.y }}
     >
       <m.div
         role="dialog"
         aria-label={company.name}
-        initial={{ width: rect.width * 0.94, height: rect.height * 0.94, opacity: 0.6 }}
-        animate={{ width: panelWidth, height: "auto", opacity: 1 }}
-        exit={{ width: rect.width * 0.94, height: rect.height * 0.94, opacity: 0 }}
+        initial={{ ...from, width: rect.width * 0.94, height: rect.height * 0.94, opacity: 0.6 }}
+        animate={{ x: 0, y: 0, width: panelWidth, height: "auto", opacity: 1 }}
+        exit={{ ...from, width: rect.width * 0.94, height: rect.height * 0.94, opacity: 0 }}
         transition={SPRING}
-        className={`pointer-events-auto relative overflow-hidden rounded-md border shadow-[0_24px_60px_-24px_rgba(10,22,44,0.45)] ${
-          dark ? "border-white/10 bg-navy-deep" : "border-rule bg-white dark:border-white/10"
-        }`}
+        className={`pointer-events-auto relative overflow-hidden rounded-md border shadow-[0_24px_60px_-24px_rgba(10,22,44,0.45)] ${c.surface} ${c.primary}`}
       >
         <m.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0, transition: { ...SPRING, delay: 0.12 } }}
           exit={{ opacity: 0, transition: { duration: 0.12 } }}
-          className="p-6"
-          style={{ width: panelWidth }}
+          className="overflow-y-auto overscroll-contain p-6"
+          style={{ width: panelWidth, maxHeight: containerHeight - 16 }}
         >
           <button
             type="button"
             onClick={onClose}
             aria-label={t.galleryClose}
-            className={`absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-sm transition-colors duration-settle ${
-              dark ? "text-white/70 hover:text-white" : "text-fg-muted hover:text-fg"
-            }`}
+            className={`absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-sm transition-[transform,color] duration-settle active:scale-[0.97] active:duration-press ${c.close}`}
           >
             <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
           </button>
@@ -108,23 +114,25 @@ function CompanyPanel({ company, rect, edition, onClose, containerWidth, contain
             <CompanyLogo company={company} size="row" />
           </div>
 
-          <h3 className={`mt-4 text-heading font-medium ${text.primary}`}>{company.name}</h3>
-          <p className={`mt-1 text-small ${text.secondary}`}>
+          <h3 className={`mt-4 text-heading font-medium ${c.primary}`}>{company.name}</h3>
+          <p className={`mt-0.5 text-small ${c.muted}`}>
             {[company.industry, company.location].filter(Boolean).join(" · ")}
           </p>
 
-          <p className={`mt-4 line-clamp-4 text-small leading-relaxed ${text.body}`}>
-            {company.description}
-          </p>
+          <p className={`mt-4 line-clamp-4 text-small ${c.primary}`}>{company.description}</p>
 
-          <dl className={`mt-4 flex flex-wrap gap-x-6 gap-y-1 text-small ${text.secondary}`}>
+          <div className={`mt-4 border-t pt-4 ${c.rule}`}>
+            <CompanyTags company={company} highlight={study} compact />
+          </div>
+
+          <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-small">
             <div className="flex gap-1.5">
-              <dt>{t.employees}:</dt>
-              <dd className={text.primary}>{company.employees || t.tbd}</dd>
+              <dt className={c.muted}>{t.employees}:</dt>
+              <dd className={c.primary}>{company.employees || t.tbd}</dd>
             </div>
             <div className="flex gap-1.5">
-              <dt>{t.stand}:</dt>
-              <dd className={`tabular-nums ${text.primary}`}>
+              <dt className={c.muted}>{t.stand}:</dt>
+              <dd className={`tabular-nums ${c.primary}`}>
                 {Number.isInteger(company.stand) ? `#${company.stand}` : t.tbd}
               </dd>
             </div>
@@ -135,12 +143,7 @@ function CompanyPanel({ company, rect, edition, onClose, containerWidth, contain
               {t.moreInfo}
             </Button>
             {company.website && company.website !== "#" ? (
-              <Button
-                href={company.website}
-                variant="link"
-                arrow="out"
-                className={dark ? "text-white" : "text-fg dark:text-white"}
-              >
+              <Button href={company.website} variant="link" className={c.primary}>
                 {t.website}
               </Button>
             ) : null}
@@ -151,7 +154,7 @@ function CompanyPanel({ company, rect, edition, onClose, containerWidth, contain
   );
 }
 
-export default function CompanyGallery({ companies, edition }) {
+export default function CompanyGallery({ companies, edition, study }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
 
@@ -199,12 +202,9 @@ export default function CompanyGallery({ companies, edition }) {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         onCardClick: (hit) => {
           setOpen(null);
-          if (!hit) {
-            engine.release();
-            return;
-          }
-          const alreadyOpen = engine.selected?.key === hit.key && engine.panelOpen;
-          if (alreadyOpen) {
+          // With a card open (or gliding to the middle), a click anywhere in
+          // the gallery only closes it. It never opens the card underneath.
+          if (!hit || engine.frozen) {
             engine.release();
             return;
           }
@@ -271,6 +271,7 @@ export default function CompanyGallery({ companies, edition }) {
               company={open.company}
               rect={open.rect}
               edition={edition}
+              study={study}
               onClose={close}
               containerWidth={width}
               containerHeight={height}
@@ -278,10 +279,6 @@ export default function CompanyGallery({ companies, edition }) {
           ) : null}
         </AnimatePresence>
       </div>
-
-      <p className="mt-2 px-gutter text-center text-caption text-fg-muted dark:text-slate-400">
-        {t.companiesGalleryHint}
-      </p>
 
       {/* The canvas is invisible to screen readers; this is what they get. */}
       <ul className="sr-only">

@@ -61,7 +61,6 @@ export const STRINGS = {
     companiesIssuesLabel: "Problemen met uw bedrijf representatie?",
     companiesEmpty:
       "De bedrijvenlijst voor deze editie is nog niet gepubliceerd. Zodra de deelnemers bekend zijn, verschijnen ze hier.",
-    companiesGalleryHint: "Sleep of veeg om te bladeren, klik op een bedrijf voor meer info.",
     companiesPreviousKicker: "Vorige editie",
     companiesPreviousTitle: "Zij waren er in maart",
     companiesPreviousSubtitle:
@@ -70,14 +69,35 @@ export const STRINGS = {
     galleryNext: "Volgend bedrijf",
     galleryClose: "Sluiten",
     moreInfo: "Meer info",
+    companiesStudyFilter: "Wat studeer jij?",
+    studiesPrevious: "Vorige studies",
+    studiesNext: "Volgende studies",
+    companiesStudyEmpty: "Nog geen bedrijf zoekt specifiek deze studie. Bekijk de lijst voor wie er ook voor openstaat.",
 
     // -- Companies list page -----------------------------------------------
     companiesPageTitle: "Bedrijven",
     companiesPageIntro:
       "Bekijk alle deelnemende bedrijven. Gebruik de filter om snel te zoeken.",
     filter: "Filter",
+    searchLabel: "Zoek een bedrijf",
+    searchPlaceholder: "Zoek een bedrijf, bijv. ABB",
+    searchSuggestions: "Suggesties",
     category: "Categorie",
     sortAZ: "Sorteer A-Z",
+    filterStudy: "Jouw studie",
+    filterOffer: "Op zoek naar",
+    filterAllStudies: "Alle studies",
+    filterAllOffers: "Alles",
+    filterReset: "Filters wissen",
+    filterCount: (n) => (n === 1 ? "1 bedrijf" : `${n} bedrijven`),
+    filterNoResults: "Geen bedrijven gevonden met deze filters.",
+    filterOpenHeading: (study) => `Staan ook open voor ${study}`,
+    filterOpenBody: "Deze bedrijven zoeken niet specifiek jouw studie, maar staan er wel voor open.",
+    studiesWanted: "Zoekt studenten",
+    studiesOpen: "Staat ook open voor",
+    opportunitiesLabel: "Mogelijkheden",
+    readMore: "Lees meer",
+    readLess: "Minder",
     on: "aan",
     off: "uit",
     showOnMap: "Toon op kaart",
@@ -133,7 +153,7 @@ export const STRINGS = {
     footerTerms: "Gebruiksvoorwaarden",
     footerSiteIssues: "Problemen met de website?",
     footerMoreTitle: "Meer",
-    footerRegistrationOpen: "Aanmelding open",
+    footerAssociations: "Georganiseerd door",
 
     // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"
@@ -179,7 +199,6 @@ export const STRINGS = {
     companiesIssuesLabel: "Issues with your company listing?",
     companiesEmpty:
       "The company list for this edition has not been published yet. Participants will appear here once they are confirmed.",
-    companiesGalleryHint: "Drag or swipe to browse, click a company for more.",
     companiesPreviousKicker: "Previous edition",
     companiesPreviousTitle: "They were there in March",
     companiesPreviousSubtitle:
@@ -188,14 +207,35 @@ export const STRINGS = {
     galleryNext: "Next company",
     galleryClose: "Close",
     moreInfo: "More info",
+    companiesStudyFilter: "What do you study?",
+    studiesPrevious: "Previous programmes",
+    studiesNext: "Next programmes",
+    companiesStudyEmpty: "No company is specifically looking for this programme yet. Check the list for who is open to it.",
 
     // -- Companies list page -----------------------------------------------
     companiesPageTitle: "Companies",
     companiesPageIntro:
       "Browse all participating companies. Use the filter to quickly find what you need.",
     filter: "Filter",
+    searchLabel: "Search for a company",
+    searchPlaceholder: "Search for a company, e.g. ABB",
+    searchSuggestions: "Suggestions",
     category: "Category",
     sortAZ: "Sort A-Z",
+    filterStudy: "Your programme",
+    filterOffer: "Looking for",
+    filterAllStudies: "All programmes",
+    filterAllOffers: "Anything",
+    filterReset: "Clear filters",
+    filterCount: (n) => (n === 1 ? "1 company" : `${n} companies`),
+    filterNoResults: "No companies match these filters.",
+    filterOpenHeading: (study) => `Also open to ${study}`,
+    filterOpenBody: "These companies are not specifically looking for your programme, but are open to it.",
+    studiesWanted: "Looking for",
+    studiesOpen: "Also open to",
+    opportunitiesLabel: "Opportunities",
+    readMore: "Read more",
+    readLess: "Less",
     on: "on",
     off: "off",
     showOnMap: "Show on map",
@@ -250,7 +290,7 @@ export const STRINGS = {
     footerTerms: "Terms of Service",
     footerSiteIssues: "Website issues?",
     footerMoreTitle: "More",
-    footerRegistrationOpen: "Registration open",
+    footerAssociations: "Organised by",
 
     // -- Shared fallbacks ---------------------------------------------------
     tbd: "TBD"
@@ -286,5 +326,47 @@ export const CATEGORY_LABELS = {
     recruitment: "Recruitment",
     technology: "Technology",
     installation: "Installation"
+  }
+};
+
+/**
+ * The study programmes companies can say they are looking for. The KEY must
+ * match a key in a company's `studies` field (see the November companies.js).
+ * `short` is used where space is tight.
+ */
+export const STUDY_LABELS = {
+  nl: {
+    ee: { name: "Elektrotechniek", short: "ET" },
+    mt: { name: "Mechatronica", short: "MT" },
+    wtb: { name: "Werktuigbouwkunde", short: "WTB" },
+    tn: { name: "Technische Natuurkunde", short: "TN" },
+    tw: { name: "Toegepaste Wiskunde", short: "TW" },
+    tbk: { name: "Technische Bedrijfskunde", short: "TBK" },
+    ict: { name: "HBO-ICT", short: "ICT" }
+  },
+  en: {
+    ee: { name: "Electrical Engineering", short: "EE" },
+    mt: { name: "Mechatronics", short: "MT" },
+    wtb: { name: "Mechanical Engineering", short: "ME" },
+    tn: { name: "Applied Physics", short: "AP" },
+    tw: { name: "Applied Mathematics", short: "AM" },
+    tbk: { name: "Industrial Engineering & Management", short: "IEM" },
+    ict: { name: "HBO-ICT", short: "ICT" }
+  }
+};
+
+/** What a company offers students. Keys match a company's `opportunities`. */
+export const OPPORTUNITY_LABELS = {
+  nl: {
+    internship: "Stage",
+    graduation: "Afstuderen",
+    traineeship: "Traineeship",
+    job: "Baan"
+  },
+  en: {
+    internship: "Internship",
+    graduation: "Graduation project",
+    traineeship: "Traineeship",
+    job: "Job"
   }
 };

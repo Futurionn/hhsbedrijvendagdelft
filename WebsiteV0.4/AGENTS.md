@@ -15,6 +15,14 @@ no database. All content is in data and config files under `src/`.
    `*** FROZEN ARCHIVE — DO NOT EDIT ***` banner. Shared components that March
    happens to use *are* fair game — content is frozen, code is not.
 
+   **`/March2026` itself is the old V0.2 site**, not March drawn in the
+   current design: `archive/march-2026/` is a copy of `WebsiteV0.2`, built
+   by `npm run build` into `dist/March2026/` (its own `.htaccess`). The app
+   hands every `/March2026...` address to it (`archiveSite: true` in the
+   registry, `ArchiveRedirect`). Never edit `archive/march-2026/src/` either.
+   The March data in `src/editions/march-2026/` is still used by November's
+   "came in March" fallback.
+
 2. **Never hardcode user-visible text in a `.jsx` component.** It belongs in
    the edition config, `src/shared/strings.js`, or a data file under
    `src/shared/data/`.
@@ -89,6 +97,7 @@ no database. All content is in data and config files under `src/`.
 
 ```
 /                          active edition (canonical), set by ACTIVE_EDITION_ID
+/March2026/...             the archived V0.2 site (archive/march-2026)
 /<Slug>                    edition home          e.g. /November2026
 /<Slug>/bedrijven          its company list
 /<Slug>/plattegrond        its floor plan

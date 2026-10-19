@@ -26,6 +26,7 @@
 //
 //  ─── TO REMOVE IT ───────────────────────────────────────────────────────────
 //  Set `showAssociations: false` in the edition's config file.
+//  To show only some, list their names in `associations: [...]` there.
 //
 //  The list of associations is in src/shared/data/associations.js
 //  The heading text is in src/shared/strings.js (`associationsKicker`).
@@ -81,9 +82,16 @@ function AssociationLink({ association }) {
   );
 }
 
-export default function AssociationsSection() {
+/**
+ * `only` — optional list of association names; shows just those, in that
+ * order. Left out, every association in associations.js is shown.
+ */
+export default function AssociationsSection({ only }) {
   const { lang } = useLanguage();
   const t = STRINGS[lang];
+  const associations = only
+    ? only.map((name) => ASSOCIATIONS.find((a) => a.name === name)).filter(Boolean)
+    : ASSOCIATIONS;
 
   return (
     <section
@@ -103,7 +111,7 @@ export default function AssociationsSection() {
         </h2>
 
         <ul className="mt-6 flex flex-wrap items-start justify-center gap-x-1 gap-y-2 sm:gap-x-4">
-          {ASSOCIATIONS.map((association) => (
+          {associations.map((association) => (
             <AssociationLink key={association.name} association={association} />
           ))}
         </ul>
