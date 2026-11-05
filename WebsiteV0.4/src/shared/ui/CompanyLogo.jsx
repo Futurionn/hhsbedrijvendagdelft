@@ -18,7 +18,7 @@ export default function CompanyLogo({ company, size = "card" }) {
         className={
           isCard
             ? "h-14 w-auto max-w-[220px] object-contain"
-            : "h-10 w-full max-w-full object-contain"
+            : "h-20 w-full max-w-full object-contain"
         }
         loading="lazy"
       />

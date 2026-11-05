@@ -192,7 +192,14 @@ export default function Footer({ edition, bigText = "T.I.S.", associations }) {
       />
 
       <Container className="relative z-[1]">
-        {bigText ? <HoverText text={bigText} className="mx-auto max-w-[78%] pt-[clamp(1.5rem,3vw,2.5rem)]" /> : null}
+        {/* "T.I.S." is about half as wide as the date, so at the same width it
+            would stand twice as tall; give it half the width instead. */}
+        {bigText ? (
+          <HoverText
+            text={bigText}
+            className={`mx-auto pt-[clamp(1.5rem,3vw,2.5rem)] ${bigText === "T.I.S." ? "max-w-[40%]" : "max-w-[78%]"}`}
+          />
+        ) : null}
 
         <div className="grid grid-cols-1 gap-8 pb-10 pt-[clamp(2rem,4vw,3.5rem)] sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-12">
           {/* -- Brand -- */}

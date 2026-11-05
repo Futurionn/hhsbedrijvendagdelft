@@ -239,15 +239,17 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     logo: "/logos/comaen.svg",
     logoTone: "dark",
     category: "recruitment",
-    industry: { nl: "Ingenieursbureau / industriële automatisering", en: "Engineering firm / industrial automation" },
-    employees: "~ 70",
+    // Comaen filled in the form twice; this is their second, later submission.
+    industry: { nl: "Recruitment (engineering en industriële automatisering)", en: "Recruitment (engineering and industrial automation)" },
+    employees: "~ 17",
     location: { nl: "Haarlem, NL", en: "Haarlem, NL" },
     website: "https://www.comaen.nl/",
-    studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "no", tw: "no", wtb: "yes", ict: "no" },
-    opportunities: [],
+    studies: { ee: "maybe", mt: "yes", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
+    opportunities: ["graduation", "job"],
+    opportunityNote: { nl: "Afstuderen en juniorfuncties.", en: "Graduation projects and junior positions." },
     description: {
-      nl: "Wij reverse-engineeren loopbanen binnen de industriële automatisering.",
-      en: "We reverse-engineer careers in industrial automation."
+      nl: "Bij Comaen geloven we dat een goede carrière niet begint bij een functietitel, maar bij wie jij bent. We verbinden engineers met technische organisaties waar hun talenten, ambities en persoonlijkheid tot hun recht komen. Want de juiste match draait om meer dan alleen een cv.",
+      en: "At Comaen we believe a good career doesn't start with a job title, but with who you are. We connect engineers with technical organisations where their talents, ambitions and personality can shine. Because the right match is about more than just a CV."
     }
   },
   {
@@ -354,7 +356,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     logoTone: "light",
     category: "consultancy",
     industry: { nl: "Installatietechniek", en: "Building services" },
-    employees: { nl: "~ 17 + 2 externen", en: "~ 17 + 2 external" },
+    employees: "~ 17",
     location: { nl: "Den Haag, NL", en: "The Hague, NL" },
     website: "https://dvpsmartconcepts.nl/",
     studies: { ee: "yes", mt: "no", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
@@ -494,7 +496,8 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
   },
   {
     name: "Logiqs B.V.",
-    logo: "/logos/logiqs.png",
+    logo: "/logos/logiqs-2026.png",
+    logoTone: "light",
     category: "technology",
     industry: { nl: "Automatisering voor tuinbouw en logistiek", en: "Automation for horticulture and logistics" },
     employees: "~ 60",
@@ -529,7 +532,8 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
   },
   {
     name: "Mammoet",
-    logo: "/logos/mammoet.png",
+    logo: "/logos/mammoet-2026.png",
+    logoTone: "dark",
     category: "engineering",
     industry: { nl: "Logistiek & transport (heavy lifting)", en: "Logistics & transport (heavy lifting)" },
     employees: { nl: "~ 5000 wereldwijd", en: "~ 5,000 worldwide" },
@@ -557,6 +561,206 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     description: {
       nl: "Gemiddeld, daar doen we het niet voor. We zijn klimaatwinnaars. Mondje dicht, aanpakken, en in één rechte lijn op ons doel af. We zoeken simpelweg naar de allerbeste en meest solide klimaatoplossing, hoe complex die ook mag klinken. Want we zijn vakidioten met lef. En een tikje eigenwijs.",
       en: "Average is not what we do it for. We are climate winners. Heads down, get to work, and straight for the goal. We simply look for the very best and most solid climate solution, however complex it may sound. Because we are craft fanatics with nerve. And a little bit headstrong."
+    }
+  },
+  {
+    name: "TechniekMatch",
+    logo: "/logos/techniekmatch.png",
+    logoTone: "dark",
+    category: "recruitment",
+    industry: {
+      nl: "Techniekbreed; focus op installatietechniek en ondergrondse infra",
+      en: "All of engineering; focus on building services and underground infrastructure"
+    },
+    employees: "~ 180",
+    location: { nl: "Amsterdam, NL", en: "Amsterdam, NL" },
+    website: "https://www.techniekmatch.com/",
+    studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "no", tw: "no", wtb: "yes", ict: "maybe" },
+    opportunities: ["traineeship", "job"],
+    opportunityNote: { nl: "Bijbanen, traineeships en startersbanen.", en: "Side jobs, traineeships and starter jobs." },
+    description: {
+      nl: "Als technisch uitzendbureau verbinden wij technische studenten en professionals met bedrijven die de toekomst bouwen. Onze missie: technisch talent koppelen aan innovatieve organisaties en bijdragen aan duurzame groei. Wij bieden niet zomaar een baan, maar een startpunt voor sterke carrières in de techniek.",
+      en: "As a technical staffing agency, we connect technical students and professionals with companies that are building the future. Our mission: matching technical talent with innovative organisations and contributing to sustainable growth. We don't just offer a job, but a starting point for strong careers in engineering."
+    }
+  },
+  {
+    name: "Certhon",
+    logo: "/logos/certhon.png",
+    logoTone: "dark",
+    category: "engineering",
+    industry: { nl: "Tuinbouwsector", en: "Horticulture" },
+    employees: "~ 130",
+    location: { nl: "Poeldijk, NL", en: "Poeldijk, NL" },
+    website: "https://certhon.com/nl/",
+    studies: { ee: "yes", mt: "maybe", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "no" },
+    opportunities: ["internship", "graduation", "job"],
+    opportunityNote: {
+      nl: "We bieden mogelijkheden in zowel stageopdrachten als afstuderen en kijken na het afstuderen ook altijd of er een mogelijkheid is voor een startersfunctie.",
+      en: "We offer both internship and graduation projects, and after graduation we always look at whether a starter position is possible."
+    },
+    description: {
+      nl: "Certhon realiseert complete hoogwaardige glastuinbouwprojecten. We integreren kasconstructie, klimaatinstallaties, irrigatie, belichting, energiesystemen, opkweek en automatisering tot één optimale teeltomgeving. Doordat alle systemen naadloos samenwerken, krijgen telers voor hun gewas de beste omstandigheden om maximaal te presteren.",
+      en: "Certhon delivers complete, high-quality greenhouse projects. We integrate greenhouse construction, climate systems, irrigation, lighting, energy systems, propagation and automation into one optimal growing environment. Because all systems work together seamlessly, growers get the best conditions for their crops to perform at their peak."
+    }
+  },
+  {
+    name: "Dosign Engineering",
+    // No logo came in with the form; this one is from their website.
+    logo: "/logos/dosign.svg",
+    logoTone: "light",
+    category: "recruitment",
+    industry: {
+      nl: "Engineering en projectmanagement in energie, infra, industrie, installatietechniek en machinebouw",
+      en: "Engineering and project management in energy, infrastructure, industry, building services and machine building"
+    },
+    // The form said 2, which is not their real size; left out until confirmed.
+    location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
+    website: "https://www.dosign.nl/",
+    studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "no" },
+    opportunities: ["internship", "graduation", "traineeship", "job"],
+    opportunityNote: {
+      nl: "Stages, afstudeeropdrachten, traineeships, duale hbo-trajecten en startersfuncties binnen engineering en techniek.",
+      en: "Internships, graduation projects, traineeships, work-study bachelor's tracks and starter positions in engineering and technology."
+    },
+    description: {
+      nl: "Dosign Engineering helpt technische studenten en professionals aan een passende plek binnen de techniek. Wij bieden persoonlijke begeleiding en verbinden talent aan uitdagende projecten bij technische bedrijven binnen onder andere elektrotechniek, werktuigbouwkunde, energie, infrastructuur en industrie.",
+      en: "Dosign Engineering helps technical students and professionals find the right place in engineering. We offer personal guidance and connect talent with challenging projects at technical companies in fields including electrical engineering, mechanical engineering, energy, infrastructure and industry."
+    }
+  },
+  {
+    name: "KERN Engineers",
+    logo: "/logos/kernengineers.png",
+    logoTone: "dark",
+    category: "recruitment",
+    industry: { nl: "Detachering", en: "Technical secondment" },
+    employees: "~ 30",
+    location: { nl: "Den Haag, NL", en: "The Hague, NL" },
+    website: "https://www.kernengineers.nl/",
+    studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "yes", tw: "maybe", wtb: "maybe", ict: "maybe" },
+    opportunities: ["job"],
+    opportunityNote: { nl: "Mooie startersfuncties na het afstuderen.", en: "Great starter positions after graduation." },
+    description: {
+      nl: "KERN Engineers is een detacheringsbureau voor hoogopgeleid technisch personeel. Voor ons draait het om de juiste engineer in de juiste rol. We gaan op zoek naar een échte match, niet alleen wat aansluit bij je cv.",
+      en: "KERN Engineers is a secondment agency for highly educated technical staff. For us, it's all about the right engineer in the right role. We look for a real match, not just what fits your CV."
+    }
+  },
+  {
+    name: "Schulte en Lestraden B.V.",
+    logo: "/logos/schulte.png",
+    logoTone: "dark",
+    category: "installation",
+    industry: { nl: "Utiliteit", en: "Commercial buildings" },
+    employees: "~ 160",
+    location: { nl: "Lisse, NL", en: "Lisse, NL" },
+    website: "https://senl.nl/",
+    studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
+    opportunities: ["internship", "graduation"],
+    description: {
+      nl: "Installatiebedrijf voor gebouwinstallaties.",
+      en: "Installation company for building services."
+    }
+  },
+  {
+    name: "Fluor B.V.",
+    // No logo came in with the form; this one is from their website.
+    logo: "/logos/fluor.png",
+    logoTone: "dark",
+    category: "engineering",
+    industry: { nl: "Onder andere energie, life sciences en infrastructuur", en: "Energy, life sciences and infrastructure, among others" },
+    employees: { nl: "~ 24.000 wereldwijd", en: "~ 24,000 worldwide" },
+    location: { nl: "Hoofddorp, NL", en: "Hoofddorp, NL" },
+    website: "https://www.fluor.com/",
+    studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "no", wtb: "yes", ict: "yes" },
+    opportunities: ["internship", "job"],
+    opportunityNote: { nl: "Stage en juniorposities.", en: "Internships and junior positions." },
+    description: {
+      nl: "Wij ontwerpen, bouwen en onderhouden industriële faciliteiten. Door multidisciplinaire, diepgaande technische expertise te combineren met duurzaamheid, bouwkennis en projectmanagement, realiseren wij de grootste en meest complexe industriële projecten. Onze internationale teams realiseren projecten met wereldwijde impact, van het eerste ontwerp tot de laatste bout.",
+      en: "We design, build and maintain industrial facilities. By combining deep, multidisciplinary technical expertise with sustainability, construction knowledge and project management, we deliver the largest and most complex industrial projects. Our international teams deliver projects with global impact, from the first design to the last bolt."
+    }
+  },
+  {
+    name: "Continu Professionals",
+    logo: "/logos/continu.png",
+    logoTone: "dark",
+    category: "recruitment",
+    industry: { nl: "Techniek (detachering)", en: "Engineering (secondment)" },
+    employees: "~ 250",
+    location: { nl: "Capelle aan den IJssel, NL", en: "Capelle aan den IJssel, NL" },
+    website: "https://www.continu.nl/",
+    studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "yes", tw: "yes", wtb: "yes", ict: "yes" },
+    opportunities: ["job"],
+    opportunityNote: { nl: "Mooie startplekken binnen de techniek.", en: "Great starting positions in engineering." },
+    description: {
+      nl: "Technische detacheerder in Zuid-Holland.",
+      en: "Technical secondment agency in South Holland."
+    }
+  },
+  {
+    name: "Hoppenbrouwers Barendrecht",
+    logo: "/logos/hoppenbrouwers.png",
+    logoTone: "dark",
+    category: "installation",
+    industry: { nl: "Industriële automatisering", en: "Industrial automation" },
+    employees: { nl: "~ 2500 landelijk", en: "~ 2,500 nationwide" },
+    location: { nl: "Barendrecht, NL", en: "Barendrecht, NL" },
+    website: "https://www.werkenbijhoppenbrouwers.nl/vestigingen/werken-in-barendrecht/",
+    studies: { ee: "yes", mt: "maybe", tbk: "no", tn: "no", tw: "no", wtb: "maybe", ict: "no" },
+    opportunities: ["internship", "graduation", "traineeship"],
+    description: {
+      nl: "Hoppenbrouwers Barendrecht is een echte specialist in de industriële automatisering. Van complete nieuwbouw tot grondige renovaties en kleine aanpassingen. Wij maken op maat gemaakte hard- en softwareoplossingen voor de besturing van grote installaties in de sectoren water en industrie.",
+      en: "Hoppenbrouwers Barendrecht is a true specialist in industrial automation. From complete new builds to thorough renovations and small adjustments. We make custom hardware and software solutions for controlling large installations in the water and industrial sectors."
+    }
+  },
+  {
+    name: "Conscia Nederland",
+    // No logo came in with the form; this one is from their website.
+    logo: "/logos/conscia.png",
+    logoTone: "light",
+    category: "technology",
+    industry: { nl: "IT-netwerken en security", en: "IT networking and security" },
+    employees: "~ 300",
+    location: { nl: "Gouda, NL", en: "Gouda, NL" },
+    website: "https://www.conscia.com/nl/",
+    studies: { ee: "no", mt: "no", tbk: "no", tn: "no", tw: "no", wtb: "no", ict: "yes" },
+    opportunities: ["internship", "graduation", "job"],
+    description: {
+      nl: "Bij Conscia werken we aan de digitale wereld van morgen. We ontwerpen, bouwen en beheren veilige IT-oplossingen op het gebied van networking, cybersecurity en cloud. Als stagiair werk je mee aan echte opdrachten en leer je van ervaren IT-specialisten. Zo ontdek je waar jouw talent ligt en geef je jouw carrière een vliegende start.",
+      en: "At Conscia we work on the digital world of tomorrow. We design, build and manage secure IT solutions in networking, cybersecurity and cloud. As an intern you work on real assignments and learn from experienced IT specialists. That way you discover where your talent lies and give your career a flying start."
+    }
+  },
+  {
+    name: "Osbit",
+    logo: "/logos/osbit.png",
+    logoTone: "light",
+    category: "engineering",
+    industry: { nl: "Offshore equipment", en: "Offshore equipment" },
+    employees: { nl: "230 (VK), 15 (NL)", en: "230 (UK), 15 (NL)" },
+    location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
+    website: "https://www.osbit.com/",
+    studies: { ee: "maybe", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
+    opportunities: ["internship", "graduation", "traineeship"],
+    description: {
+      nl: "Osbit levert op maat gemaakt equipment dat door onze klanten, veelal aannemers, gebruikt wordt voor de constructie van offshore windparken. Wij werken intensief samen met onze klanten en ontwerpen en leveren baanbrekend equipment voor verschillende toepassingen, zoals het leggen, begraven en repareren van kabels op de zeebodem en het hanteren en hijsen van funderingen zoals monopiles en jackets.",
+      en: "Osbit supplies custom-built equipment that our clients, mostly contractors, use to construct offshore wind farms. We work closely with our clients to design and deliver ground-breaking equipment for a range of applications, such as laying, burying and repairing cables on the seabed and handling and lifting foundations such as monopiles and jackets."
+    }
+  },
+  {
+    name: "Red Point Alloys B.V.",
+    // No logo came in with the form. Red Point is a Flowserve brand and its
+    // website is a Flowserve page, so this is the Flowserve logo.
+    logo: "/logos/flowserve.svg",
+    logoTone: "dark",
+    category: "engineering",
+    industry: { nl: "Metaalindustrie / werktuigbouwkunde (industriële afsluiters)", en: "Metal industry / mechanical engineering (industrial valves)" },
+    employees: "~ 40",
+    location: { nl: "Zoetermeer, NL", en: "Zoetermeer, NL" },
+    website: "https://www.flowserve.com/products/brands/red-point/",
+    studies: { ee: "maybe", mt: "maybe", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
+    opportunities: ["internship", "job"],
+    opportunityNote: { nl: "Stage en werkplek.", en: "Internships and jobs." },
+    description: {
+      nl: "Red Point Alloys B.V. in Zoetermeer ontwerpt en produceert industriële afsluiters op maat voor klanten over de hele wereld. Wij combineren engineering, materiaalkennis en productie om oplossingen te bieden voor uitdagende technische toepassingen. We zoeken enthousiaste stagiairs en afgestudeerden die hun kennis in de praktijk willen brengen en samen met ons willen werken aan technische oplossingen.",
+      en: "Red Point Alloys B.V. in Zoetermeer designs and manufactures custom industrial valves for clients around the world. We combine engineering, materials expertise and production to deliver solutions for demanding technical applications. We are looking for enthusiastic interns and graduates who want to put their knowledge into practice and work with us on technical solutions."
     }
   }
 ]);
