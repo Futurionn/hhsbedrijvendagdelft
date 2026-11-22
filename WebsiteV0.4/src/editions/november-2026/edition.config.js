@@ -46,7 +46,7 @@ export const NOVEMBER_2026_CONTENT = {
    * ONLY flip this to true AFTER you have filled in
    * src/editions/november-2026/data/floorPlan.js
    */
-  showFloorPlan: false,
+  showFloorPlan: true,
 
   /**
    * The strip of organising study associations near the bottom of the page.
@@ -113,10 +113,16 @@ export const NOVEMBER_2026_CONTENT = {
 
   // ── The actions under the hero ─────────────────────────────────────────────
 
-  /** Scrolls down to the companies (or the update section while showCompanies is false). */
+  /**
+   * The orange button. While the floor plan is on (showFloorPlan), it opens
+   * the floor plan and reads ctaFloorPlan. Without a floor plan it reads
+   * ctaPrimary and scrolls down to the companies (or to the programme while
+   * showCompanies is false).
+   */
+  ctaFloorPlan: { nl: "Bekijk de plattegrond", en: "View the floor plan" },
   ctaPrimary: { nl: "Bekijk de bedrijven", en: "See the companies" },
 
-  /** Goes to the company registration form at /voor-bedrijven. */
+  /** Goes to the page for companies at /voor-bedrijven. */
   ctaRegistration: { nl: "Voor bedrijven", en: "For companies" },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -127,8 +133,8 @@ export const NOVEMBER_2026_CONTENT = {
   updateKicker: { nl: "Programma", en: "Programme" },
   updateTitle: { nl: "Donderdag 26 november", en: "Thursday 26 November" },
   updateSubtitle: {
-    nl: "Datum, tijd en locatie staan vast. Hieronder zie je welke bedrijven er komen; de plattegrond volgt.",
-    en: "The date, time and venue are confirmed. The companies taking part are listed below; the floor plan follows."
+    nl: "Datum, tijd en locatie staan vast. Hieronder zie je welke bedrijven er komen; op de plattegrond zie je waar ze staan.",
+    en: "The date, time and venue are confirmed. The companies taking part are listed below; the floor plan shows where to find them."
   },
 
   /**
@@ -168,12 +174,16 @@ export const NOVEMBER_2026_CONTENT = {
     ]
   },
 
-  /** The full-width "Voor bedrijven" link row above the FAQ (ForCompaniesSection). */
+  /**
+   * The full-width "Voor bedrijven" link row above the FAQ (ForCompaniesSection).
+   * Keep it in step with COMPANY_REGISTRATION.open in src/site.config.js:
+   * this text says registration is closed.
+   */
   updateCompanies: {
     title: { nl: "Voor bedrijven", en: "For companies" },
     body: {
-      nl: "Wilt u deelnemen met een stand? Meld uw bedrijf aan via het aanmeldformulier, dan nemen wij contact op over de praktische details.",
-      en: "Would you like to join with a stand? Register your company through the form and we will follow up with the practical details."
+      nl: "De inschrijving voor deze editie is gesloten. Lees wat deelname oplevert en kom op de mailinglijst voor de volgende editie.",
+      en: "Registration for this edition has closed. Read what taking part gives you and join the mailing list for the next edition."
     }
   },
 

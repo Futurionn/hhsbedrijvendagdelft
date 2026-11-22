@@ -164,6 +164,121 @@ console.log("\n— companies & floor plan —");
   await page.close();
 }
 
+// ── 3b. The drawn November floor plan (StandMap.jsx) ────────────────────────
+console.log("\n— November floor plan —");
+{
+  const page = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+  const MAP = `${BASE_URL}/November2026/plattegrond`;
+  const path = () => page.url().split("4173")[1] ?? page.url();
+  const viewBox = () => page.getAttribute("[data-stand-map] svg", "viewBox");
+  const cardTitle = async () =>
+    (await page.locator("[data-stand-card] h2").count()) > 0
+      ? page.locator("[data-stand-card] h2").last().innerText()
+      : "";
+  /** The middle of a stand on screen. */
+  const centreOf = (stand) =>
+    page.evaluate((n) => {
+      const box = document.querySelector(`[data-stand-map] [data-stand="${n}"]`).getBoundingClientRect();
+      return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+    }, stand);
+
+  await page.goto(MAP, { waitUntil: "networkidle" });
+  await page.locator("[data-stand-map]").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(600);
+
+  const stands = await page.locator("[data-stand-map] [data-stand]").count();
+  check("map draws its stands", stands >= 40, `${stands} stands`);
+  check(
+    "the list beside the map is filled",
+    (await page.locator("[data-stand-list] [data-entry]").count()) >= stands
+  );
+  // The view that shows the whole plan, to compare against later.
+  const fitted = await viewBox();
+
+  // Clicking a stand opens its card and puts the stand in the address.
+  let spot = await centreOf(9);
+  await page.mouse.click(spot.x, spot.y);
+  await page.waitForTimeout(700);
+  check("clicking a stand opens its card", (await cardTitle()).includes("ABB"), await cardTitle());
+  check("the stand is kept in the address", path().endsWith("?stand=9"), path());
+
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(500);
+  check("Esc closes the card", (await page.locator("[data-stand-card]").count()) === 0 && !path().includes("stand="));
+
+  // A plain scroll is the page's; Ctrl + scroll zooms.
+  const beforeScroll = await viewBox();
+  spot = await centreOf(9);
+  await page.mouse.move(spot.x, spot.y);
+  await page.mouse.wheel(0, -200);
+  await page.waitForTimeout(300);
+  check("a plain scroll does not zoom the map", (await viewBox()) === beforeScroll);
+  await page.waitForTimeout(1500);
+  spot = await centreOf(9);
+  await page.mouse.move(spot.x, spot.y);
+  await page.keyboard.down("Control");
+  await page.mouse.wheel(0, -300);
+  await page.keyboard.up("Control");
+  await page.waitForTimeout(300);
+  const zoomed = await centreOf(9);
+  check(
+    "Ctrl + scroll zooms at the pointer",
+    (await viewBox()) !== beforeScroll && Math.abs(zoomed.x - spot.x) < 4 && Math.abs(zoomed.y - spot.y) < 4
+  );
+
+  // Dragging moves the map and is not mistaken for a click.
+  await page.mouse.down();
+  await page.mouse.move(zoomed.x + 100, zoomed.y + 50, { steps: 5 });
+  await page.mouse.up();
+  await page.waitForTimeout(300);
+  const dragged = await centreOf(9);
+  check(
+    "dragging moves the map",
+    Math.abs(dragged.x - zoomed.x - 100) < 4 && Math.abs(dragged.y - zoomed.y - 50) < 4 &&
+      (await page.locator("[data-stand-card]").count()) === 0
+  );
+
+  await page.locator('[data-stand-map] button[aria-label="Hele plattegrond"]').click();
+  await page.waitForTimeout(800);
+  check("'whole plan' shows everything again", (await viewBox()) === fitted);
+
+  // A filter chip dims the stands that do not match.
+  await page.locator('[data-stand-map] button:has-text("HBO-ICT")').first().click();
+  await page.waitForTimeout(900);
+  const dimmed = await page.locator("[data-stand-map] [data-dimmed]").count();
+  const listedIct = await page.locator("[data-stand-list] [data-entry]").count();
+  check("a study filter dims the other stands", dimmed > 0 && listedIct > 0 && listedIct < stands, `${dimmed} dimmed, ${listedIct} listed`);
+  await page.locator('[data-stand-map] button:has-text("Alle")').first().click();
+  await page.waitForTimeout(800);
+
+  // The search box and the list: picking a name glides the map to it.
+  await page.fill("#stand-map-search", "quoo");
+  await page.waitForTimeout(300);
+  check("search narrows the list", (await page.locator("[data-stand-list] [data-entry]").count()) >= 1);
+  const beforePick = await viewBox();
+  await page.locator("[data-stand-list] [data-entry]").first().click();
+  await page.waitForTimeout(1000);
+  check(
+    "picking from the list opens and zooms to the stand",
+    (await cardTitle()).includes("Quooker") && (await viewBox()) !== beforePick && path().includes("stand=28")
+  );
+
+  // The card leads to the company; the company leads back to its stand.
+  await page.locator('[data-stand-card] a:has-text("Meer info")').click();
+  await page.waitForTimeout(1200);
+  check("'Meer info' opens the company", path().startsWith("/November2026/bedrijven/quooker"), path());
+
+  await page.goto(`${BASE_URL}/November2026/bedrijven`, { waitUntil: "networkidle" });
+  await page.locator('a:has-text("Toon op kaart")').first().click();
+  await page.waitForTimeout(1500);
+  check(
+    "'show on map' lands on that stand",
+    path().includes("/November2026/plattegrond?stand=") && (await cardTitle()).length > 0,
+    path()
+  );
+  await page.close();
+}
+
 // ── 4. The scrolling logo rows ──────────────────────────────────────────────
 console.log("\n— logo marquee —");
 {
@@ -205,13 +320,13 @@ console.log("\n— logo marquee —");
   await page.close();
 }
 
-// ── 5. Phone behaviour: layout, tap-to-open, tap-twice on the map ───────────
+// ── 5. Phone behaviour: layout, tap-to-open, tapping a stand on the map ─────
 console.log("\n— on a phone —");
 {
   const ctx = await browser.newContext({ ...devices["iPhone 13"] });
   const page = await ctx.newPage();
 
-  for (const route of ["/", "/March2026", "/March2026/bedrijven", "/March2026/plattegrond", "/faq"]) {
+  for (const route of ["/", "/March2026", "/March2026/bedrijven", "/March2026/plattegrond", "/November2026/plattegrond", "/faq"]) {
     await page.goto(BASE_URL + route, { waitUntil: "networkidle" });
     const { doc, win } = await page.evaluate(() => ({
       doc: document.documentElement.scrollWidth,
@@ -245,11 +360,19 @@ console.log("\n— on a phone —");
   await page.waitForTimeout(700);
   check("tap again collapses it", (await openCards()) === 0, `${await openCards()} open`);
 
-  // "First tap only previews, second tap opens" is the current floor plan
-  // (FloorPlanMap.jsx). No live page shows it until November's map is
-  // switched on (`showFloorPlan`); point a check at /November2026/plattegrond
-  // then. /March2026/plattegrond is the archived V0.2 map, which opens on
-  // the first tap.
+  // The November map (StandMap.jsx): one tap on a stand opens its card.
+  // (/March2026/plattegrond is the archived V0.2 map; the picture-with-
+  // hotspots map, FloorPlanMap.jsx, is not shown by any live page.)
+  await page.goto(`${BASE_URL}/November2026/plattegrond`, { waitUntil: "networkidle" });
+  await page.locator("[data-stand-map]").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(600);
+  const stand = await page.evaluate(() => {
+    const box = document.querySelector('[data-stand-map] [data-stand="27"]').getBoundingClientRect();
+    return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  });
+  await page.touchscreen.tap(stand.x, stand.y);
+  await page.waitForTimeout(700);
+  check("tapping a stand opens its card", (await page.locator("[data-stand-card]").count()) === 1);
 
   await ctx.close();
 }
@@ -278,6 +401,36 @@ console.log("\n— header —");
   await page.locator('header button:has-text("Over het event")').first().click();
   await page.waitForTimeout(900);
   check("nav reaches the about section", page.url().includes("#about"), page.url().split("4173")[1]);
+
+  await page.locator('header button:has-text("Programma")').first().click();
+  await page.waitForTimeout(900);
+  check(
+    "nav reaches the programme section",
+    page.url().includes("#november-update"),
+    page.url().split("4173")[1]
+  );
+
+  // The floor plan has its own place in the menu.
+  await page.locator('header a:has-text("Plattegrond")').first().click();
+  await page.waitForSelector("[data-stand-map]");
+  check(
+    "nav reaches the floor plan",
+    new URL(page.url()).pathname === "/November2026/plattegrond",
+    new URL(page.url()).pathname
+  );
+
+  // Registration is closed: the page for companies asks for an email and
+  // shows the editions so far. (With COMPANY_REGISTRATION.open set to true
+  // it shows the form instead; change these three checks then.)
+  await page.goto(`${BASE_URL}/voor-bedrijven`, { waitUntil: "networkidle" });
+  const mailHref = await page
+    .locator('[data-registration="closed"] a[href^="mailto:"]')
+    .first()
+    .getAttribute("href");
+  check("'for companies' asks for an email", (mailHref ?? "").includes("subject="), mailHref ?? "no mail link");
+  check("'for companies' shows no form while closed", (await page.locator("iframe").count()) === 0);
+  const records = await page.locator("[data-edition-record]").count();
+  check("'for companies' lists the earlier editions", records === 2, `${records} editions`);
 
   // The logo must escape the March archive (the old V0.2 site, which has no
   // <header>), not loop back into it.

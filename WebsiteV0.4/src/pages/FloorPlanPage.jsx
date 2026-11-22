@@ -1,20 +1,27 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //  FLOOR PLAN PAGE  —  wraps the interactive map in the standard page frame.
 //
-//  Lives at  /<edition>/plattegrond   e.g. /March2026/plattegrond
+//  Lives at  /<edition>/plattegrond   e.g. /November2026/plattegrond
 //
 //  Web-address option:
-//      ?stand=12   highlights that stand on arrival and scrolls the map into
-//                  view (this is what the "Toon op kaart" buttons link to)
+//      ?stand=12   opens that stand on arrival and brings the map into view
+//                  (this is what the "Toon op kaart" buttons link to)
 //
-//  The map itself is FloorPlanMap; the stand coordinates are in the edition's
-//  data/floorPlan.js.
+//  There are two kinds of map, and the edition's data/floorPlan.js decides
+//  which one this page shows:
+//
+//    a DRAWN plan (it has `stands: [...]`)   ->  StandMap.jsx
+//        zoomable, with the search/filter list beside it. November 2026.
+//
+//    a PICTURE with hotspots (it has `image` and `hotspots`)  ->  FloorPlanMap.jsx
+//        the older kind: rectangles over a photo of the plan.
 // ─────────────────────────────────────────────────────────────────────────────
 import { useEffect, useRef } from "react";
 import { MapPin } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import PageLayout from "../shared/components/PageLayout.jsx";
 import FloorPlanMap from "../shared/components/FloorPlanMap.jsx";
+import StandMap from "../shared/components/StandMap.jsx";
 import { useLanguage } from "../shared/context/LanguageContext.jsx";
 import { usePageMeta } from "../shared/hooks/usePageMeta.js";
 import { STRINGS } from "../shared/strings.js";
@@ -42,8 +49,11 @@ export default function FloorPlanPage({ edition }) {
     canonicalPath: editionPath(edition, SUBPAGE.floorPlan)
   });
 
+  // A drawn plan handles ?stand= itself (StandMap); this is for the picture.
+  const isDrawnPlan = Boolean(edition.floorPlan?.stands);
+
   useEffect(() => {
-    if (!focusedStand || !mapAreaRef.current) return;
+    if (isDrawnPlan || !focusedStand || !mapAreaRef.current) return;
 
     const scrollMapIntoView = () => {
       const top = mapAreaRef.current?.getBoundingClientRect().top ?? 0;
@@ -56,7 +66,16 @@ export default function FloorPlanPage({ edition }) {
     );
 
     return () => timers.forEach(window.clearTimeout);
-  }, [focusedStand]);
+  }, [focusedStand, isDrawnPlan]);
+
+  if (isDrawnPlan) {
+    return (
+      <PageLayout title={t.mapPageTitle} edition={edition} wide>
+        <p className="max-w-[60ch] text-body text-fg-muted dark:text-on-dark-2">{t.mapPageIntro}</p>
+        <StandMap edition={edition} />
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout title={t.mapPageTitle} edition={edition} wide>

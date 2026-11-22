@@ -94,7 +94,7 @@
 import { normalizeCompanies } from "../../../shared/companyData.js";
 
 export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
-  // Stand numbers are not assigned yet — add `stand:` once the floor plan is done.
+  // `stand:` is each company's number on the floor plan (data/floorPlan.js).
   {
     name: "Wepro",
     logo: "/logos/wepro.png",
@@ -103,6 +103,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 230",
     location: { nl: "Leusden, NL", en: "Leusden, NL" },
     website: "https://www.teameiffel.nl/nl/labels/wepro/",
+    stand: 17,
     studies: { ee: "maybe", mt: "yes", tbk: "no", tn: "no", tw: "no", wtb: "yes", ict: "no" },
     opportunities: [],
     description: {
@@ -119,6 +120,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 2000",
     location: { nl: "Zoetermeer, NL", en: "Zoetermeer, NL" },
     website: "https://werkenbijvandorp.eu/",
+    stand: 10,
     // HBO-ICT was left blank on the form.
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "no", tw: "no", wtb: "yes" },
     opportunities: ["internship", "graduation", "traineeship", "job"],
@@ -136,6 +138,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 235",
     location: { nl: "Zoetermeer, NL", en: "Zoetermeer, NL" },
     website: "https://www.peutz.nl/",
+    stand: 14,
     studies: { ee: "no", mt: "no", tbk: "no", tn: "yes", tw: "no", wtb: "yes", ict: "no" },
     opportunities: [],
     opportunityNote: {
@@ -156,6 +159,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 15",
     location: { nl: "Leiderdorp, NL", en: "Leiderdorp, NL" },
     website: "https://www.leiderdorpinstruments.nl/",
+    stand: 31,
     studies: { ee: "yes", mt: "yes", tbk: "no", tn: "no", tw: "no", wtb: "maybe", ict: "yes" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -172,6 +176,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 1100",
     location: { nl: "Delft, NL", en: "Delft, NL" },
     website: "https://demcon.com/nl",
+    stand: 4,
     studies: { ee: "yes", mt: "yes", tbk: "no", tn: "maybe", tw: "maybe", wtb: "yes", ict: "no" },
     opportunities: ["internship", "graduation", "job"],
     description: {
@@ -191,6 +196,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 2400",
     location: { nl: "De Bilt, NL", en: "De Bilt, NL" },
     website: "https://www.sweco.nl/",
+    stand: 5,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "job"],
     description: {
@@ -206,6 +212,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: { nl: "~ 1300 (NL), 318.000 wereldwijd", en: "~ 1,300 (NL), 318,000 worldwide" },
     location: { nl: "Den Haag, NL", en: "The Hague, NL" },
     website: "https://www.siemens.nl/",
+    stand: 37,
     studies: { ee: "yes", mt: "maybe", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     // The form answer here was just "3"; ask Siemens what they offer.
     opportunities: [],
@@ -223,6 +230,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     // The form says "Cortelande" (their business park); the logo says Zevenhuizen.
     location: { nl: "Zevenhuizen, NL", en: "Zevenhuizen, NL" },
     website: "https://www.werkenbijsmits.nl/",
+    stand: 11,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["graduation", "job"],
     opportunityNote: {
@@ -240,10 +248,13 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     logoTone: "dark",
     category: "recruitment",
     // Comaen filled in the form twice; this is their second, later submission.
+    // The export of 21 November only holds the first one again (other studies,
+    // one-line description). Kept the later text until Comaen confirms.
     industry: { nl: "Recruitment (engineering en industriële automatisering)", en: "Recruitment (engineering and industrial automation)" },
     employees: "~ 17",
     location: { nl: "Haarlem, NL", en: "Haarlem, NL" },
     website: "https://www.comaen.nl/",
+    stand: 16,
     studies: { ee: "maybe", mt: "yes", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["graduation", "job"],
     opportunityNote: { nl: "Afstuderen en juniorfuncties.", en: "Graduation projects and junior positions." },
@@ -260,6 +271,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 40",
     location: { nl: "Nootdorp, NL", en: "Nootdorp, NL" },
     website: "https://www.tempcontrol.nl/",
+    stand: 6,
     studies: { ee: "maybe", mt: "yes", tbk: "yes", tn: "maybe", tw: "no", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "traineeship", "job"],
     description: {
@@ -275,6 +287,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 1000",
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://careers.abb/benelux/nl/",
+    stand: 9,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "maybe", tw: "no", wtb: "maybe", ict: "maybe" },
     opportunities: ["internship", "job"],
     description: {
@@ -291,6 +304,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 30",
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://www.dvi.eu/",
+    stand: 7,
     studies: { ee: "yes", mt: "no", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "no" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -307,6 +321,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 20",
     location: { nl: "Berkel en Rodenrijs, NL", en: "Berkel en Rodenrijs, NL" },
     website: "https://www.berkelindustrial.com/",
+    stand: 18,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "maybe" },
     opportunities: ["internship"],
     opportunityNote: {
@@ -327,6 +342,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 80",
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://huygen.net/",
+    stand: 20,
     studies: { ee: "yes", mt: "maybe", tbk: "no", tn: "yes", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "traineeship"],
     description: {
@@ -343,6 +359,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 20",
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://www.maasstadingenieurs.nl/",
+    stand: 36,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "maybe", ict: "maybe" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -359,6 +376,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 17",
     location: { nl: "Den Haag, NL", en: "The Hague, NL" },
     website: "https://dvpsmartconcepts.nl/",
+    stand: 13,
     studies: { ee: "yes", mt: "no", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "job"],
     description: {
@@ -375,6 +393,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 3300",
     location: { nl: "Den Haag, NL", en: "The Hague, NL" },
     website: "https://www.rijksvastgoedbedrijf.nl/",
+    stand: 40,
     studies: { ee: "yes", mt: "maybe", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "traineeship"],
     description: {
@@ -391,6 +410,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 350",
     location: { nl: "Amsterdam, NL", en: "Amsterdam, NL" },
     website: "https://inwork.nl/",
+    stand: 12,
     studies: { ee: "no", mt: "no", tbk: "no", tn: "yes", tw: "yes", wtb: "no", ict: "maybe" },
     opportunities: ["traineeship", "job"],
     opportunityNote: {
@@ -410,6 +430,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 1100",
     location: { nl: "Ridderkerk, NL", en: "Ridderkerk, NL" },
     website: "https://www.quooker.nl/",
+    stand: 28,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "yes" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -426,6 +447,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 14",
     location: { nl: "Hazerswoude-Dorp, NL", en: "Hazerswoude-Dorp, NL" },
     website: "https://almacon.nl/",
+    stand: 3,
     studies: { ee: "maybe", mt: "maybe", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship"],
     opportunityNote: {
@@ -446,6 +468,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 140",
     location: { nl: "Heerjansdam, NL", en: "Heerjansdam, NL" },
     website: "https://www.rubberdesign.nl/",
+    stand: 8,
     studies: { ee: "no", mt: "no", tbk: "no", tn: "yes", tw: "no", wtb: "yes", ict: "no" },
     opportunities: ["internship"],
     description: {
@@ -463,6 +486,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 20",
     location: { nl: "Delft, NL", en: "Delft, NL" },
     website: "https://engineering.emmettgreen.nl/",
+    stand: 21,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "job"],
     opportunityNote: {
@@ -483,6 +507,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 24",
     location: { nl: "Delft, NL", en: "Delft, NL" },
     website: "https://www.ensol.nl/",
+    stand: 22,
     studies: { ee: "yes", mt: "no", tbk: "maybe", tn: "no", tw: "maybe", wtb: "no", ict: "maybe" },
     opportunities: ["internship", "graduation"],
     opportunityNote: {
@@ -503,6 +528,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 60",
     location: { nl: "Maasdijk, NL", en: "Maasdijk, NL" },
     website: "https://www.logiqs.nl/",
+    stand: 32,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "yes", tw: "maybe", wtb: "yes", ict: "yes" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -519,6 +545,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 500",
     location: { nl: "Schiedam, NL", en: "Schiedam, NL" },
     website: "https://werkenbijrhmarine.com/",
+    stand: 27,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "no", tw: "no", wtb: "maybe", ict: "maybe" },
     opportunities: ["internship", "graduation"],
     opportunityNote: {
@@ -539,6 +566,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: { nl: "~ 5000 wereldwijd", en: "~ 5,000 worldwide" },
     location: { nl: "Schiedam, NL", en: "Schiedam, NL" },
     website: "https://www.mammoet.com/",
+    stand: 23,
     studies: { ee: "maybe", mt: "maybe", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "maybe" },
     opportunities: ["internship"],
     opportunityNote: { nl: "Engineeringstages.", en: "Engineering internships." },
@@ -556,6 +584,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 90",
     location: { nl: "Wateringen, NL", en: "Wateringen, NL" },
     website: "https://www.verkadeklimaat.nl/",
+    stand: 19,
     studies: { ee: "no", mt: "no", tbk: "no", tn: "maybe", tw: "maybe", wtb: "yes", ict: "no" },
     opportunities: ["job"],
     description: {
@@ -575,6 +604,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 180",
     location: { nl: "Amsterdam, NL", en: "Amsterdam, NL" },
     website: "https://www.techniekmatch.com/",
+    stand: 41,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "no", tw: "no", wtb: "yes", ict: "maybe" },
     opportunities: ["traineeship", "job"],
     opportunityNote: { nl: "Bijbanen, traineeships en startersbanen.", en: "Side jobs, traineeships and starter jobs." },
@@ -592,6 +622,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 130",
     location: { nl: "Poeldijk, NL", en: "Poeldijk, NL" },
     website: "https://certhon.com/nl/",
+    stand: 35,
     studies: { ee: "yes", mt: "maybe", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "no" },
     opportunities: ["internship", "graduation", "job"],
     opportunityNote: {
@@ -616,6 +647,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     // The form said 2, which is not their real size; left out until confirmed.
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://www.dosign.nl/",
+    stand: 30,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "no", tw: "no", wtb: "yes", ict: "no" },
     opportunities: ["internship", "graduation", "traineeship", "job"],
     opportunityNote: {
@@ -636,6 +668,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 30",
     location: { nl: "Den Haag, NL", en: "The Hague, NL" },
     website: "https://www.kernengineers.nl/",
+    stand: 34,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "yes", tw: "maybe", wtb: "maybe", ict: "maybe" },
     opportunities: ["job"],
     opportunityNote: { nl: "Mooie startersfuncties na het afstuderen.", en: "Great starter positions after graduation." },
@@ -653,6 +686,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 160",
     location: { nl: "Lisse, NL", en: "Lisse, NL" },
     website: "https://senl.nl/",
+    stand: 1,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation"],
     description: {
@@ -670,6 +704,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: { nl: "~ 24.000 wereldwijd", en: "~ 24,000 worldwide" },
     location: { nl: "Hoofddorp, NL", en: "Hoofddorp, NL" },
     website: "https://www.fluor.com/",
+    stand: 33,
     studies: { ee: "yes", mt: "yes", tbk: "maybe", tn: "maybe", tw: "no", wtb: "yes", ict: "yes" },
     opportunities: ["internship", "job"],
     opportunityNote: { nl: "Stage en juniorposities.", en: "Internships and junior positions." },
@@ -687,6 +722,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 250",
     location: { nl: "Capelle aan den IJssel, NL", en: "Capelle aan den IJssel, NL" },
     website: "https://www.continu.nl/",
+    stand: 2,
     studies: { ee: "yes", mt: "yes", tbk: "yes", tn: "yes", tw: "yes", wtb: "yes", ict: "yes" },
     opportunities: ["job"],
     opportunityNote: { nl: "Mooie startplekken binnen de techniek.", en: "Great starting positions in engineering." },
@@ -704,6 +740,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: { nl: "~ 2500 landelijk", en: "~ 2,500 nationwide" },
     location: { nl: "Barendrecht, NL", en: "Barendrecht, NL" },
     website: "https://www.werkenbijhoppenbrouwers.nl/vestigingen/werken-in-barendrecht/",
+    stand: 15,
     studies: { ee: "yes", mt: "maybe", tbk: "no", tn: "no", tw: "no", wtb: "maybe", ict: "no" },
     opportunities: ["internship", "graduation", "traineeship"],
     description: {
@@ -721,6 +758,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 300",
     location: { nl: "Gouda, NL", en: "Gouda, NL" },
     website: "https://www.conscia.com/nl/",
+    stand: 29,
     studies: { ee: "no", mt: "no", tbk: "no", tn: "no", tw: "no", wtb: "no", ict: "yes" },
     opportunities: ["internship", "graduation", "job"],
     description: {
@@ -737,6 +775,7 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: { nl: "230 (VK), 15 (NL)", en: "230 (UK), 15 (NL)" },
     location: { nl: "Rotterdam, NL", en: "Rotterdam, NL" },
     website: "https://www.osbit.com/",
+    stand: 24,
     studies: { ee: "maybe", mt: "yes", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "graduation", "traineeship"],
     description: {
@@ -755,12 +794,59 @@ export const NOVEMBER_2026_COMPANIES = normalizeCompanies([
     employees: "~ 40",
     location: { nl: "Zoetermeer, NL", en: "Zoetermeer, NL" },
     website: "https://www.flowserve.com/products/brands/red-point/",
+    stand: 25,
     studies: { ee: "maybe", mt: "maybe", tbk: "yes", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
     opportunities: ["internship", "job"],
     opportunityNote: { nl: "Stage en werkplek.", en: "Internships and jobs." },
     description: {
       nl: "Red Point Alloys B.V. in Zoetermeer ontwerpt en produceert industriële afsluiters op maat voor klanten over de hele wereld. Wij combineren engineering, materiaalkennis en productie om oplossingen te bieden voor uitdagende technische toepassingen. We zoeken enthousiaste stagiairs en afgestudeerden die hun kennis in de praktijk willen brengen en samen met ons willen werken aan technische oplossingen.",
       en: "Red Point Alloys B.V. in Zoetermeer designs and manufactures custom industrial valves for clients around the world. We combine engineering, materials expertise and production to deliver solutions for demanding technical applications. We are looking for enthusiastic interns and graduates who want to put their knowledge into practice and work with us on technical solutions."
+    }
+  },
+  {
+    name: "Online Payment Platform",
+    logo: "/logos/opp.webp",
+    logoTone: "dark",
+    category: "technology",
+    industry: { nl: "Betalingen (fintech)", en: "Payments (fintech)" },
+    employees: "~ 150",
+    // No location on the form; their own text names the Delft office.
+    location: { nl: "Delft, NL", en: "Delft, NL" },
+    website: "https://jobs.onlinepaymentplatform.com/",
+    stand: 26,
+    studies: { ee: "no", mt: "no", tbk: "yes", tn: "maybe", tw: "yes", wtb: "no", ict: "yes" },
+    opportunities: ["internship"],
+    opportunityNote: {
+      nl: "Stagemogelijkheden voor Data en Marketing.",
+      en: "Internship opportunities in Data and Marketing."
+    },
+    description: {
+      nl: "Online Payment Platform (OPP) helpt platforms en marktplaatsen om betalingen soepel, veilig en compliant te laten verlopen. Denk aan het afhandelen van miljoenen transacties, geautomatiseerde uitbetalingen aan verkopers en identiteitsverificaties (KYC) voor toonaangevende namen als Marktplaats, eBay en NatuurHuisje. Met ons kantoor in Delft bouwen we dagelijks aan schaalbare fintech-oplossingen en onze eigen betaalinfrastructuur. Bij ons werk je in een nuchtere, tech-gedreven cultuur met korte lijnen en volop ruimte voor eigen initiatief. Benieuwd hoe het is om te bouwen aan de 'backbone' van platformbetalingen en wil je ontdekken wat jouw mogelijkheden zijn voor een stage, afstudeeropdracht of startersrol? Kom langs bij onze stand op de Bedrijvendag van De Haagse Hogeschool!",
+      en: "Online Payment Platform (OPP) helps platforms and marketplaces handle payments smoothly, securely and compliantly. Think of processing millions of transactions, automated payouts to sellers and identity verification (KYC) for leading names such as Marktplaats, eBay and NatuurHuisje. From our office in Delft we work every day on scalable fintech solutions and our own payment infrastructure. With us you work in a down-to-earth, tech-driven culture with short lines of communication and plenty of room for your own initiative. Curious what it is like to build the 'backbone' of platform payments, and want to find out what your options are for an internship, graduation project or starter role? Visit our stand at the Career Day of The Hague University of Applied Sciences!"
+    }
+  },
+  {
+    // Registered on the form under this name; the company trades as Roll
+    // Group, which is the name on its logo and in its own text.
+    name: "Roll Dock Shipping B.V.",
+    logo: "/logos/rollgroup.png",
+    logoTone: "dark",
+    category: "engineering",
+    // The form answer for sector was just "Werktuigbouwkunde".
+    industry: {
+      nl: "Werktuigbouwkunde (zwaar transport over land en zee)",
+      en: "Mechanical engineering (heavy transport by land and sea)"
+    },
+    employees: { nl: "~ 100 (NL), 600 wereldwijd", en: "~ 100 (NL), 600 worldwide" },
+    // No location on the form; this is their head office.
+    location: { nl: "Capelle aan den IJssel, NL", en: "Capelle aan den IJssel, NL" },
+    website: "https://www.roll-group.com/",
+    stand: 38,
+    studies: { ee: "no", mt: "maybe", tbk: "maybe", tn: "maybe", tw: "maybe", wtb: "yes", ict: "maybe" },
+    opportunities: ["internship", "graduation", "job"],
+    description: {
+      nl: "Roll Group vervoert zware lading over land en zee. We hebben projecten over heel de wereld en combineren vervoer over land met vervoer over zee. Zo bieden we onze klanten een totaalpakket.",
+      en: "Roll Group transports heavy cargo over land and sea. We run projects all over the world and combine transport over land with transport by sea. That way we offer our clients a complete package."
     }
   }
 ]);

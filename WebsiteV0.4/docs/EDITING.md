@@ -12,6 +12,7 @@ npm run dev
 
 - [Add a company](#add-a-company)
 - [Edit or remove a company](#edit-or-remove-a-company)
+- [Open or close company registration](#open-or-close-company-registration)
 - [Add the floor plan](#add-the-floor-plan)
 - [Change the date, time or any hero text](#change-the-date-time-or-any-hero-text)
 - [Turn on "add to calendar"](#turn-on-add-to-calendar)
@@ -122,76 +123,110 @@ To add a new one, put it in `CATEGORY_LABELS` in `src/shared/strings.js` first
 Same file. Change the fields, or delete the whole `{ ... },` block including
 its trailing comma.
 
-If the company had a `stand`, its rectangle on the map becomes unlabelled.
-Either give the stand to another company, or add a name for it under
-`extraStandLabels` in that edition's `data/floorPlan.js`.
+If the company had a `stand`, that stand stays on the map, white, with only
+its number. Give the stand to another company (its `stand:`), or list a
+student team for it under `extraStands` in that edition's `data/floorPlan.js`.
+
+---
+
+## Open or close company registration
+
+**Files:** `src/site.config.js` and `src/shared/data/forCompanies.js`
+
+The "Voor bedrijven" page (`/voor-bedrijven`) has two faces, chosen by one
+switch in `src/site.config.js`:
+
+```js
+export const COMPANY_REGISTRATION = {
+  open: false,   // false = closed, true = show the registration form
+```
+
+| `open` | What the page shows |
+| --- | --- |
+| `false` | "Registration is closed" and a button that emails the organisers, so a company gets on the mailing list for the next edition |
+| `true` | The practical facts and the Microsoft Form (`formUrl` / `formEmbedUrl` in the same block) |
+
+Under either face the page shows what a company gets out of taking part and
+the editions held so far. All of that text is in
+`src/shared/data/forCompanies.js`:
+
+| I want to… | Change this in `forCompanies.js` |
+| --- | --- |
+| Reword the "closed" message, or give the date of the next edition | `closed` |
+| Update the date and times shown with the form | `open` |
+| Add or reword something a company gets | `benefits.items` |
+| Add an edition that has taken place | `history.editions` (and `history.heading` / `history.intro`) |
+
+The big number per edition is not typed: it is the number of companies in
+that edition's list.
+
+When you flip the switch, also reword the "Voor bedrijven" row on the home
+page: `updateCompanies` in `src/editions/november-2026/edition.config.js`.
 
 ---
 
 ## Add the floor plan
 
-**File:** `src/editions/november-2026/data/floorPlan.js` (currently `null`)
+**File:** `src/editions/november-2026/data/floorPlan.js`
 
-### 1. The picture
+November's map is **drawn** from that file: the walls of the hall and one
+shape per stand. It is not a picture. The page is `/November2026/plattegrond`.
 
-Put it in `public/` — for example `public/MapNovember2026.jpeg`. Note its real
-pixel size; you will need it.
+The file only says **where each stand is**. Who stands there is not in it:
+the company with the same `stand:` number in `companies.js` is drawn on the
+stand, with its logo, and the stand is painted in the colours of the study
+programmes that company is looking for (its `studies` marked `"yes"`).
 
-### 2. Measure the stands
+| I want to… | Do this |
+| --- | --- |
+| Move a company to another stand | Change its `stand:` in `companies.js` |
+| Swap two companies | Swap their `stand:` numbers in `companies.js` |
+| Change a stand's colours | Change the company's `studies` in `companies.js` |
+| Empty a stand | Remove `stand:` from the company. The stand stays, white, with its number |
+| Add a student team (not a company) | Add it under `extraStands` in `floorPlan.js` |
+| Add an info desk, cloakroom, … | Add it under `facilities` in `floorPlan.js` |
+| Change a programme's colour | `stand` in `tailwind.config.js` **and** `STAND_COLORS` in `src/shared/theme.js` |
+| Hide the whole map | `showFloorPlan: false` in `edition.config.js` |
 
-Coordinates are **pixels of the original image file**, counted from its
-top-left corner. Not screen pixels, not percentages. The site converts them to
-percentages itself, which is why the map stays aligned on a phone.
+### Move, add or reshape a stand
 
-Open the image in anything that shows a pixel cursor position (Paint, GIMP,
-Photoshop, Figma):
-
-1. Point at the **top-left** corner of a stand → that is `x` and `y`.
-2. Point at the **bottom-right** corner. Then:
-   - `width = right x − left x`
-   - `height = bottom y − top y`
-
-### 3. Fill in the file
-
-```js
-export const NOVEMBER_2026_FLOOR_PLAN = {
-  image: "/MapNovember2026.jpeg",
-  imageWidth: 1131,     // the file's REAL pixel width
-  imageHeight: 1600,    // the file's REAL pixel height
-
-  // Names for stands that are not companies (student teams, partners)
-  extraStandLabels: {
-    12: "Hydro Motion Team"
-  },
-
-  hotspots: [
-    { stand: 1, x: 153, y: 1063, width: 80, height: 60 },
-    { stand: 2, x: 558, y: 423,  width: 37, height: 74 }
-  ]
-};
-```
-
-### 4. Switch it on
-
-In `edition.config.js`: `showFloorPlan: true,`
-
-### 5. Check your work
-
-Open `/November2026/plattegrond`. Each rectangle lights up orange on hover. If
-one is in the wrong place, adjust its numbers and the browser reloads instantly.
-
-A stand shows a company name when a company in `companies.js` has the matching
-`stand` number. There is no second list — the company list is the only source.
-
-If one stand appears twice on the picture, give each rectangle a `key`:
+A stand is its four corners, in order round the shape, measured on the
+drawing (`width` x `height` at the top of the file, counted from the top-left
+corner; `pixelsPerMetre` says how many units one metre is):
 
 ```js
-{ stand: 32, key: "upper", x: 1060, y: 284, width: 37, height: 74 },
-{ stand: 32, key: "lower", x: 857,  y: 611, width: 37, height: 74 }
+stands: [
+  { stand: 15, points: [[769, 271.2], [655.6, 271.2], [655.6, 214.5], [769, 214.5]] },
+  // ...one line per stand
+]
 ```
 
-A complete worked example: `src/editions/march-2026/data/floorPlan.js`
-(39 rectangles, 38 stands).
+The colour stripes are cut along the **first** side (corner 1 to corner 2), so
+start with a long side to get stripes across the length of the stand.
+
+### After the organisers change the plan
+
+The organisers draw the plan in their floor-plan editor and export it as one
+HTML file (`plattegrond_met_bedrijven.html`). Its data block holds the same
+corner points per stand. After a new export:
+
+1. Replace the `points` of the stands that moved (and `walls` if the hall
+   itself changed).
+2. Update each company's `stand:` in `companies.js` if numbers changed.
+3. Update `updated` at the top of `floorPlan.js`: it is shown under the list.
+
+### Check your work
+
+Open `/November2026/plattegrond`. Click a stand: its card should name the
+right company. A stand that is white with only a number has no company with
+that `stand:` number.
+
+### The older kind: a picture with rectangles
+
+An edition may instead use a picture of the plan with invisible rectangles
+over the stands (`image`, `imageWidth`, `imageHeight`, `hotspots`). The page
+shows that kind with `FloorPlanMap.jsx`. A complete worked example:
+`src/editions/march-2026/data/floorPlan.js` (39 rectangles, 38 stands).
 
 ---
 

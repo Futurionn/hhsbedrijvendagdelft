@@ -82,7 +82,29 @@ export default {
         },
 
         // Page background in dark mode (same value as Tailwind's slate-950).
-        ink: "#020617"
+        ink: "#020617",
+
+        // The floor plan. One colour per study programme: a stand is painted
+        // in the colours of the programmes its company is looking for, and
+        // the filter chips and the list use the same swatches. They are data
+        // colours, so they are the same in light and dark mode. Elektro-
+        // techniek is the brand orange. Never put text on them: a stand's
+        // number sits on a navy-deep tag, its logo on a plate.
+        //   bg-stand-ee  (the swatches)   STAND_COLORS in theme.js (the map)
+        stand: {
+          ee: "#f07d00",
+          mt: "#2f74c0",
+          wtb: "#c9372c",
+          tn: "#0e9aa7",
+          tw: "#2f9e44",
+          tbk: "#8a5a3c",
+          ict: "#7c4dbd",
+          // Student teams, facilities (info desk, cloakroom), and a company
+          // that named no programme.
+          team: "#d4508f",
+          facility: "#475569",
+          other: "#94a3b8"
+        }
       },
 
       // ── TYPE ───────────────────────────────────────────────────────────────
@@ -170,6 +192,18 @@ export default {
       },
       transitionTimingFunction: {
         settle: "cubic-bezier(0.2, 0.7, 0.2, 1)"
+      },
+
+      //    stand-pulse — the outline of the chosen stand on the floor plan
+      //                  breathing, so the eye finds it after the map moves.
+      //                  Use it as `motion-safe:animate-stand-pulse`.
+      keyframes: {
+        "stand-pulse": {
+          "50%": { strokeWidth: "9" }
+        }
+      },
+      animation: {
+        "stand-pulse": "stand-pulse 1.4s ease-in-out infinite"
       }
     }
   },

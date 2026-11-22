@@ -57,7 +57,16 @@
     <priority>0.4</priority>
   </url>
 
-  <!-- November 2026 sub-pages are NOT listed yet: they have no content until
-       showCompanies / showFloorPlan are switched on. Add them then. -->
+  <!-- November 2026 sub-pages: the company list and the floor plan. -->
+  <url>
+    <loc>https://hhsbedrijvendagdelft.nl/November2026/bedrijven</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hhsbedrijvendagdelft.nl/November2026/plattegrond</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

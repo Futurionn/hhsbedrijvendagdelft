@@ -97,7 +97,18 @@ const PAIRS = [
   ["band heading          white / navy-deep", C.white, C.navyDeep, "large"],
   ["band intro            white 72% / navy-deep", composite(C.white, C.navyDeep, 0.72), C.navyDeep, "normal"],
   ["band rail, footer     white 60% / navy-deep", composite(C.white, C.navyDeep, 0.6), C.navyDeep, "normal"],
-  ["band section number   orange / navy-deep", C.orange, C.navyDeep, "normal"]
+  ["band section number   orange / navy-deep", C.orange, C.navyDeep, "normal"],
+
+  // -- The floor plan (StandMap.jsx). No text ever sits on a stand colour:
+  //    the number is on a navy-deep tag, a facility's name on its slate. --
+  ["stand number          white / navy-deep", C.white, C.navyDeep, "normal"],
+  ["facility name         white / stand-facility", C.white, C.slate600, "normal"],
+  ["walls (light)         navy / map surface", C.navy, composite(C.navy, C.white, 0.04), "large"],
+  ["walls (dark)          white 70% / map surface",
+    composite(C.white, composite(C.white, C.ink, 0.04), 0.7), composite(C.white, C.ink, 0.04), "large"],
+  ["list number (dark)    white / white 12% on ink", C.white, composite(C.white, C.ink, 0.12), "normal"],
+  ["zoom hint             white / navy-deep 90% on map", C.white,
+    composite(C.navyDeep, composite(C.navy, C.white, 0.04), 0.9), "normal"]
 ];
 
 let failures = 0;

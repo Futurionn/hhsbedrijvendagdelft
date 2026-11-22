@@ -133,7 +133,7 @@ WebsiteV0.3/
 │   │   │   ├── sections/              sections unique to this edition
 │   │   │   └── data/
 │   │   │       ├── companies.js       ← ADD COMPANIES HERE
-│   │   │       └── floorPlan.js       ← ADD THE MAP HERE
+│   │   │       └── floorPlan.js       ← THE MAP: where every stand is
 │   │   │
 │   │   └── march-2026/        *** FROZEN — DO NOT EDIT ***
 │   │       ├── edition.config.js
@@ -160,7 +160,8 @@ WebsiteV0.3/
 │       ├── hooks/             reusable behaviour
 │       └── data/
 │           ├── associations.js  ← the six study associations
-│           └── faq.jsx          ← the FAQ questions and answers
+│           ├── faq.jsx          ← the FAQ questions and answers
+│           └── forCompanies.js  ← every word on the "Voor bedrijven" page
 │
 ├── tests/smoke.mjs            browser checks — run with `npm test`
 └── docs/                      the two long guides
@@ -178,10 +179,13 @@ top ten lines.
 | --- | --- |
 | Change the November date, time, hero text, or the cards | `src/editions/november-2026/edition.config.js` |
 | **Add a company** | `src/editions/november-2026/data/companies.js` — and see [§8](#8-adding-a-company) |
-| Add the floor plan / move a stand | `src/editions/november-2026/data/floorPlan.js` |
+| Move a stand, add a facility, redraw the hall | `src/editions/november-2026/data/floorPlan.js` |
+| Put a company on another stand | its `stand:` in `src/editions/november-2026/data/companies.js` |
 | Change a colour, a text size or a motion speed | `tailwind.config.js` |
 | Change a word that appears on several pages (buttons, footer, filters) | `src/shared/strings.js` |
 | Change an email address, the venue, or the registration form link | `src/site.config.js` |
+| Open or close company registration | `open` under `COMPANY_REGISTRATION` in `src/site.config.js` |
+| Change the "Voor bedrijven" page (what companies get, earlier editions) | `src/shared/data/forCompanies.js` |
 | Add or edit an FAQ question | `src/shared/data/faq.jsx` |
 | Add or edit a study association | `src/shared/data/associations.js` |
 | Add / remove / reorder a section on the November page | `src/editions/november-2026/NovemberHome.jsx` |
@@ -393,7 +397,8 @@ primary button per view; everything else is `outline` or `link`.
 | `components/EditionHero.jsx` | the navy banner under the header |
 | `components/Footer.jsx` | the footer |
 | `components/CompanyMarquee.jsx` | the scrolling logo rows |
-| `components/FloorPlanMap.jsx` | the clickable map |
+| `components/StandMap.jsx` | the drawn, zoomable floor plan with its list (November) |
+| `components/FloorPlanMap.jsx` | the older map: a picture with clickable rectangles |
 | `components/PageLayout.jsx` | the frame around every non-home page |
 
 Worked examples of adding a button or a whole section are in
@@ -446,7 +451,8 @@ Get this wrong and the logo disappears into the background in one of the themes.
 **`stand`** — the stand number on the floor plan. This single number is what
 connects a company to its spot on the map, the "Stand #12" chip on its card and
 the "Toon op kaart" button. There is no second list to keep in sync. Leave it
-out if stands are not assigned yet.
+out if stands are not assigned yet. On the November map the stand is also
+painted in the colours of the company's `studies` marked `"yes"`.
 
 `category` must be one of: `engineering`, `consultancy`, `technology`,
 `installation`, `recruitment`, `defence`, `energy-transition`, `other`. To
@@ -501,8 +507,8 @@ It prints a `PASS` / `FAIL` line per check. Run it before every upload.
 
 If you would rather check by hand, the things worth clicking are: switch NL/EN,
 switch dark mode, reload the page (both settings should stick), hover a company
-logo, click a stand on the March map, and open any page directly by typing its
-address.
+logo, click a stand on the November map (its card should open), and open any
+page directly by typing its address.
 
 ---
 

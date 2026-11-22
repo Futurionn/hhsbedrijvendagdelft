@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //  FOR COMPANIES SECTION  —  the full-width "Voor bedrijven" link row, just
-//  above the FAQ. Leads to the company registration form.
+//  above the FAQ. Leads to the page for companies (/voor-bedrijven).
 //
 //      ────────────────────────────────────────────────────────────
 //      Voor bedrijven             (orange underline draws in on hover)

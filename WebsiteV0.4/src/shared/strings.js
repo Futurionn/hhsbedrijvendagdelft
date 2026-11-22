@@ -113,7 +113,8 @@ export const STRINGS = {
 
     // -- Floor plan page ---------------------------------------------------
     mapPageTitle: "Plattegrond",
-    mapPageIntro: "Bekijk de interactieve plattegrond van de bedrijvendag.",
+    mapPageIntro:
+      "Bekijk waar elk bedrijf staat. De kleuren van een stand zijn de opleidingen waar het bedrijf naar zoekt.",
     mapBadge: "Interactief",
     mapHeading: "Interactieve plattegrond",
     mapIntro: "Klik op een stand om direct te zien welk bedrijf daar staat.",
@@ -125,6 +126,31 @@ export const STRINGS = {
     mapStandUnassigned: "Bedrijf volgt binnenkort",
     mapEmpty:
       "Voor deze editie is nog geen plattegrond beschikbaar. Zodra de indeling vastligt, verschijnt die hier.",
+    // The drawn map (StandMap.jsx): the map, its buttons, the panel beside it.
+    mapViewPlan: "Bekijk de plattegrond",
+    mapSvgLabel: "Plattegrond met stands",
+    mapPanelLabel: "Bedrijven op de plattegrond",
+    mapPanelHint: "Klik op een stand op de kaart, of zoek hieronder een bedrijf.",
+    mapSearchLabel: "Zoek een bedrijf of standnummer",
+    mapFilterLabel: "Filter op opleiding",
+    mapFilterAll: "Alle",
+    mapViewLabel: "Lijst sorteren",
+    mapViewStudy: "Per opleiding",
+    mapViewAZ: "A–Z",
+    mapGroupTeam: "Dreamteam",
+    mapGroupOther: "Overige bedrijven",
+    mapGroupFacilities: "Voorzieningen",
+    mapFacility: "Voorziening",
+    mapNoResults: "Geen bedrijven gevonden.",
+    mapUpdated: (date) => `Laatst bijgewerkt op ${date}`,
+    mapStandTitle: (name, stand) => `${name} (stand ${stand})`,
+    mapZoomIn: "Inzoomen",
+    mapZoomOut: "Uitzoomen",
+    mapZoomFit: "Hele plattegrond",
+    mapFullscreen: "Volledig scherm",
+    mapFullscreenExit: "Volledig scherm sluiten",
+    mapZoomHint: "Gebruik Ctrl + scrollen om te zoomen",
+    mapZoomHintMac: "Gebruik ⌘ + scrollen om te zoomen",
 
     // -- Study associations section ----------------------------------------
     associationsKicker: "Organiserende verenigingen",
@@ -251,7 +277,8 @@ export const STRINGS = {
 
     // -- Floor plan page ---------------------------------------------------
     mapPageTitle: "Map",
-    mapPageIntro: "Explore the interactive career day floor plan.",
+    mapPageIntro:
+      "See where every company stands. A stand's colours are the programmes the company is looking for.",
     mapBadge: "Interactive",
     mapHeading: "Interactive floor plan",
     mapIntro: "Hover over a stand to instantly see which company is located there.",
@@ -262,6 +289,31 @@ export const STRINGS = {
     mapStandUnassigned: "Company coming soon",
     mapEmpty:
       "No floor plan is available for this edition yet. It will appear here once the layout is final.",
+    // The drawn map (StandMap.jsx): the map, its buttons, the panel beside it.
+    mapViewPlan: "View the floor plan",
+    mapSvgLabel: "Floor plan with stands",
+    mapPanelLabel: "Companies on the floor plan",
+    mapPanelHint: "Click a stand on the map, or search for a company below.",
+    mapSearchLabel: "Search for a company or stand number",
+    mapFilterLabel: "Filter by programme",
+    mapFilterAll: "All",
+    mapViewLabel: "Sort the list",
+    mapViewStudy: "By programme",
+    mapViewAZ: "A–Z",
+    mapGroupTeam: "Dream team",
+    mapGroupOther: "Other companies",
+    mapGroupFacilities: "Facilities",
+    mapFacility: "Facility",
+    mapNoResults: "No companies found.",
+    mapUpdated: (date) => `Last updated on ${date}`,
+    mapStandTitle: (name, stand) => `${name} (stand ${stand})`,
+    mapZoomIn: "Zoom in",
+    mapZoomOut: "Zoom out",
+    mapZoomFit: "Whole floor plan",
+    mapFullscreen: "Full screen",
+    mapFullscreenExit: "Exit full screen",
+    mapZoomHint: "Use Ctrl + scroll to zoom",
+    mapZoomHintMac: "Use ⌘ + scroll to zoom",
 
     // -- Study associations section ----------------------------------------
     associationsKicker: "Organising associations",

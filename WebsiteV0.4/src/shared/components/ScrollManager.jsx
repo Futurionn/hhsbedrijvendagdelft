@@ -24,11 +24,19 @@ const RETRY_DELAY_MS = 250;
 
 export default function ScrollManager({ location }) {
   const { pathname, hash } = location;
-  const isFirstRun = useRef(true);
+  // The address this page appeared with, and whether it has changed since.
+  const arrivedAt = useRef(null);
+  const hasMoved = useRef(false);
 
   useEffect(() => {
-    const behavior = isFirstRun.current ? "instant" : "smooth";
-    isFirstRun.current = false;
+    // "Arriving" is judged by the address, not by counting runs: in
+    // development React runs this effect twice on arrival, and a second,
+    // smooth scroll to the top would undo a page's own jump (the company
+    // list jumping to the company it was opened at).
+    const address = pathname + hash;
+    if (arrivedAt.current === null) arrivedAt.current = address;
+    if (address !== arrivedAt.current) hasMoved.current = true;
+    const behavior = hasMoved.current ? "smooth" : "instant";
 
     if (!hash) {
       window.scrollTo({ top: 0, left: 0, behavior });

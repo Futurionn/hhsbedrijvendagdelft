@@ -34,7 +34,12 @@ import { useTheme } from "../context/ThemeContext.jsx";
 import { useScrollToSection } from "../hooks/useScrollToSection.js";
 import { STRINGS } from "../strings.js";
 import { COMPANY_REGISTRATION } from "../../site.config.js";
-import { editionPath, getActiveEdition, hasCompanies } from "../../editions/index.js";
+import {
+  SUBPAGE,
+  editionPath,
+  getActiveEdition,
+  hasFloorPlan
+} from "../../editions/index.js";
 import HhsLogo from "../ui/HhsLogo.jsx";
 
 /** How far the page must scroll before the bar materialises. */
@@ -79,12 +84,20 @@ export default function SiteHeader({ edition }) {
   const isOnEditionHome =
     pathname === homePath ||
     (pathname === "/" && (!edition || edition.id === getActiveEdition().id));
-  const companiesSection = edition && hasCompanies(edition) ? "companies" : "november-update";
+  // The id of the programme section on the home page (NovemberUpdateSection).
+  const programmeSection = "november-update";
+
+  // The floor plan takes the third place once the edition has one; until
+  // then the organising associations keep it.
+  const mapEdition = edition ?? getActiveEdition();
+  const thirdItem = hasFloorPlan(mapEdition)
+    ? { key: "map", label: t.mapPageTitle, route: editionPath(mapEdition, SUBPAGE.floorPlan) }
+    : { key: "associations", label: t.navAssociations, section: "associations" };
 
   const navItems = [
-    { key: "programme", label: t.navProgramme, section: companiesSection },
+    { key: "programme", label: t.navProgramme, section: programmeSection },
     { key: "about", label: t.navAbout, section: "about" },
-    { key: "associations", label: t.navAssociations, section: "associations" },
+    thirdItem,
     { key: "companies", label: t.footerLinkForCompanies, route: COMPANY_REGISTRATION.route },
     { key: "faq", label: t.footerLinkFaq, route: "/faq" }
   ];

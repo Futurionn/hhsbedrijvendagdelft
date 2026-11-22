@@ -36,7 +36,16 @@ import { STRINGS } from "../../shared/strings.js";
 import { PAGE_SURFACE } from "../../shared/theme.js";
 import { ASSOCIATIONS } from "../../shared/data/associations.js";
 import { COMPANY_REGISTRATION, VENUE } from "../../site.config.js";
-import { getEditionById, hasCompanies, showAssociations } from "../index.js";
+import {
+  SUBPAGE,
+  editionPath,
+  getEditionById,
+  hasCompanies,
+  hasFloorPlan,
+  showAssociations
+} from "../index.js";
+// Named MapIcon so it does not hide JavaScript's own Map.
+import { Map as MapIcon } from "lucide-react";
 
 import AboutSection from "../../shared/components/AboutSection.jsx";
 import CompaniesSection from "../../shared/components/CompaniesSection.jsx";
@@ -66,6 +75,7 @@ export default function NovemberHome({ edition }) {
   // Once companies are added and switched on, the real companies section
   // replaces the "coming later" update cards automatically.
   const showCompanies = hasCompanies(edition);
+  const showFloorPlan = hasFloorPlan(edition);
   const previousEdition = getEditionById("march-2026");
 
   usePageMeta({
@@ -105,16 +115,30 @@ export default function NovemberHome({ edition }) {
           }
           actions={
             <>
-              <Button
-                size="lg"
-                arrow="down"
-                className="justify-between tab:justify-start"
-                onClick={() =>
-                  scrollToSection(showCompanies ? "companies" : "november-update")
-                }
-              >
-                {pick(content.ctaPrimary, lang)}
-              </Button>
+              {/* The one orange button: the floor plan once there is one,
+                  otherwise a scroll down to the companies. */}
+              {showFloorPlan ? (
+                <Button
+                  size="lg"
+                  icon={MapIcon}
+                  arrow="right"
+                  className="tab:justify-start"
+                  to={editionPath(edition, SUBPAGE.floorPlan)}
+                >
+                  <span className="flex-1 tab:flex-none">{pick(content.ctaFloorPlan, lang)}</span>
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  arrow="down"
+                  className="justify-between tab:justify-start"
+                  onClick={() =>
+                    scrollToSection(showCompanies ? "companies" : "november-update")
+                  }
+                >
+                  {pick(content.ctaPrimary, lang)}
+                </Button>
+              )}
               <Button variant="link" arrow="right" to={COMPANY_REGISTRATION.route}>
                 {pick(content.ctaRegistration, lang)}
               </Button>

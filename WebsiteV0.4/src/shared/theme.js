@@ -24,6 +24,24 @@ export const BRAND = {
 };
 
 /**
+ * The floor plan's colours: one per study programme, plus student teams,
+ * facilities and "no programme named". Mirrors `stand` in tailwind.config.js.
+ * The map paints its stands with these (SVG fills need a hex string).
+ */
+export const STAND_COLORS = {
+  ee: "#f07d00",
+  mt: "#2f74c0",
+  wtb: "#c9372c",
+  tn: "#0e9aa7",
+  tw: "#2f9e44",
+  tbk: "#8a5a3c",
+  ict: "#7c4dbd",
+  team: "#d4508f",
+  facility: "#475569",
+  other: "#94a3b8"
+};
+
+/**
  * The colour the decorative wave at the bottom of a hero should be painted in.
  * The wave has to match the background of the section BELOW it, otherwise you
  * see a hard edge — so it flips with the light/dark theme.

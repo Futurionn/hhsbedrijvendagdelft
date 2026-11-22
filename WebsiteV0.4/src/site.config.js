@@ -56,9 +56,21 @@ export const HHS_LINKS = {
   instagram: "https://www.instagram.com/dehaagsehogeschool/"
 };
 
-/** The Microsoft Form companies fill in to register their interest. */
+/**
+ * The "Voor bedrijven" page and the Microsoft Form companies register with.
+ * The words on that page are in src/shared/data/forCompanies.js.
+ */
 export const COMPANY_REGISTRATION = {
-  /** Route on this site that shows the form. */
+  /**
+   * Can companies register right now?
+   *   false → the page says registration is closed and asks companies to email
+   *           us to get on the mailing list for the next edition.
+   *   true  → the page shows the registration form below.
+   *
+   * WHEN REGISTRATION FOR A NEW EDITION OPENS: set this to true.
+   */
+  open: false,
+  /** Route on this site that shows the page. */
   route: "/voor-bedrijven",
   /** Opens the form in a new tab. */
   formUrl: "https://forms.cloud.microsoft/e/J6wpapkE6H",

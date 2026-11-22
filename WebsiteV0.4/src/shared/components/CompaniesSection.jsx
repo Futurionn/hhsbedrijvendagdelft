@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //  COMPANIES SECTION  —  the "Deelnemende bedrijven" block on a home page:
 //  a heading, a "What do you study?" picker, the curved card gallery
-//  (CompanyGallery.jsx) and, under it, a link to the full list.
+//  (CompanyGallery.jsx) and, under it, a link to the full list and (when the
+//  edition has one) to the floor plan.
 //
 //  The picker shows three programmes at a time (ET, MT, WTB first, the order
 //  of STUDY_KEYS), or as many as fit on a narrow screen, with arrows to page
@@ -23,7 +24,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { STRINGS, STUDY_LABELS } from "../strings.js";
 import { CONTACT } from "../../site.config.js";
-import { SUBPAGE, editionPath } from "../../editions/index.js";
+import { SUBPAGE, editionPath, hasFloorPlan } from "../../editions/index.js";
 import { collectStudies, localizeCompanies, splitByStudy } from "../companyData.js";
 import Button from "../ui/Button.jsx";
 import Chip from "../ui/Chip.jsx";
@@ -188,10 +189,20 @@ export default function CompaniesSection({
         )}
       </div>
 
-      <Container className="mt-6 flex justify-center">
+      <Container className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
         <Button variant="link" to={listPath} className="text-fg dark:text-white">
           {t.companiesViewAll}
         </Button>
+        {/* Only once the edition has a floor plan (showFloorPlan). */}
+        {hasFloorPlan(edition) ? (
+          <Button
+            variant="link"
+            to={editionPath(edition, SUBPAGE.floorPlan)}
+            className="text-fg dark:text-white"
+          >
+            {t.mapViewPlan}
+          </Button>
+        ) : null}
       </Container>
 
       {showIssues ? (

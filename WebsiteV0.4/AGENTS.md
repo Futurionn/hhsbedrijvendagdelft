@@ -73,7 +73,9 @@ no database. All content is in data and config files under `src/`.
 | Active edition, legacy redirects, emails, venue | `src/site.config.js` |
 | All text for an edition | `src/editions/<edition>/edition.config.js` |
 | Companies for an edition | `src/editions/<edition>/data/companies.js` |
-| Floor plan for an edition | `src/editions/<edition>/data/floorPlan.js` |
+| Floor plan for an edition (shapes only) | `src/editions/<edition>/data/floorPlan.js` |
+| The drawn map, its zoom/drag | `src/shared/components/StandMap.jsx`, `src/shared/hooks/useMapView.js` |
+| The "Voor bedrijven" page: its text, and registration open/closed | `src/shared/data/forCompanies.js`, `COMPANY_REGISTRATION.open` in `src/site.config.js` |
 | Cross-page text + category labels | `src/shared/strings.js` |
 | Colours, type, motion | `tailwind.config.js` (+ `src/shared/theme.js`, `:root` in `src/index.css`) |
 | The design spec (open in a browser) | `design/tis-reference.html` |
@@ -82,6 +84,15 @@ no database. All content is in data and config files under `src/`.
 
 - A company's `stand` number is the **only** link between it and the floor
   plan. There is no second lookup table; do not reintroduce one.
+- November's floor plan is **drawn** (`StandMap.jsx`) from
+  `data/floorPlan.js`, which holds shapes only: walls, stands (number +
+  corner points), facilities, and `extraStands` for student teams. A stand's
+  name, logo and colours come from the company with that `stand:`; the
+  colours are the company's `studies` marked `"yes"`. Never put company
+  names or colours in `floorPlan.js`.
+- The study colours are `stand.*` in `tailwind.config.js`, mirrored by
+  `STAND_COLORS` in `src/shared/theme.js`. They are data colours, the same
+  in both themes, and never carry text.
 - Company `id` is derived from `name` via `slugify()` unless set explicitly.
   Ids appear in URLs (`?focus=<id>`), so changing a name changes a link.
 - `logoTone` (`"light"` / `"dark"` / omitted) decides the card background so
@@ -124,7 +135,8 @@ npm test               # browser checks; needs: npm i --no-save playwright
 and checks every colour pair against WCAG AA. Run it after any colour change.
 
 `npm test` covers all 14 routes, language and theme persistence, the company
-filter, the map hotspots, the marquee pause-on-hover, the pinned header, the
+filter, the map hotspots, the November floor plan (click, zoom, drag, filter,
+search, the `?stand=` address), the marquee pause-on-hover, the pinned header, the
 logo returning to `/`, the 1s card-close delay, and phone layout. If you change
 behaviour in those areas, update `tests/smoke.mjs` to match.
 
@@ -144,6 +156,9 @@ behaviour in those areas, update `tests/smoke.mjs` to match.
 - **Card close is delayed by 1s** (`src/shared/hooks/useHoverCard.js`). Opening
   is instant. Removing the delay brings back the open/close flicker when the
   pointer sits on a card edge.
+- **The floor plan zooms on Ctrl/⌘ + scroll only.** A plain scroll must stay
+  the page's, or a visitor scrolling past the map gets stuck in it. In full
+  screen there is no page to scroll, so there a plain scroll zooms.
 - **The collapsed mobile menu is `inert`.** It stays mounted to animate, so
   without that its links stay in the tab order.
 - **Never put an HTML tag name in angle brackets inside a comment in
